@@ -1,0 +1,297 @@
+accounts:
+- name: Suppliers4U <dt>
+  isSupplier: true
+  operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+  invoicingCurrency: GBP
+  taxCode: Standard Rate VAT
+  allowPartItemInvoicing: true
+  locale: en_GB
+- name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+  operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+  invoicingCurrency: GBP
+  taxCode: Standard Rate VAT
+  allowPartItemInvoicing: true
+  locale: en_GB
+  salesOpportunities:
+  - name: Sales Opp x'x x&x <testName> <dt>
+    businessUnit: UK Co 1 (Operating/Trading GBP)
+    source: Direct Enquiry
+    proposition: General Consulting
+    responseRequiredDate: 01/02/2013
+    closeDate: 26/02/2013
+    forecastStatus: Probable (60%)
+    deliveryEngagements:
+    - name: T&M Delivery Engagement x'x x&x <testName> <dt>
+      productGroup: General Consulting (No Delivery Elements)
+      expectedStartDate: 01/03/2013
+      expectedEndDate: 31/03/2013
+      deliveryElements:
+      - name: Cost Milestone
+        product: 3rd Party Project Cost (Supplier Req)
+        activate: false
+        costMilestones:
+        - name: Engagement Start
+          completionStage: complete the milestone
+          value: 7000.0
+          date: 01/03/2013
+      - name: Licences Cost
+        product: Annuity - Scenario 26
+        activate: false
+        annuities:
+        - name: 30 x Fully Flexible Users at £15
+          startDate: 01/03/2013
+          numberOfPeriods: 12
+          periodsToComplete: [1, 2, 3, 4]
+          endDate: 28/02/2014
+          revenue: 15.0
+#          costRateRule: FixedCostRate
+          cost: 0.75
+          units: 30
+      - name: Supplier Activity
+        product: T&M
+        activityAssignments:
+        - resourceName: Supplier 1
+          revenueRate: 750
+          costRate: 500
+          usageBehaviourRule: Defined Effort between two Dates
+          startDate: 04/03/2013
+          endDate: 31/03/2013
+          remainingEffort: 19
+     #     utilisationPct: 100
+        - resourceName: Group 126
+          groupAssignmentsEnabled: true
+          revenueRate: 650
+          costRate: 550
+          usageBehaviourRule: Defined Effort between two Dates
+          startDate: 04/03/2013
+          endDate: 31/03/2013
+          remainingEffort: 19
+     #     utilisationPct: 78
+timesheets:
+- resourceName: Supplier 1
+  testStage: book time
+  trackingPeriodStartDate: 04/03/2013
+  timeEntries:
+  - actualiseForecastEntry: false
+    startDate: 04/03/2013
+    endDate: 08/03/2013
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Supplier Activity # was Sales Opp x'x x&x <testName> <dt>
+- resourceName: Supplier 2
+  testStage: book time
+  trackingPeriodStartDate: 04/03/2013
+  timeEntries:
+  - actualiseForecastEntry: false
+    startDate: 04/03/2013
+    endDate: 08/03/2013
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Supplier Activity # was Sales Opp x'x x&x <testName> <dt>
+    
+supplierRequisitions:
+- engagement: T&M Delivery Engagement x'x x&x <testName> <dt>
+  deliveryElement: Cost Milestone
+  reference: SR000071	
+  purchaseOrderRule: PO required for all
+  requestedBy: UK Co 1 x'x x&x Employee One
+  requisitionDate: 07/03/2013
+  supplier: Suppliers4U <dt>
+  supplierInvoicing: 7000.0
+  billingEntity: UK Co 1 (Operating/Trading GBP)
+  requisitionType: Actualisation
+  lines:
+  - { itemDescription: 'Engagement Start', unitAmount: 7000.00, netAmount: 7000.00, invoicedAmount: 7000.00 }
+- engagement: T&M Delivery Engagement x'x x&x <testName> <dt>
+  deliveryElement: Licences Cost
+  reference: SR000072	
+  purchaseOrderRule: PO required for all
+  requestedBy: UK Co 1 x'x x&x Employee One
+  requisitionDate: 07/03/2013
+  supplier: Suppliers4U <dt>
+  supplierInvoicing: 0.75
+  billingEntity: UK Co 1 (Operating/Trading GBP)
+  requisitionType: Actualisation
+  lines:
+  - { itemDescription: 'Licences Cost 01/03/2013 - 31/03/2013', requiredUnits: 930, unitAmount: 0.75, netAmount: 22.50, invoicedAmount: 22.50 }
+  - { itemDescription: 'Licences Cost 01/04/2013 - 30/04/2013', requiredUnits: 900, unitAmount: 0.75, netAmount: 22.50, invoicedAmount: 0.00 }
+  - { itemDescription: 'Licences Cost 01/05/2013 - 31/05/2013', requiredUnits: 930, unitAmount: 0.75, netAmount: 22.50, invoicedAmount: 0.00 }
+  - { itemDescription: 'Licences Cost 01/06/2013 - 30/06/2013', requiredUnits: 900, unitAmount: 0.75, netAmount: 22.50, invoicedAmount: 0.00 }
+  - { itemDescription: 'Licences Cost 01/07/2013 - 31/07/2013', requiredUnits: 930, unitAmount: 0.75, netAmount: 22.50, invoicedAmount: 0.00 }
+  - { itemDescription: 'Licences Cost 01/08/2013 - 31/08/2013', requiredUnits: 930, unitAmount: 0.75, netAmount: 22.50, invoicedAmount: 0.00 }
+  - { itemDescription: 'Licences Cost 01/09/2013 - 30/09/2013', requiredUnits: 900, unitAmount: 0.75, netAmount: 22.50, invoicedAmount: 0.00 }
+  - { itemDescription: 'Licences Cost 01/10/2013 - 31/10/2013', requiredUnits: 930, unitAmount: 0.75, netAmount: 22.50, invoicedAmount: 0.00 }
+  - { itemDescription: 'Licences Cost 01/11/2013 - 30/11/2013', requiredUnits: 900, unitAmount: 0.75, netAmount: 22.50, invoicedAmount: 0.00 }
+  - { itemDescription: 'Licences Cost 01/12/2013 - 31/12/2013', requiredUnits: 930, unitAmount: 0.75, netAmount: 22.50, invoicedAmount: 0.00 }
+  - { itemDescription: 'Licences Cost 01/01/2014 - 31/01/2014', requiredUnits: 930, unitAmount: 0.75, netAmount: 22.50, invoicedAmount: 0.00 }
+  - { itemDescription: 'Licences Cost 01/02/2014 - 28/02/2014', requiredUnits: 840, unitAmount: 0.75, netAmount: 22.50, invoicedAmount: 0.00 }
+- engagement: T&M Delivery Engagement x'x x&x <testName> <dt>
+  deliveryElement: Supplier Activity
+  reference: SR000073	
+  purchaseOrderRule: PO required for all
+  requestedBy: UK Co 1 x'x x&x Employee One
+  requisitionDate: 07/03/2013
+  supplier: Suppliers4U <dt>
+  supplierInvoicing: 12250.0
+  billingEntity: UK Co 1 (Operating/Trading GBP)
+  requisitionType: Actualisation
+  lines:
+  - { itemDescription: 'Supplier 1 - All', unitAmount: 12250.00, netAmount: 12250.00, invoicedAmount: 2500 }
+  - { itemDescription: 'Supplier 2 - All', unitAmount: 0.00, netAmount: 0.00, invoicedAmount: 2750.00 }
+    
+supplierInvoices:
+- purchaseOrder: null
+  supplier: Suppliers4U <dt>
+  selfBill: false
+  reference: Engagement Start
+  invoiceDate: 08/03/2013
+  itemDescriptions: 
+  - Engagement Start
+  netAmount: 7000.0
+  taxCode: Standard Rate VAT
+  invoiceFormat: Group Time And Expense By Resource (Grid)
+  grossTotal: 8,400.00
+  lines:
+  - amount: 7000.00
+    tax: 1400.00
+- purchaseOrder: null
+  supplier: Suppliers4U <dt>
+  selfBill: false
+  reference: Licences Cost 01/03/2013 - 31/03/2013
+  invoiceDate: 08/03/2013
+  itemDescriptions:
+  - Licences Cost 30 x Fully Flexible Users at £15
+  netAmount: 270 # was 90
+  taxCode: Standard Rate VAT
+  invoiceFormat: Group Time And Expense By Resource (Grid)
+  grossTotal: 27.00
+  lines:
+  - amount: 22.50
+    tax: 4.50
+- purchaseOrder: null
+  supplier: Suppliers4U <dt>
+  selfBill: false
+  reference: Supplier 1 - All
+  invoiceFormat: Group Time And Expense By Resource (Grid)
+  invoiceDate: 08/03/2013
+  itemDescriptions: 
+  - Supplier 1 - All
+  netAmount: 2500.0
+  taxCode: Standard Rate VAT
+  grossTotal: 3,000.00
+  lines:
+  - amount: 2500.00
+    tax: 500.00
+- purchaseOrder: null
+  supplier: Suppliers4U <dt>
+  selfBill: true
+  reference: Supplier 2 - All
+  invoiceFormat: Group Time And Expense By Resource (Grid)
+  invoiceDate: 08/03/2013
+  itemDescriptions: 
+  - Supplier 2 - All
+#  netAmount: 2750.0
+  taxCode: Standard Rate VAT
+  grossTotal: 3,300.00
+  lines:
+  - amount: 2750.00
+    tax: 550.00
+expectedResults:
+  - testStage: postSupplierRequisitionCreation
+    supplierRequisitions:
+    - deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+      deliveryElementName: Cost Milestone
+      supplier: Suppliers4U <dt>
+      status: Approved
+      netAmount: GBP 7,000.00
+      requestedBy: UK Co 1 x'x x&x Employee One
+      requisitionDate: 07/03/2013
+      billingEntity: UK Co 1 (Operating/Trading GBP)
+      requisitionType: Actualisation
+      lines:
+      - { itemDescription: 'Engagement Start', requiredUnits: 1.000, unitAmount: 'GBP 7,000.00', netAmount: 'GBP 7,000.00', invoicedAmount: 'GBP 0.00' }
+    - deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+      deliveryElementName: Licences Cost
+      supplier: Suppliers4U <dt>
+      status: Approved
+      netAmount: GBP 270.00
+      requestedBy: UK Co 1 x'x x&x Employee One
+      requisitionDate: 07/03/2013
+      billingEntity: UK Co 1 (Operating/Trading GBP)
+      requisitionType: Actualisation
+      lines:
+      - { itemDescription: 'Licences Cost 30 x Fully Flexible Users at £15', requiredUnits: 30.000, unitAmount: 'GBP 0.75', netAmount: 'GBP 270.00', invoicedAmount: 'GBP 0.00' }   
+    - deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+      deliveryElementName: Supplier Activity
+      supplier: Suppliers4U <dt>
+      status: Approved
+      netAmount: GBP 1,050.00
+      requestedBy: UK Co 1 x'x x&x Employee One
+      requisitionDate: 07/03/2013
+      billingEntity: UK Co 1 (Operating/Trading GBP)
+      requisitionType: Actualisation
+      lines:
+      - { itemDescription: 'Supplier 1 - All', requiredUnits: 1.000, unitAmount: 'GBP 500.00', netAmount: 'GBP 500.00', invoicedAmount: 'GBP 0.00' }     
+      - { itemDescription: 'Supplier 2 - All', requiredUnits: 1.000, unitAmount: 'GBP 550.00', netAmount: 'GBP 550.00', invoicedAmount: 'GBP 0.00' }
+      
+  - testStage: postSupplierRequisitionInvoiceCreation
+    supplierRequisitions:
+    - deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+      deliveryElementName: Cost Milestone
+      supplier: Suppliers4U <dt>
+      status: Approved
+      netAmount: GBP 7,000.00
+      requestedBy: UK Co 1 x'x x&x Employee One
+      requisitionDate: 07/03/2013
+      billingEntity: UK Co 1 (Operating/Trading GBP)
+      requisitionType: Actualisation
+      lines:
+      - { itemDescription: 'Engagement Start', requiredUnits: 1.000, unitAmount: 'GBP 7,000.00', netAmount: 'GBP 7,000.00', invoicedAmount: 'GBP 7,000.00' }
+    - deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+      deliveryElementName: Licences Cost
+      supplier: Suppliers4U <dt>
+      status: Approved
+      netAmount: GBP 270.00
+      requestedBy: UK Co 1 x'x x&x Employee One
+      requisitionDate: 07/03/2013
+      billingEntity: UK Co 1 (Operating/Trading GBP)
+      requisitionType: Actualisation
+      lines:
+      - { itemDescription: 'Licences Cost 30 x Fully Flexible Users at £15', requiredUnits: 30.000, unitAmount: 'GBP 0.75', netAmount: 'GBP 270.00', invoicedAmount: 'GBP 270.00' }   
+    - deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+      deliveryElementName: Supplier Activity
+      supplier: Suppliers4U <dt>
+      status: Approved
+      netAmount: GBP 1,050.00
+      requestedBy: UK Co 1 x'x x&x Employee One
+      requisitionDate: 07/03/2013
+      billingEntity: UK Co 1 (Operating/Trading GBP)
+      requisitionType: Actualisation
+      lines:
+      - { itemDescription: 'Supplier 1 - All', requiredUnits: 1.000, unitAmount: 'GBP 500.00', netAmount: 'GBP 500.00', invoicedAmount: 'GBP 2,500.00' }     
+      - { itemDescription: 'Supplier 2 - All', requiredUnits: 1.000, unitAmount: 'GBP 550.00', netAmount: 'GBP 550.00', invoicedAmount: 'GBP 2,750.00' } 
+
+    supplierInvoices:
+    - reference: Engagement Start
+      netAmount: 7000.0
+      grossTotal: 8,400.00
+      lines:
+      - amount: 7000.00
+        tax: 1400.00
+    - reference: Licences Cost 01/03/2013 - 31/03/2013
+      netAmount: 270 # was 90
+      grossTotal: 324.00
+      lines:
+      - amount: 22.50
+        tax: 4.50
+    - reference: Supplier 1 - All
+      netAmount: 2500.0
+      grossTotal: 3,000.00
+      lines:
+      - amount: 2500.00
+        tax: 500.00
+    - reference: Supplier 2 - All
+      netAmount: 2750.0
+      grossTotal: 3,300.00
+      lines:
+      - amount: 2750.00
+        tax: 550.00
+       

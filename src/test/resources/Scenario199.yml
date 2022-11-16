@@ -1,0 +1,27 @@
+---
+
+accounts:
+  - name: LDV Automation Account
+    
+    salesOpportunities:
+      - name: Sales Opp LDV Automation <testName> <dt>
+        businessUnit: BU Automation
+        source: Direct Enquiry
+        proposition: Automation Proposition # change to 200
+        responseRequiredDate: 01/01/2013
+        closeDate: 01/01/2013
+        winDate: 01/01/2013
+        forecastStatus: Probable (60%)
+        contractRevenue: 4600000.00
+        contractCost: 1262500.00
+        contractMargin: 72.55
+
+        deliveryEngagements:
+          - name: Sales Opp LDV Automation <testName> <dt>
+            productGroup: General Consulting - T&M 
+            expectedStartDate: 01/01/2013
+            expectedEndDate: 01/01/2014
+            contractRevenue: 100000      
+            startDate: 01/01/2013
+            endDate: 07/01/2013  
+            stage: skip

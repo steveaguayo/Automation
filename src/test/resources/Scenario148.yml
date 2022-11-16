@@ -1,0 +1,170 @@
+---
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    tradingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    isCustomer: true
+    purchaseOrderRule: Purchase Order not required
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    
+    proposals:
+      - businessUnit: UK Co 1 (Operating/Trading GBP)
+        proposition: General Consulting
+        name: Proposal x'x x&x <testName> <dt>
+        accountName: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+        acceptanceDate: 03/02/2014
+        forecastStatus: Probable (60%)
+
+        risks:
+          - stage: create proposal risks
+            reference: Risk 1
+            category: Technical
+            summary: Test 1
+            raisedDate: 03/02/2014
+            probability: High
+            impact: Medium
+            internalOnly: true
+            status: Identified
+            
+          - stage: create proposal risks
+            reference: Risk 2
+            category: Commercial
+            summary: Test 2
+            raisedDate: 04/02/2014
+            probability: Medium
+            impact: Low
+            internalOnly: false
+            status: In Progress
+        
+        deliveryEngagements:
+          - name: Original Delivery Engagement x'x x&x <testName> <dt>
+            productGroup: Product Group 148
+            expectedStartDate: 01/02/2014
+            expectedEndDate: 14/02/2014
+            contractRevenue: 17250
+                        
+            deliveryElements:
+              - name: T&M 
+                product: T&M
+                activityAssignments:
+                  - resourceName: UK Co 1 x'x x&x Employee One                      
+                    revenueRate: 850
+                    costRate: 650
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 03/02/2014
+                    remainingEffort: 5
+                    utilisationPct: 100
+                
+              - name: Fixed Price
+                product: Fixed Price 
+                activityAssignments:
+                  - resourceName: UK Co 1 x'x x&x Employee One                      
+                    costRate: 500
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 10/02/2014
+                    remainingEffort: 5
+                    utilisationPct: 100 
+                revenueMilestones:
+                  - name: Milestone
+                    date: 10/02/2014
+                    value: 8000
+                
+              - name: Annuity
+                product: Annuity
+                annuities:
+                  - name: Annuity
+                    startDate: 01/02/2014
+                    numberOfPeriods: 1
+                    endDate: 28/02/2014
+                    revenue: 5000
+                    cost: 1000
+                    units: 1
+                    
+          - name: Original Delivery Engagement x'x x&x <testName> <dt>
+            stage: create expense forecast
+            deliveryElements: 
+              - name: T&M 
+                stage: create expense forecast
+                expenseLineItems:
+                  - category: Hotel
+                    remainingCost: 100
+                    remainingRevenue: 80
+                    startDate: 03/02/2014
+                    endDate: 28/02/2014
+              - name: Fixed Price
+                stage: create expense forecast
+                expenseLineItems:
+                  - category: Car Rental
+                    remainingCost: 50
+                    remainingRevenue: 45
+                    startDate: 10/02/2014
+                    endDate: 28/02/2014
+
+proposals:
+  - name: Copy Proposal x'x x&x <testName> <dt>
+    creationMode: Copy Proposal Items
+                
+  - name: Proposition Proposal x'x x&x <testName> <dt>
+    creationMode: Select Proposition
+    proposition: Alternate Proposal
+    
+expectedResults:
+  - testStage: "validate : create proposal risks"
+    risksSales:
+      - riskLevel: High
+  - testStage: validate proposal items summary fields  
+    proposals:
+        name: Copy Proposal x'x x&x <testName> <dt>
+        contractRevenue: 17375.00
+        contractCost: 6900.00
+        contractMargin: 60.29
+    
+        deliveryEngagements:
+          - name: Product Group 148
+            stage: validate proposal items summary fields
+            startDate: 03/02/2014
+            endDate: 07/02/2014
+            revenue: GBP 17,375.00
+        
+            deliveryElements:
+              - name: Annuity
+                stage: validate proposal items summary fields
+                servicesRevenue: 5000.00
+                servicesCost: 1000.00
+            
+              - name: T&M
+                stage: validate proposal items summary fields
+                servicesRevenue: 4250.00
+                servicesCost: 3250.00
+                expensesRevenue: 80.00
+                expensesCost: 100.00
+            
+              - name: Fixed Price
+                stage: validate proposal items summary fields
+                servicesRevenue: 8000.00
+                servicesCost: 2500.00
+                expensesRevenue: 45.00
+                expensesCost: 50.00
+  - testStage: validate proposition proposal items summary fields  
+    proposals:
+        name: Proposition Proposal x'x x&x <testName> <dt>
+        contractRevenue: 10000.00
+        contractCost: 3250.00
+        contractMargin: 67.50
+    
+        deliveryEngagements:
+          - name: Alternate Proposal
+            stage: validate proposition proposal items summary fields
+            startDate: 03/02/2014
+            endDate: 07/02/2014
+            revenue: GBP 10,000.00
+            
+            deliveryElements:
+              - name: Fixed Price Product Group
+                stage: validate proposition proposal items summary fields
+                servicesRevenue: 10000.00
+                servicesCost: 3250.00
+                expensesRevenue: 0.00
+                expensesCost: 0.00

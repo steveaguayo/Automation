@@ -1,0 +1,190 @@
+---
+# update with details of the test
+
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp Selling Credit x'x x&x <testName> <dt>
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/01/2013
+        closeDate: 01/01/2013
+        forecastStatus: Probable (60%)
+        
+        deliveryEngagements:
+          - name: Delivery Engagement Selling Credit x'x x&x <testName> <dt>
+            productGroup: Credit Purchase
+            expectedStartDate: 01/02/2014
+            expectedEndDate: 01/03/2014
+            contractRevenue: 10000            
+
+            deliveryElements:
+              - name: Credit Purchase
+                product: Credit Purchase
+                
+                
+                accountCredits:
+                  - creditName: Credits Scenario 146
+                    creditValue: 10000
+                    creditDate: 01/02/2014
+                    creditRevenue: 10000
+        
+      - name: Sales Opp Credit Allocation x'x x&x <testName> <dt>
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/01/2013
+        closeDate: 01/01/2013
+        forecastStatus: Probable (60%)
+       
+        deliveryEngagements:
+          - name: Delivery Engagement Credit Allocation x'x x&x <testName> <dt>
+            productGroup: General Consulting - T&M
+            expectedStartDate: 01/02/2014
+            expectedEndDate: 20/03/2014
+            contractRevenue: 10000                  
+             
+            deliveryElements:
+              - name: T&M
+                product: T&M
+                purchaseOrderRule: Purchase Order not required
+                creditValue: GBP 10,000.00
+                creditAllocation: 5500
+                
+                activityAssignments:
+                  - resourceName: UK Co 1 x'x x&x Associate One                   
+                    revenueRate: 899
+                    costRate: 500
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 04/02/2013
+                    remainingEffort: 10
+                    utilisationPct: 100
+                                     
+                                   
+timesheets:
+  - testStage: enhanced time entry
+    resourceName: UK Co 1 x'x x&x Associate One 
+    trackingPeriodStartDate: 04/02/2013
+    timeEntries:
+     - startDate: 04/02/2013
+       endDate: 15/02/2013
+       plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+       entryUnits: 7.5 hours
+       timeSubmissionMethodAll: true
+  - testStage: enhanced time entry 
+    resourceName: UK Co 1 x'x x&x Associate One  
+    trackingPeriodStartDate: 11/02/2013
+    timeEntries:
+     - NoTimeEntrySubmit: true
+       timeSubmissionMethodAll: true
+
+expectedResults:
+  - testStage: sales opp win credit sold
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp Selling Credit x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement Selling Credit x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+  - testStage: sales opp win credit allocation opp
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp Credit Allocation x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement Credit Allocation x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 8990.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        resourceName:   UK Co 1 x'x x&x Associate One
+        deliveryEngagementName: Delivery Engagement Credit Allocation x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        resourceName: UK Co 1 x'x x&x Associate One
+        deliveryEngagementName: Delivery Engagement Credit Allocation x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 8990.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement Credit Allocation x'x x&x <testName> <dt>
+        period: February 2013
+        resourceName: UK Co 1 x'x x&x Associate One
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 5000.00
+  - testStage: post time booked
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp Credit Allocation x'x x&x <testName> <dt>
+      facts:
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        resourceName:   UK Co 1 x'x x&x Associate One
+        deliveryEngagementName: Delivery Engagement Credit Allocation x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 8990.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        resourceName: UK Co 1 x'x x&x Associate One
+        deliveryEngagementName: Delivery Engagement Credit Allocation x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 8990.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement Credit Allocation x'x x&x <testName> <dt>
+        period: February 2013
+        resourceName: UK Co 1 x'x x&x Associate One
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 5000.00   
+  - testStage: post invoicing
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp Credit Allocation x'x x&x <testName> <dt>
+      facts:
+      - factName: InvoicedAmounts
+        period: <currentMonthFull> <currentYearFull>
+        deliveryEngagementName: Delivery Engagement Credit Allocation x'x x&x <testName> <dt>
+        expectedValues:
+        - measure: Actual
+          currency: GBP
+          value: 3490.00
+invoices:
+  - deliveryEngagementName: Delivery Engagement Credit Allocation x'x x&x <testName> <dt>
+    expectedInvoiceNetValue : GBP 3,490.00
+    expectedInvoiceTaxValue : GBP 698.00
+    expectedInvoiceValue : GBP 4,188.00
+    subTotal : 3490.00
+    tax : 698
+    grossTotal : 4188
+    selectall: true

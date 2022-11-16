@@ -1,0 +1,50 @@
+UnitOfWork uow = UnitOfWork.Create();
+		
+// Change the Day specified to a Business/Non-Business Day
+string theCalendar = 'UK Calendar';
+list<date> theDates = new list<date>{
+Date.valueOf('2013-01-01'),
+Date.valueOf('2013-03-29'),
+Date.valueOf('2013-04-01'),
+Date.valueOf('2013-05-06'),
+Date.valueOf('2013-05-27'),
+Date.valueOf('2013-08-26'),
+Date.valueOf('2013-12-25'),
+Date.valueOf('2013-12-26'),
+Date.valueOf('2014-01-01'),
+Date.valueOf('2014-04-18'),
+Date.valueOf('2014-04-21'),
+Date.valueOf('2014-05-05'),
+Date.valueOf('2014-05-26'),
+Date.valueOf('2014-08-25'),
+Date.valueOf('2014-12-25'),
+Date.valueOf('2014-12-26'),
+Date.valueOf('2015-01-01'),
+Date.valueOf('2015-04-03'),
+Date.valueOf('2015-04-06'),
+Date.valueOf('2015-05-04'),
+Date.valueOf('2015-05-25'),
+Date.valueOf('2015-08-31'),
+Date.valueOf('2015-12-25'),
+Date.valueOf('2015-12-28')
+};
+
+PeriodType__c theFromType = [SELECT Id FROM PeriodType__c WHERE Enum__c = 'BusDay'][0];
+PeriodType__c theToType = [SELECT Id FROM PeriodType__c WHERE Enum__c = 'NonBusDay'][0];
+
+
+string calendarId = [SELECT Id FROM Calendar__c WHERE Name = :theCalendar][0].Id;
+
+List<TimePeriod__c> days = [SELECT Id, StartDate__c, PeriodType__c FROM TimePeriod__c
+                          		  WHERE Calendar__c = :calendarId
+                          		  AND StartDate__c IN :theDates AND PeriodType__c = :theFromType.Id];
+
+for (TimePeriod__c day : days)
+{
+	day.PeriodType__c = theToType.Id;
+}
+
+update days;
+
+uow.CommitWork();
+		

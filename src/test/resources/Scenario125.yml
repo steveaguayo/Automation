@@ -1,0 +1,683 @@
+---
+# Test overview
+# Group Assignment - Other Activity
+otherResourcedActivities:
+- testStage: createOtherActivityAssignments
+- name: UK Holiday
+  groupAssignmentTemplates: 
+  - templateName: Holiday entitlement
+    groupName: All UK Employees
+    startDate: 01/01/2013
+    usageBehaviourRule: Entitlement between two Dates, with Adjustments (Remove Usage On Period Change)
+    entryUnits: 25
+    endDate: 31/12/2013
+ #july   
+- name: UK Holiday
+  activityUnavailability:
+    - scheduledActivity:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        scheduledDays:
+          - date: 08/07/2013
+            numberOfHours: 7.5
+          - date: 09/07/2013
+            numberOfHours: 7.5 
+          - date: 10/07/2013
+            numberOfHours: 7.5
+      - resourceName: UK Co 1 x'x x&x Employee Two
+        scheduledDays:
+          - date: 29/07/2013
+            numberOfHours: 7.5
+          - date: 30/07/2013
+            numberOfHours: 7.5 
+          - date: 31/07/2013
+            numberOfHours: 7.5
+      - resourceName: UK Co 1 x'x x&x Employee Three
+        scheduledDays:
+          - date: 08/07/2013
+            numberOfHours: 7.5
+          - date: 09/07/2013
+            numberOfHours: 7.5 
+          - date: 10/07/2013
+            numberOfHours: 7.5 
+          - date: 11/07/2013
+            numberOfHours: 7.5  
+
+#jan
+- name: UK Holiday
+  activityUnavailability:
+    - scheduledActivity:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        scheduledDays:
+          - date: 08/01/2013
+            numberOfHours: 7.5
+          - date: 09/01/2013
+            numberOfHours: 7.5 
+          - date: 10/01/2013
+            numberOfHours: 7.5
+      - resourceName: UK Co 1 x'x x&x Employee Two
+        scheduledDays:
+          - date: 29/01/2013
+            numberOfHours: 7.5
+          - date: 30/01/2013
+            numberOfHours: 7.5 
+          - date: 31/01/2013
+            numberOfHours: 7.5
+      - resourceName: UK Co 1 x'x x&x Employee Three
+        scheduledDays:
+          - date: 10/01/2013
+            numberOfHours: 7.5 
+          - date: 11/01/2013
+            numberOfHours: 7.5 
+ #feb          
+#- testStage: createThirdOtherActivityAssignments
+- name: UK Holiday
+  activityUnavailability:
+    - scheduledActivity:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        scheduledDays:
+          - date: 08/02/2013
+            numberOfHours: 7.5
+          - date: 11/02/2013
+            numberOfHours: 7.5 
+          - date: 12/02/2013
+            numberOfHours: 7.5
+      - resourceName: UK Co 1 x'x x&x Employee Two
+        scheduledDays:
+          - date: 14/02/2013
+            numberOfHours: 7.5
+          - date: 15/02/2013
+            numberOfHours: 7.5 
+          - date: 13/02/2013
+            numberOfHours: 7.5
+      - resourceName: UK Co 1 x'x x&x Employee Three
+        scheduledDays:
+          - date: 18/02/2013
+            numberOfHours: 7.5 
+          - date: 19/02/2013
+            numberOfHours: 7.5 
+          
+- name: Sickness
+  activityAssignments:
+  - resourceName: All UK Employees
+ #    groupAssignmentsEnabled: false
+    startDate: 01/01/2013
+    usageBehaviourRule: Defined Utilisation between two Dates
+    utilisationPct: 0
+    endDate: 31/12/2013
+    groupAssignmentsEnabled: true
+    
+- name: Sickness
+  activityUnavailability:
+    - scheduledActivity:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        parentResourceName: All UK Employees 
+        scheduledDays:
+          - date: 24/07/2013
+            numberOfHours: 1  # note here numberOfHours is configured in Days so 1 = 1 Day
+      - resourceName: UK Co 1 x'x x&x Employee Three
+        parentResourceName: All UK Employees
+        scheduledDays:
+          - date: 25/07/2013
+            numberOfHours: 1 
+          - date: 26/07/2013
+            numberOfHours: 1 
+      - resourceName: UK Co 1 x'x x&x Employee Two
+        parentResourceName: All UK Employees
+        scheduledDays:
+          - date: 18/07/2013
+            numberOfHours: 1 
+timesheets:
+  - testStage: firstTimeBooking     
+    resourceName: UK Co 1 x'x x&x Employee One 
+    trackingPeriodStartDate: 11/02/2013
+    timeEntries:
+    - actualiseForecastEntry: false 
+      startDate: 12/02/2013
+      plannedActivity: UK Holiday
+      entryUnits: 7.5
+      startTime: 09:00
+      endTime: 16:30
+    - actualiseForecastEntry: false
+      startDate: 13/02/2013
+      plannedActivity: UK Holiday  
+      entryUnits: 7.5
+      startTime: 09:00
+      endTime: 16:30
+
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/06/2013
+        closeDate: 30/06/2013
+        forecastStatus: Probable (60%)
+               
+        deliveryEngagements:
+        - name: T&M Delivery Engagement x'x x&x <testName> <dt>
+          productGroup: General Consulting (No Delivery Elements)
+          expectedStartDate: 01/07/2013
+          expectedEndDate: 31/07/2013
+          contractRevenue: 70000
+                       
+          deliveryElements:
+          - name: T&M
+            product: T&M
+              
+            activityAssignments:
+            - resourceName: UK Co 1 x'x x&x Employee Three                
+              revenueRate: 1000
+              costRate: 375
+              usageBehaviourRule: Defined Effort between two Dates
+              startDate: 01/07/2013
+              remainingEffort: 20
+              endDate: 28/07/2013
+              
+            - resourceName: UK Co 1 x'x x&x Employee Two                    
+              revenueRate: 700
+              costRate: 300
+              usageBehaviourRule: Defined Utilisation between two Dates
+              startDate: 08/07/2013
+              endDate: 31/07/2013
+              utilisationPct: 100
+              
+            - resourceName: UK Co 1 x'x x&x Employee One                    
+              revenueRate: 800
+              costRate: 350
+              usageBehaviourRule: Defined Effort with variable End Date
+              startDate: 01/07/2013
+              remainingEffort: 22
+              utilisationPct: 100
+              
+expectedResults:
+  - testStage: priorTimeEntry
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 50200.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        resourceName: UK Co 1 x'x x&x Employee Three
+        period: July 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 20000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        resourceName: UK Co 1 x'x x&x Employee Two
+        period: July 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 12600.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        resourceName: UK Co 1 x'x x&x Employee One
+        period: July 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 17600.00
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 30/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 22 
+          - measure: P2 Forecast
+            value: 22 
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: ""
+          deliveryElementName: ""
+          activityName: UK Holiday
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2.273
+          - measure: P2 Forecast
+            value: 2.273         
+      - resourceName: UK Co 1 x'x x&x Employee Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 08/07/2013
+          - measure: Forecast P2 End Date
+            value: 31/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 18 
+          - measure: P2 Forecast
+            value: 18   
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: ""
+          deliveryElementName: ""
+          activityName: UK Holiday
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2.273
+          - measure: P2 Forecast
+            value: 2.273
+      - resourceName: UK Co 1 x'x x&x Employee Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 28/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 20 
+          - measure: P2 Forecast
+            value: 20
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: ""
+          deliveryElementName: ""
+          activityName: UK Holiday
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2.273
+          - measure: P2 Forecast
+            value: 2.273            
+            
+            
+  - testStage: postScheduleForecastTime
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 31/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 22 
+          - measure: P2 Forecast
+            value: 22
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: ""
+          deliveryElementName: ""
+          activityName: UK Holiday
+          expectedValues: 
+          - measure: Actual
+            value: 0  
+          - measure: P1 Forecast
+            value: 2.183   
+          - measure: P2 Forecast
+            value: 2.183  
+            
+      - resourceName: UK Co 1 x'x x&x Employee Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 08/07/2013
+          - measure: Forecast P2 End Date
+            value: 31/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 17
+          - measure: P2 Forecast
+            value: 17  
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: ""
+          deliveryElementName: ""
+          activityName: UK Holiday
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2.183   
+          - measure: P2 Forecast
+            value: 2.183   
+ 
+      - resourceName: UK Co 1 x'x x&x Employee Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 28/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 20 
+          - measure: P2 Forecast
+            value: 20 
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: ""
+          deliveryElementName: ""
+          activityName: UK Holiday
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2.092
+          - measure: P2 Forecast
+            value: 2.092
+            
+  - testStage: postSecondScheduleForecastTime
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 31/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 22 
+          - measure: P2 Forecast
+            value: 22
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: ""
+          deliveryElementName: ""
+          activityName: UK Holiday
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 4.679
+          - measure: P2 Forecast
+            value: 4.679
+            
+      - resourceName: UK Co 1 x'x x&x Employee Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 08/07/2013
+          - measure: Forecast P2 End Date
+            value: 31/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 17
+          - measure: P2 Forecast
+            value: 17  
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: ""
+          deliveryElementName: ""
+          activityName: UK Holiday
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 4.679
+          - measure: P2 Forecast
+            value: 4.679
+ 
+      - resourceName: UK Co 1 x'x x&x Employee Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 28/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 20 
+          - measure: P2 Forecast
+            value: 20 
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: ""
+          deliveryElementName: ""
+          activityName: UK Holiday
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 5.445
+          - measure: P2 Forecast
+            value: 5.445
+            
+  - testStage: seedJob
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 31/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 22 
+          - measure: P2 Forecast
+            value: 22
+        - factName: UsageForecast 
+          period: February 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: ""
+          deliveryElementName: ""
+          activityName: UK Holiday
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 3
+          - measure: P2 Forecast
+            value: 3
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: ""
+          deliveryElementName: ""
+          activityName: UK Holiday
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 4.476
+          - measure: P2 Forecast
+            value: 4.476
+
+    resourceUsageAdjustments:
+    - resourceName: UK Co 1 x'x x&x Employee One 
+      baselineUsage: 25 Day
+      totalActualUsage: 0 Day
+      scheduledUsage: 9 Day
+      remainingUsage: 16 Day
+    - resourceName: UK Co 1 x'x x&x Employee Two
+      baselineUsage: 25 Day
+      totalActualUsage: 0 Day
+      scheduledUsage: 9 Day
+      remainingUsage: 16 Day
+    - resourceName: UK Co 1 x'x x&x Employee Three
+      baselineUsage: 25 Day
+      totalActualUsage: 0 Day
+      scheduledUsage: 8 Day
+      remainingUsage: 17 Day
+
+  - testStage: postActualSubmit
+    resourceUsageAdjustments:
+    - resourceName: UK Co 1 x'x x&x Employee One 
+      baselineUsage: 25 Day
+      totalActualUsage: 2 Day
+      scheduledUsage: 7 Day
+      remainingUsage: 16 Day
+    - resourceName: UK Co 1 x'x x&x Employee Two
+      baselineUsage: 25 Day
+      totalActualUsage: 0 Day
+      scheduledUsage: 9 Day
+      remainingUsage: 16 Day
+    - resourceName: UK Co 1 x'x x&x Employee Three
+      baselineUsage: 25 Day
+      totalActualUsage: 0 Day
+      scheduledUsage: 8 Day
+      remainingUsage: 17 Day
+   

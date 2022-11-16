@@ -1,0 +1,163 @@
+---
+accounts:
+  - name: ZeroRate US Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: US Co 1 (Operating/Trading USD)
+    invoicingCurrency: USD
+    taxCode: Zero Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: US Co 1 (Operating/Trading USD)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 07/10/2013
+        closeDate: 07/10/2013
+        forecastStatus: Probable (60%)
+
+        deliveryEngagements:
+          - name: Delivery Engagement x'x x&x <testName> <dt>
+            productGroup: General Consulting - T&M #General Consulting (No Delivery Elements)
+            expectedStartDate: 07/10/2013
+            expectedEndDate: 18/10/2013
+            contractRevenue: 100000            
+
+            deliveryElements:
+              - name: T&M
+                product: T&M
+                
+                activityAssignments:
+                  - resourceName: US Co 1 x'x x&x Employee Four                     
+                    revenueRate: 1000
+                    costRate: 600
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 07/10/2013
+                    remainingEffort: 10
+                    utilisationPct: 100
+                  - resourceName: US Co 1 x'x x&x Associate Four
+                    revenueRate: 1200
+                    costRate: 750
+                    usageBehaviourRule: Defined Effort between two Dates
+                    startDate: 07/10/2013
+                    endDate: 11/10/2013
+                    remainingEffort: 5
+                  - resourceName: US Co 1 x'x x&x Associate One
+                    revenueRate: 1200
+                    costRate: 750
+                    usageBehaviourRule: Defined Effort between two Dates
+                    startDate: 14/10/2013
+                    endDate: 18/10/2013
+                    remainingEffort: 5
+                  - resourceName: US Co 1 x'x x&x Associate Three
+                    revenueRate: 1260
+                    costRate: 725
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 07/10/2013
+                    remainingEffort: 5
+                    utilisationPct: 100
+                  - resourceName: US Co 1 x'x x&x Associate Five
+                    revenueRate: 1130
+                    costRate: 715
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 15/10/2013
+                    remainingEffort: 1
+                    utilisationPct: 100
+
+timesheets:
+  - testStage: enhanced time entry
+    resourceName: US Co 1 x'x x&x Employee Four 
+    trackingPeriodStartDate: 07/10/2013
+    timeEntries:
+     - startDate: 07/10/2013
+       endDate: 18/10/2013
+       plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+       entryUnits: 7.5 hours
+       timeSubmissionMethodAll: true
+  - testStage: enhanced time entry 
+    resourceName: US Co 1 x'x x&x Employee Four 
+    trackingPeriodStartDate: 14/10/2013
+    timeEntries:
+     - NoTimeEntrySubmit: true
+       timeSubmissionMethodAll: true
+  - testStage: enhanced time entry      
+    resourceName: US Co 1 x'x x&x Associate Five
+    trackingPeriodStartDate: 14/10/2013
+    timeEntries:
+     - startDate: Tue 15
+       plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+       actualiseForecastEntry: true
+       timeSubmissionMethodSelected: true
+       entryUnits: 7.5 hours
+       
+  - testStage: enhanced time entry
+    resourceName: US Co 1 x'x x&x Associate Four 
+    trackingPeriodStartDate: 07/10/2013
+    timeEntries:
+     - startDate: 07/10/2013
+       endDate: 11/10/2013
+       plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+       actualiseAllForecastEntries: true
+       timeSubmissionMethodAll: true
+       entryUnits: 7.5 hours
+       
+  - testStage: enhanced time entry
+    resourceName: US Co 1 x'x x&x Associate One 
+    trackingPeriodStartDate: 14/10/2013
+    timeEntries:
+     - startDate: 14/10/2013
+       endDate: 18/10/2013
+       plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+       CreateAllDraftTimeEntries: true
+       timeSubmissionMethodAll: true
+       entryUnits: 7.5 hours
+    
+  - testStage: enhanced time entry
+    resourceName: US Co 1 x'x x&x Associate Three
+    trackingPeriodStartDate: 07/10/2013
+    timeEntries:
+     - startDate: 14/10/2013
+       plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+       SelectAll: true
+       timeSubmissionMethodSelected: true
+       entryUnits: 7.5 hours  
+
+expectedResults:
+  - testStage: post time submission
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 29430.00
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        resourceName: US Co 1 x'x x&x Associate One
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: October 2013
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 6000.00
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: October 2013
+        resourceName: US Co 1 x'x x&x Associate One
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 3750.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 18/10/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 29430.00
+ 

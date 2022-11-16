@@ -1,0 +1,493 @@
+# Test Overview
+# Test 120 - Cost % Complete, 3rd Party exc Expenses
+accounts:
+  - name: Standard Rate UK Co 1 Account '/x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Acquisition Co 1 (Operating/Trading GBP)
+    businessUnitGroup: Group 3 (Acquisitions)
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: UK Acquisition Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: Fixed Price Exc Expenses Inc 3rd Party Costs
+        responseRequiredDate: 01/01/2013
+        closeDate: 15/01/2013
+        forecastStatus: Probable (60%)
+               
+        deliveryEngagements:
+          - name: Cost%Complete exc Expenses and inc 3rd Party Costs
+            stage: activate engagements
+            deliveryElements:
+              - name: Cost%Complete exc Expenses and inc 3rd Party Costs
+          - name: Cost%Complete exc Expenses and inc 3rd Party Costs
+            stage: config engagements elements
+            expectedStartDate: 28/01/2013
+            expectedEndDate: 28/03/2013
+
+            deliveryElements:
+              - name: Cost%Complete exc Expenses and inc 3rd Party Costs
+                stage: config engagements elements
+                revenueMilestones:
+                  - name: Proposal Start Date
+                    completionStage: completeMilestonesForPeriodClose
+                    value: 25000
+                    date: 01/01/2013
+                  - name: Engagement Start
+                    completionStage: completeMilestonesForPeriodClose
+                    value: 50000
+                    date: 28/01/2013
+                  - name: Engagement End
+                    completionStage: completeMilestonesPostPeriodClose
+                    value: 100000
+                    date: 28/03/2013
+                expenseLineItems:
+                  - description: Train Tickets
+                    category: Train
+                    businessUnit: UK Acquisition Co 1 (Operating/Trading GBP)
+                    netAmount: 200
+                    units: 1
+#                    remainingCost: 200
+                    remainingRevenue: 0
+                  - description: Flights
+                    category: Air Ticket
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 1500
+                    units: 1
+#                    remainingCost: 1500
+                    remainingRevenue: 2000
+                  - description: Parking
+                    category: Parking
+                    businessUnit: UK Acquisition Co 1 (Operating/Trading GBP)
+                    netAmount: 300
+                    units: 1
+#                    remainingCost: 300
+                    remainingRevenue: 300               
+              #name of this element to be confirmed
+              - name: 3rd Party Project Cost (no resources)
+                stage: config engagements elements
+                activate: false
+                costMilestones:
+                  - name: Engagement Start
+                    completionStage: completeMilestonesForPeriodClose
+                    value: 2000
+                    date: 28/01/2013
+                  - name: Engagement End
+                    completionStage: completeMilestonesPostPeriodClose
+                    value: 500
+                    date: 28/03/2013
+timesheets:
+  - testStage: firstTimeBooking
+    resourceName: UK Acquisition Co 1 Employee One  
+    trackingPeriodStartDate: 28/01/2013
+    timeEntries:
+    - startDate: 28/01/2013
+      endDate: 31/01/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account '/x'x x&x <testName> <dt>-Cost%Complete exc Expenses and inc 3rd Party Costs
+  - testStage: firstTimeBooking
+    resourceName: UK Acquisition Co 1 Associate One
+    trackingPeriodStartDate: 28/01/2013
+    timeEntries:
+    - startDate: 28/01/2013
+      endDate: 31/01/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account '/x'x x&x <testName> <dt>-Cost%Complete exc Expenses and inc 3rd Party Costs
+  - testStage: secondTimeBooking
+    resourceName: UK Acquisition Co 1 Associate One
+    trackingPeriodStartDate: 01/02/2013
+    timeEntries:
+    - startDate: 01/02/2013
+      endDate: 01/02/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account '/x'x x&x <testName> <dt>-Cost%Complete exc Expenses and inc 3rd Party Costs
+  - testStage: secondTimeBooking
+    resourceName: UK Acquisition Co 1 Employee One 
+    trackingPeriodStartDate: 01/02/2013
+    timeEntries:
+    - startDate: 01/02/2013
+      endDate: 01/02/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account '/x'x x&x <testName> <dt>-Cost%Complete exc Expenses and inc 3rd Party Costs
+  - testStage: secondTimeBooking
+    resourceName: UK Acquisition Co 1 Employee One 
+    trackingPeriodStartDate: 04/02/2013
+    timeEntries:
+    - startDate: 04/02/2013
+      endDate: 08/02/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account '/x'x x&x <testName> <dt>-Cost%Complete exc Expenses and inc 3rd Party Costs
+  - testStage: secondTimeBooking
+    resourceName: UK Acquisition Co 1 Associate One 
+    trackingPeriodStartDate: 04/02/2013
+    timeEntries:
+    - startDate: 04/02/2013
+      endDate: 08/02/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account '/x'x x&x <testName> <dt>-Cost%Complete exc Expenses and inc 3rd Party Costs
+      
+expenseClaims:
+  - resourceName: UK Acquisition Co 1 Employee One  
+    testStage: firstExpenseBooking
+    expenseEntries:
+    - name: Weekly Train Pass
+      incurredDate: 28/01/2013
+      activityName: Standard Rate UK Co 1 Account '/x'x x&x <testName> <dt>-Cost%Complete exc Expenses and inc 3rd Party Costs
+      expenseDetails:
+      - category: Train
+        currency: GBP
+        amount: 46.80
+        notes: Weekly Train Pass
+    - name: Hotel
+      incurredDate: 28/01/2013
+      activityName: Standard Rate UK Co 1 Account '/x'x x&x <testName> <dt>-Cost%Complete exc Expenses and inc 3rd Party Costs
+      expenseDetails:
+      - category: Accomodation
+        currency: GBP
+        amount: 150.00
+        notes: 3 Night Stay
+  - resourceName: UK Acquisition Co 1 Employee One  
+    testStage: secondExpenseBooking
+    expenseEntries:
+    - name: Hotel
+      incurredDate: 04/02/2013
+      activityName: Standard Rate UK Co 1 Account '/x'x x&x <testName> <dt>-Cost%Complete exc Expenses and inc 3rd Party Costs
+      expenseDetails:
+      - category: Accomodation
+        currency: GBP
+        amount: 500.00
+        notes: 5 Night Stay
+    - name: Monthly Train Pass
+      incurredDate: 04/02/2013
+      activityName: Standard Rate UK Co 1 Account '/x'x x&x <testName> <dt>-Cost%Complete exc Expenses and inc 3rd Party Costs
+      expenseDetails:
+      - category: Train
+        currency: GBP
+        amount: 299.92
+        notes: Monthly Train Pass  
+  - resourceName: UK Acquisition Co 1 Associate One
+    testStage: firstExpenseBooking
+    expenseEntries:
+    - name: Parking
+      incurredDate: 28/01/2013
+      activityName: Standard Rate UK Co 1 Account '/x'x x&x <testName> <dt>-Cost%Complete exc Expenses and inc 3rd Party Costs
+      expenseDetails:
+      - category: Parking
+        currency: GBP
+        amount: 30
+        notes: Parking in Station car park
+  - resourceName: UK Acquisition Co 1 Associate One
+    testStage: secondExpenseBooking
+    expenseEntries:
+    - name: Parking
+      incurredDate: 04/02/2013
+      activityName: Standard Rate UK Co 1 Account '/x'x x&x <testName> <dt>-Cost%Complete exc Expenses and inc 3rd Party Costs
+      expenseDetails:
+      - category: Parking
+        currency: GBP
+        amount: 50
+        notes: Parking in Station car park
+    - name: Parking
+      incurredDate: 01/02/2013
+      activityName: Standard Rate UK Co 1 Account '/x'x x&x <testName> <dt>-Cost%Complete exc Expenses and inc 3rd Party Costs
+      expenseDetails:
+      - category: Parking
+        currency: GBP
+        amount: 80
+        notes: Parking in Station car park
+        
+trackingPeriodActions:
+  - testStage: closeTrackingPostFirstBooking
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Jan / 1 / 2013
+  - testStage: closeTrackingPostFirstBooking
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Jan / 2 / 2013
+  - testStage: closeTrackingPostFirstBooking
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Jan / 3 / 2013
+  - testStage: closeTrackingPostFirstBooking
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Jan / 4 / 2013
+  - testStage: closeTrackingPostFirstBooking
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Jan / 5 / 2013
+
+forecastingPeriodActions:
+  - testStage: closeForecastingPostFirstBooking
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: January 2013
+
+        
+expectedResults:
+  - testStage: preSalesOppWin
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: RevenueForecast
+        period: March 2013
+        domainClass: Product  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 1237.62
+      - factName: RevenueForecast
+        period: March 2013
+        domainClass: Services  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        resourceName: UK Acquisition Co 1 Associate One
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 49504.95
+      - factName: RevenueForecast
+        period: January 2013
+        domainClass: Services 
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        resourceName: UK Acquisition Co 1 Employee One
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 5445.54
+      - factName: CostForecast
+        period: February 2013
+        domainClass: Services  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        resourceName: UK Acquisition Co 1 Employee One
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 11000.00
+      - factName: CostForecast
+        period: March 2013
+        domainClass: Services  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        resourceName: UK Acquisition Co 1 Associate One
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 20000.00
+      - factName: CostForecast
+        period: March 2013
+        domainClass: Product  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 500.00
+  - testStage: postFirstTimeAndExpenseBooking
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: RevenueForecast
+        period: January 2013
+        domainClass: Services  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        resourceName: UK Acquisition Co 1 Employee One
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 5445.54
+      - factName: RevenueForecast
+        period: February 2013
+        domainClass: Services  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        resourceName: UK Acquisition Co 1 Associate One
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 49504.95
+      - factName: RevenueForecast
+        period: March 2013
+        domainClass: Product 
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 1237.62
+      - factName: CostForecast
+        period: January 2013
+        domainClass: Services  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        resourceName: UK Acquisition Co 1 Employee One
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 2200.00
+      - factName: CostForecast
+        period: March 2013
+        domainClass: Services  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        resourceName: UK Acquisition Co 1 Associate One
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 20000.00
+      - factName: CostForecast
+        period: January 2013
+        domainClass: Product  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 2000.00
+  - testStage: postClosePeriods
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: RevenueForecast
+        period: February 2013
+        domainClass: Services  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        resourceName: UK Acquisition Co 1 Employee One
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 27227.72
+      - factName: RevenueForecast
+        period: March 2013
+        domainClass: Services  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        resourceName: UK Acquisition Co 1 Associate One
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 49504.95
+      - factName: RevenueForecast
+        period: January 2013
+        domainClass: Product 
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 4950.50
+      - factName: CostForecast
+        period: January 2013
+        domainClass: Services  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        resourceName: UK Acquisition Co 1 Employee One
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 2200.00
+      - factName: CostForecast
+        period: February 2013
+        domainClass: Services  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        resourceName: UK Acquisition Co 1 Associate One
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 20000.00
+      - factName: CostForecast
+        period: March 2013
+        domainClass: Services  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        resourceName: UK Acquisition Co 1 Employee One
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 11000.00
+  - testStage: postSecondTimeExpenseBooking
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: RevenueForecast
+        period: January 2013
+        domainClass: Services  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        resourceName: UK Acquisition Co 1 Employee One
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 5445.54
+      - factName: RevenueForecast
+        period: March 2013
+        domainClass: Services  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        resourceName: UK Acquisition Co 1 Associate One
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 49504.95
+      - factName: RevenueForecast
+        period: March 2013
+        domainClass: Product 
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 1237.62
+      - factName: CostForecast
+        period: January 2013
+        domainClass: Services  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        resourceName: UK Acquisition Co 1 Associate One
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 4000.00
+      - factName: CostForecast
+        period: March 2013
+        domainClass: Services  
+        businessUnitName: UK Acquisition Co 1 (Operating/Trading GBP)
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        deliveryEngagementName: Cost%Complete exc Expenses and inc 3rd Party Costs
+        resourceName: UK Acquisition Co 1 Employee One
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 11000.00

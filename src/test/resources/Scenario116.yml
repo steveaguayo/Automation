@@ -1,0 +1,546 @@
+---
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/01/2013
+        closeDate: 01/01/2013
+        forecastStatus: Probable (60%)
+               
+        deliveryEngagements:
+          - name: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+            productGroup: General Consulting (No Delivery Elements)
+            expectedStartDate: 03/06/2013
+            expectedEndDate: 28/06/2013
+            contractRevenue: 200000
+            
+            deliveryElements:
+              - name: Tracked Plan
+                product: Milestone Pct Complete - Tracked Plan
+                
+                activityAssignments:
+                  - resourceName: UK DBAs                  
+                    groupAssignmentsEnabled: true             
+                    costRate: 375
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 03/06/2013
+                    remainingEffort: 20
+                    utilisationPct: 100
+
+                revenueMilestones:
+                  - name: Final Deliverables
+                    value: 50000
+                    date: 28/06/2013
+                    
+                tasks:
+                  - testStage: initialPlan
+                    name: Workshops
+                    startDate: 03/06/2013
+                    endDate: 07/06/2013
+                    
+                    taskAssignments:
+                      - resourceName: UK DBAs
+                        baselineEffort: 37.5
+                        remainingEffort: 37.5
+                  
+                  - testStage: initialPlan
+                    name: Functional Design
+                    startDate: 10/06/2013
+                    
+                    taskAssignments:
+                      - resourceName: UK DBAs
+                        baselineEffort: 75
+                        remainingEffort: 75
+                        
+                  - testStage: initialPlan
+                    name: Write-Up and Estimate
+                  
+                    taskAssignments:
+                      - resourceName: UK DBAs
+                        baselineEffort: 37.5
+                        remainingEffort: 37.5
+
+                  - testStage: update task estimates post first time booking
+                    name: Workshops
+                    
+                    taskAssignments:
+                      - resourceName: UK DBAs
+                        remainingEffort: 0.0
+
+                  - testStage: update task estimates post second time booking
+                    name: Functional Design
+                    
+                    taskAssignments:
+                      - resourceName: UK DBAs
+                        remainingEffort: 37.5
+
+                  - testStage: update task estimates post second time booking
+                    name: Write-Up and Estimate
+                    
+                    taskAssignments:
+                      - resourceName: UK DBAs
+                        remainingEffort: 15.0
+
+                  - testStage: update task estimates post third time booking
+                    name: Functional Design
+                    
+                    taskAssignments:
+                      - resourceName: UK DBAs
+                        remainingEffort: 0.0
+                        
+                  - testStage: update task estimates post third time booking
+                    name: Write-Up and Estimate
+                    
+                    taskAssignments:
+                      - resourceName: UK DBAs
+                        remainingEffort: 37.5
+
+timesheets:
+  - testStage: firstTimeBooking
+    resourceName: UK Co 1 x'x x&x Employee One
+    trackingPeriodStartDate: 03/06/2013
+    timeEntries:
+    - startDate: 03/06/2013
+      endDate: 04/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Workshops
+  - testStage: firstTimeBooking
+    resourceName: UK Co 2 x'x x&x Employee Two
+    trackingPeriodStartDate: 03/06/2013
+    timeEntries:
+    - startDate: 05/06/2013
+      endDate: 07/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Workshops
+  - testStage: secondTimeBooking
+    resourceName: UK Co 1 x'x x&x Employee One
+    trackingPeriodStartDate: 10/06/2013
+    timeEntries:
+    - startDate: 10/06/2013
+      endDate: 11/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Functional Design
+    - startDate: 14/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Write-Up and Estimate
+  - testStage: secondTimeBooking
+    resourceName: UK Co 2 x'x x&x Employee Two
+    trackingPeriodStartDate: 10/06/2013
+    timeEntries:
+    - startDate: 11/06/2013
+      endDate: 13/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Functional Design
+    - startDate: 14/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Write-Up and Estimate
+  - testStage: thirdTimeBooking
+    resourceName: UK Co 1 x'x x&x Employee One
+    trackingPeriodStartDate: 17/06/2013
+    timeEntries:
+    - startDate: 17/06/2013
+      endDate: 19/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Functional Design
+    - startDate: 21/06/2013
+      endDate: 21/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Write-Up and Estimate
+  - testStage: thirdTimeBooking
+    resourceName: UK Co 2 x'x x&x Employee Two
+    trackingPeriodStartDate: 17/06/2013
+    timeEntries:
+    - startDate: 19/06/2013
+      endDate: 19/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Functional Design
+    - startDate: 20/06/2013
+      endDate: 21/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Write-Up and Estimate
+      
+expectedResults:
+  - testStage: postInitialSetup
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 50000.00
+      - factName: RevenueForecast
+        period: June 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 50000.00
+      - factName: CostForecast
+        period: June 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 7500.00
+      - factName: ReceivablesForecast
+        receivableDate: 28/06/2013
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 50000.00
+  - testStage: postFirstTimeBooking
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 50000.00
+      - factName: RevenueForecast
+        period: June 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 5000.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 42500.00
+      - factName: RevenueForecast
+        period: June 2013
+        businessUnitName: UK Co 2 (Operating GBP)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 7500.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 7500.00
+      - factName: CostForecast
+        period: June 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 1300.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 6925.00
+      - factName: CostForecast
+        period: June 2013
+        businessUnitName: UK Co 2 (Operating GBP)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 1950.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 1950.00
+      - factName: ReceivablesForecast
+        receivableDate: 28/06/2013
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 50000.00
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 28/06/2013
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Actual
+            value: 2
+          - measure: P2 Forecast
+            value: 2
+      - resourceName: UK Co 2 x'x x&x Employee Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 28/06/2013
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: UK Co 2 (Operating GBP)
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Actual
+            value: 3
+          - measure: P2 Forecast
+            value: 3
+  - testStage: postSecondTimeBooking
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 50000.00
+      - factName: RevenueForecast
+        period: June 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 13157.89
+        - measure: P1 Forecast
+          currency: GBP
+          value: 31578.94
+      - factName: RevenueForecast
+        period: June 2013
+        businessUnitName: UK Co 2 (Operating GBP)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 18421.05
+        - measure: P1 Forecast
+          currency: GBP
+          value: 18421.05
+      - factName: CostForecast
+        period: June 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 3250.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 7000.00
+      - factName: CostForecast
+        period: June 2013
+        businessUnitName: UK Co 2 (Operating GBP)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 4550.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 4550.00
+      - factName: ReceivablesForecast
+        receivableDate: 28/06/2013
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 50000.00
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 28/06/2013
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Actual
+            value: 5
+          - measure: P2 Forecast
+            value: 5
+      - resourceName: UK Co 2 x'x x&x Employee Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 28/06/2013
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: UK Co 2 (Operating GBP)
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Actual
+            value: 7
+          - measure: P2 Forecast
+            value: 7
+  - testStage: postThirdTimeBooking
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 50000.00
+      - factName: RevenueForecast
+        period: June 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 18750.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 29166.67
+      - factName: RevenueForecast
+        period: June 2013
+        businessUnitName: UK Co 2 (Operating GBP)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 20833.33
+        - measure: P1 Forecast
+          currency: GBP
+          value: 20833.33
+      - factName: CostForecast
+        period: June 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 5850.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 7725.00
+      - factName: CostForecast
+        period: June 2013
+        businessUnitName: UK Co 2 (Operating GBP)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 6500.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 6500.00
+      - factName: ReceivablesForecast
+        receivableDate: 28/06/2013
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 50000.00
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 28/06/2013
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Actual
+            value: 9
+          - measure: P2 Forecast
+            value: 9
+      - resourceName: UK Co 2 x'x x&x Employee Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 28/06/2013
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: UK Co 2 (Operating GBP)
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Actual
+            value: 10
+          - measure: P2 Forecast
+            value: 10

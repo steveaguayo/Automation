@@ -1,0 +1,197 @@
+---
+# Test overview
+# A Intercompany accounting test: Testing Billable effort scenario
+accounts:    
+  - name: Standard Rate US Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: Intercompany Business Unit US
+    isInternal: true
+    invoicingCurrency: USD
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+  - name: Standard Rate EMEA Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: Intercompany Business Unit EMEA
+    isInternal: true
+    invoicingCurrency: EUR
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: Intercompany Business Unit UK
+    isInternal: true
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    salesOpportunities:
+       - name: Sales Opp x'x x&x <testName> <dt>
+         businessUnit: Intercompany Business Unit UK
+         source: Direct Enquiry
+         proposition: General Consulting
+         responseRequiredDate: 06/01/2014
+         closeDate: 06/01/2014
+         forecastStatus: Probable (60%)
+             
+         deliveryEngagements:
+            - name: Internal Billable Effort Delivery Engagement x'x x&x <testName> <dt>
+              productGroup: General Consulting (No Delivery Elements)
+              expectedStartDate: 06/01/2014
+              expectedEndDate: 10/01/2014
+              contractRevenue: 200000
+            
+              deliveryElements:
+                  - name: Internal Billable Effort
+                    product: Internal Billable Effort Scenario Product
+                 
+                    activityAssignments:
+                      - resourceName: Intercompany Resource UK                   
+                        costRate: 650
+                        usageBehaviourRule: Defined Effort with variable End Date
+                        startDate: 06/01/2014
+                        remainingEffort: 2
+                        utilisationPct: 100                    
+            
+                      - resourceName: Intercompany Resource EMEA                
+                        costRate: 650
+                        usageBehaviourRule: Defined Effort with variable End Date
+                        startDate: 06/01/2014
+                        remainingEffort: 2
+                        utilisationPct: 100                    
+            
+                      - resourceName: Intercompany Resource US                   
+                        costRate: 650
+                        usageBehaviourRule: Defined Effort with variable End Date
+                        startDate: 06/01/2014
+                        remainingEffort: 2
+                        utilisationPct: 100   
+                    revenueMilestones:
+                      - name: Milestone 
+                        date: 06/01/2014
+                        value: 10000
+                
+
+                  
+timesheets:
+   - testStage: time entry 1
+     resourceName: Intercompany Resource UK
+     trackingPeriodStartDate: 06/01/2014
+     timeEntries:
+     - startDate: 06/01/2014
+       endDate: 07/01/2014
+       plannedActivity:  Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Internal Billable Effort
+       timeType: Business Day - Standard Time
+       entryUnits: 7.5
+   - testStage: time entry 1
+     resourceName: Intercompany Resource US
+     trackingPeriodStartDate: 06/01/2014
+     timeEntries:
+     - startDate: 06/01/2014
+       endDate: 07/01/2014
+       plannedActivity:  Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Internal Billable Effort
+       timeType: Business Day - Standard Time
+       entryUnits: 7.5
+   - testStage: time entry 1
+     resourceName: Intercompany Resource EMEA
+     trackingPeriodStartDate: 06/01/2014
+     timeEntries:
+     - startDate: 06/01/2014
+       endDate: 07/01/2014
+       plannedActivity:  Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Internal Billable Effort
+       timeType: Business Day - Standard Time
+       entryUnits: 7.5
+ 
+invoices:
+  - testStage: postMilestoneComplete
+    deliveryEngagementName: Internal Billable Effort Delivery Engagement x'x x&x <testName> <dt>
+    expectedInvoiceValue: GBP 12,000.00
+  - testStage: internalinvoice1
+    businessUnit: Intercompany Business Unit US
+    invoicingBusinessUnit: Intercompany Business Unit UK
+    invoicingAccount: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    expectedInvoiceValue: USD 2,964.00 (GBP 1,950.00)
+    deliveryEngagementName: Internal Billable Effort Delivery Engagement x'x x&x <testName> <dt>
+    isinternal: true
+    subTotal: 2470.00
+    tax: 494.00
+  - testStage: internalinvoice1
+    businessUnit: Intercompany Business Unit EMEA
+    invoicingBusinessUnit: Intercompany Business Unit UK
+    invoicingAccount: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    expectedInvoiceValue: EUR 2,699.33 (GBP 1,950.00)
+    deliveryEngagementName: Internal Billable Effort Delivery Engagement x'x x&x <testName> <dt>
+    isinternal: true
+    subTotal: 2249.44
+    tax: 449.89
+    
+    
+
+expectedResults:
+- testStage: post winning opp
+  salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: Intercompany Business Unit UK 
+        deliveryEngagementName: Internal Billable Effort Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 10000.00
+      - factName: RevenueForecast
+        businessUnitName: Intercompany Business Unit UK
+        resourceName: Intercompany Resource EMEA
+        deliveryEngagementName: Internal Billable Effort Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2014
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 3333.33
+      - factName: CostForecast
+        businessUnitName: Intercompany Business Unit UK
+        deliveryEngagementName: Internal Billable Effort Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2014
+        resourceName: Intercompany Resource UK
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 1300.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Internal Billable Effort Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 06/01/2014
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 10000.00
+- testStage: post invoicing
+  salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: Intercompany Business Unit UK 
+        deliveryEngagementName: Internal Billable Effort Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 10000.00
+      - factName: RevenueForecast
+        businessUnitName: Intercompany Business Unit UK
+        resourceName: Intercompany Resource EMEA
+        deliveryEngagementName: Internal Billable Effort Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2014
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 3333.33
+      - factName: CostForecast
+        businessUnitName: Intercompany Business Unit UK
+        deliveryEngagementName: Internal Billable Effort Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2014
+        resourceName: Intercompany Resource UK
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 1300.00

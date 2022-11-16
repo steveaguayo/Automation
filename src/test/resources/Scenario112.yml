@@ -1,0 +1,690 @@
+---
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/01/2013
+        closeDate: 01/01/2013
+        forecastStatus: Probable (60%)
+               
+        deliveryEngagements:
+          - name: T&M Delivery Engagement x'x x&x <testName> <dt>
+            productGroup: General Consulting (No Delivery Elements)
+            expectedStartDate: 03/06/2013
+            expectedEndDate: 28/06/2013
+            contractRevenue: 200000
+            
+            deliveryElements:
+              - name: T&M
+                product: T&M
+                
+                activityAssignments:
+                  - resourceName: UK Co 1 x'x x&x Associate One
+                    revenueRate: 1000
+                    costRate: 375
+                    usageBehaviourRule: Finish work asap, allow Profiling
+                    startDate: 02/01/2013
+                    remainingEffort: 50
+                    utilisationPct: 100
+
+                    monthlyProfiles:
+                      - testStage: firstReprofile
+                        month: February 2013
+                        value: 10
+                      - testStage: secondReprofile
+                        month: March 2013
+                        value: 10
+                      - testStage: secondReprofile
+                        month: April 2013
+                        value: 2
+
+                  - resourceName: US Co 2 x'x x&x Associate Five
+                    revenueRate: 1000
+                    costRate: 375
+                    usageBehaviourRule: Defined Utilisation between two Dates, allow Profiling
+                    startDate: 02/01/2013
+                    endDate: 12/03/2013
+                    utilisationPct: 100
+
+                    monthlyProfiles:
+                      - testStage: firstReprofile
+                        month: February 2013
+                        value: 10
+                      - testStage: secondReprofile
+                        month: March 2013
+                        value: 10
+                      - testStage: secondReprofile
+                        month: April 2013
+                        value: 2
+
+                  - resourceName: UK DBAs
+                    groupAssignmentsEnabled: true 
+                    revenueRate: 1000
+                    costRate: 375
+                    usageBehaviourRule: Defined Utilisation between two Dates, allow Profiling
+                    startDate: 02/01/2013
+                    endDate: 12/03/2013
+                    utilisationPct: 100
+
+                    monthlyProfiles:
+                      - testStage: firstReprofile
+                        month: February 2013
+                        value: 10
+                      - testStage: secondReprofile
+                        month: March 2013
+                        value: 10
+                      - testStage: secondReprofile
+                        month: April 2013
+                        value: 2
+
+                    scheduledActivity:
+                      - resourceName: UK Co 1 x'x x&x Associate One
+                        scheduledDays:
+                          - date: 01/02/2013
+                            numberOfHours: 7.5
+                      - resourceName: UK DBAs
+                        scheduledDays:
+                          - date: 01/02/2013
+                            numberOfHours: 7.5
+                      - resourceName: US Co 2 x'x x&x Associate Five
+                        scheduledDays:
+                          - date: 01/02/2013
+                            numberOfHours: 7.5
+
+expectedResults:
+  - testStage: postSalesOppWin
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 150000.00
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 22000.00
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 44000.00
+      - factName: RevenueForecast
+        period: February 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 20000.00
+      - factName: RevenueForecast
+        period: February 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 40000.00
+      - factName: RevenueForecast
+        period: March 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 16000.00
+      - factName: RevenueForecast
+        period: March 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 8000.00
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Associate One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 02/01/2013
+          - measure: Forecast P1 End Date
+            value: 12/03/2013
+        - factName: UsageForecast
+          period: January 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 22
+        - factName: UsageForecast
+          period: February 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 20
+        - factName: UsageForecast
+          period: March 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 8
+      - resourceName: US Co 2 x'x x&x Associate Five
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 02/01/2013
+          - measure: Forecast P1 End Date
+            value: 12/03/2013
+        - factName: UsageForecast
+          period: January 2013
+          businessUnitName: US Co 2 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 22
+        - factName: UsageForecast
+          period: February 2013
+          businessUnitName: US Co 2 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 20
+        - factName: UsageForecast
+          period: March 2013
+          businessUnitName: US Co 2 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 8
+      - resourceName: UK DBAs
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 02/01/2013
+          - measure: Forecast P1 End Date
+            value: 12/03/2013
+  - testStage: postFirstReprofile
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 150000.00
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 22000.00
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 44000.00
+      - factName: RevenueForecast
+        period: February 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 10000.00
+      - factName: RevenueForecast
+        period: February 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 20000.00
+      - factName: RevenueForecast
+        period: March 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 8000.00
+      - factName: RevenueForecast
+        period: March 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 16000.00
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Associate One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 02/01/2013
+          - measure: Forecast P1 End Date
+            value: 12/03/2013
+        - factName: UsageForecast
+          period: January 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 22
+        - factName: UsageForecast
+          period: February 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 10
+        - factName: UsageForecast
+          period: March 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 8
+      - resourceName: US Co 2 x'x x&x Associate Five
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 02/01/2013
+          - measure: Forecast P1 End Date
+            value: 12/03/2013
+        - factName: UsageForecast
+          period: January 2013
+          businessUnitName: US Co 2 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 22
+        - factName: UsageForecast
+          period: February 2013
+          businessUnitName: US Co 2 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 10
+        - factName: UsageForecast
+          period: March 2013
+          businessUnitName: US Co 2 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 8
+      - resourceName: UK DBAs
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 02/01/2013
+          - measure: Forecast P1 End Date
+            value: 12/03/2013
+  - testStage: postSecondReprofile
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 150000.00
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 22000.00
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 44000.00
+      - factName: RevenueForecast
+        period: February 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 10500.00
+      - factName: RevenueForecast
+        period: February 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 21000.00
+      - factName: RevenueForecast
+        period: March 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 10000.00
+      - factName: RevenueForecast
+        period: March 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 20000.00
+      - factName: RevenueForecast
+        period: April 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 2000.00
+      - factName: RevenueForecast
+        period: April 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 4000.00
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Associate One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 02/01/2013
+          - measure: Forecast P1 End Date
+            value: 30/04/2013
+        - factName: UsageForecast
+          period: January 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 22
+        - factName: UsageForecast
+          period: February 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 10.5
+        - factName: UsageForecast
+          period: March 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 10
+        - factName: UsageForecast
+          period: April 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2
+      - resourceName: US Co 2 x'x x&x Associate Five
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 02/01/2013
+          - measure: Forecast P1 End Date
+            value: 30/04/2013
+        - factName: UsageForecast
+          period: January 2013
+          businessUnitName: US Co 2 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 22
+        - factName: UsageForecast
+          period: February 2013
+          businessUnitName: US Co 2 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 10.5
+        - factName: UsageForecast
+          period: March 2013
+          businessUnitName: US Co 2 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 10
+        - factName: UsageForecast
+          period: April 2013
+          businessUnitName: US Co 2 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2
+      - resourceName: UK DBAs
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 02/01/2013
+          - measure: Forecast P1 End Date
+            value: 30/04/2013

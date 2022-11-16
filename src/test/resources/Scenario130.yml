@@ -1,0 +1,195 @@
+---
+
+accounts:
+#test 1
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    tradingBusinessUnit: Canada
+    invoicingCurrency: GBP
+    taxCode: Sales Tax (Canada)
+    allowPartItemInvoicing: true
+    locale: en_GB
+    billingAddress:
+      stateProvince: British Columbia
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/09/2013
+        closeDate: 30/09/2013
+        forecastStatus: Probable (60%)
+
+        deliveryEngagements:
+        - name: T&M Delivery Engagement x'x x&x <testName> <dt>
+          productGroup: General Consulting (No Delivery Elements)
+          expectedStartDate: 01/09/2013
+          expectedEndDate: 01/10/2013
+          contractRevenue: 70000
+                       
+          deliveryElements:
+          - name: T&M
+            product: T&M
+              
+            activityAssignments:
+            - resourceName: UK Co 1 x'x x&x Associate One                
+              revenueRate: 750
+              costRate: 225
+              usageBehaviourRule: Defined Effort between two Dates
+              startDate: 01/09/2013
+              remainingEffort: 10
+              endDate: 13/09/2013    
+ 
+#Test 2              
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>/2
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    allowPartItemInvoicing: true
+    locale: en_GB
+    billingAddress:
+      stateProvince: British Columbia
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>/2
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/09/2013
+        closeDate: 30/09/2013
+        forecastStatus: Probable (60%)
+               
+        deliveryEngagements:
+        - name: T&M Delivery Engagement x'x x&x <testName> <dt>/2
+          productGroup: General Consulting (No Delivery Elements)
+          expectedStartDate: 01/09/2013
+          expectedEndDate: 01/10/2013
+          
+      
+          deliveryElements:
+          - name: T&M
+            product: T&M
+            taxCode: Reduced Rate VAT
+            purchaseOrderRule: Purchase Order not required
+            activityAssignments:
+              - resourceName: UK Acquisition Co 1 Employee Three                 
+                revenueRate: 550
+                costRate: 300
+                usageBehaviourRule: Defined Effort between two Dates
+                startDate: 02/09/2013
+                remainingEffort: 10
+                endDate: 13/09/2013
+                          
+          - name: Fixed Price
+            product: Fixed Price
+            taxCode: Exempt VAT
+            purchaseOrderRule: Purchase Order not required
+            activityAssignments:              
+              - resourceName: UK Co 2 x'x x&x Employee Two              
+#                revenueRate: 850
+                costRate: 650
+                usageBehaviourRule: Defined Effort between two Dates
+                startDate: 09/09/2013
+                remainingEffort: 6
+                endDate: 16/09/2013  
+            revenueMilestones:
+              - name: Milestone 1
+                value: 60000
+                date: 04/09/2013
+                
+          - name: Annuity
+            product: Annuity
+            activate: false
+            taxCode: Standard Rate VAT
+            purchaseOrderRule: Purchase Order not required
+            annuities:            
+              - name: 30 x Super Users at £40
+                startDate: 01/09/2013
+                numberOfPeriods: 12
+                endDate: 31/08/2014
+                revenue: 40
+                cost: 2.50
+                units: 30
+                periodsToComplete: [1, 2, 3, 4, 5, 6, 7, 8]
+                
+timesheets:
+#Test 1
+  - resourceName: UK Co 1 x'x x&x Associate One  
+    trackingPeriodStartDate: 02/09/2013
+    timeEntries:
+    - startDate: 02/09/2013
+      endDate: 05/09/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M   
+#Test 2
+  - resourceName: UK Co 2 x'x x&x Employee Two  
+    trackingPeriodStartDate: 09/09/2013
+    timeEntries:
+    - startDate: 09/09/2013
+      endDate: 11/09/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>/2-Fixed Price   
+  - resourceName: UK Acquisition Co 1 Employee Three    
+    trackingPeriodStartDate: 02/09/2013
+    timeEntries:
+    - startDate: 02/09/2013
+      endDate: 06/09/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>/2-T&M
+            
+invoices:
+#test 1
+- deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+  subTotal: 3000.0
+  taxMulti4: 150.0
+  taxMulti5: 210.0
+  deliveryElements:
+  - T&M
+  invoiceGroups:
+    T&M Services:
+      items:
+      - path: T&M Services > UK Co 1 x'x x&x Associate One
+#test 2
+- deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>/2
+  subTotal: 72350
+  grossTotal: 74407.5
+  taxMulti1: 0.0
+  taxMulti2: 137.5
+  taxMulti3: 1920.0
+  deliveryElements:
+  - Annuity
+  - Fixed Price
+  - T&M
+  invoiceGroups:
+    Annuity Period Revenues:
+      items:      
+      - path: Annuity Period Revenues > September 2013
+      - path: Annuity Period Revenues > October 2013
+      - path: Annuity Period Revenues > November 2013
+      - path: Annuity Period Revenues > December 2013
+      - path: Annuity Period Revenues > January 2014
+      - path: Annuity Period Revenues > February 2014
+      - path: Annuity Period Revenues > March 2014
+      - path: Annuity Period Revenues > April 2014
+    Fixed Price Services:
+      items:
+      - path: Fixed Price Services > Milestone 1
+    T&M Services:
+      items:
+      - path: T&M Services > UK Acquisition Co 1 Employee Three
+                  
+#Test 1                               
+expectedResults:
+  - testStage: postTimeEntry
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Associate One    
+        facts:
+        - factName: UsageForecast
+          period: Sep / 2 / 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: P1 Forecast
+            value: 4         

@@ -1,0 +1,47 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="KimbleNightlyRegressionSuite" parallel="tests" thread-count="1" verbose="1" >  
+
+<!--   Set below as true if you want to choose configuration values before the suite runs -->
+<!--  <parameter name="configureAtStart" value="true" /> -->
+  
+  <listeners>
+    <listener class-name="kimble.automation.TestInterceptor" />
+    <listener class-name="kimble.automation.KimbleEmailableReporter" />
+  </listeners>
+
+  <!-- Login Credentials File -->
+  <parameter name="credentialsSource" value="superUserLogin" />
+  
+<!--   <parameter name="targetEnvironments" value="environmentsDev" /> -->
+  <parameter name="targetEnvironments" value="environmentsLDV" />
+
+<!--   <parameter name="targetEnvironment" value="kimbleAutomation123" /> -->
+  <parameter name="packagedOrg" value="false" />
+  
+  <!-- Remote Execution -->
+  <parameter name="remoteExecution" value="true" />
+  <parameter name="remotePlatform" value="Windows 8.1" />
+  <parameter name="remoteProvider" value="SL" />
+
+  <!-- Remote Browser and Version -->
+  <!-- See https://saucelabs.com/docs/platforms for full list -->
+  <parameter name="remoteBrowser" value="Chrome" />
+  <parameter name="remoteBrowserVersion" value="52" />
+
+  <!-- Debug -->
+  
+  <parameter name="validateExpectedResults" value="true" />
+  <parameter name="debugExecution" value="false" />
+  <parameter name="abortOnFirstValidationFailure" value="false" />
+  
+  <!-- Cleardown Action -->
+      
+  <parameter name="dataClearDownAction" value="none" />
+
+  <!-- Scenario Tests -->
+  
+  <test name="Scenario199" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario199Test"/></classes></test> 
+  
+</suite>
+  

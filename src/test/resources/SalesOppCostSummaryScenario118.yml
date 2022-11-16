@@ -1,0 +1,88 @@
+---
+# Test overview
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: Build and Run - Fixed Price
+        responseRequiredDate: 01/01/2013
+        closeDate: 14/01/2013
+        winDate: 01/01/2013
+        forecastStatus: Probable (60%)
+
+        deliveryEngagements:
+          - name: Build and Run - Fixed Price
+            stage: config engagements elements
+
+            deliveryElements:
+              - name: Fixed Price Build and Run
+                stage: config engagements elements
+                forecastMode: target
+                servicesRevenue: 10000
+                
+                productExtension: Small Team
+                targetMargin: 50
+                
+                configurableAssignmentLineItems:
+                  - resourceName: US Co 1 x'x x&x Employee One                    
+                    role: Business Analyst
+                    usagePercent: 60
+                    startDate: 07/01/2013
+                    endDate: 11/01/2013
+                    cost: 500
+                  - resourceName: US Co 1 x'x x&x Employee Two
+                    role: Industry Expert
+                    usagePercent: 40
+                    startDate: 07/01/2013
+                    endDate: 09/01/2013
+                    cost: 600
+                expenseLineItems:
+                  - description: Flight to Congo
+                    category: Air Ticket
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 1500
+                    units: 1
+                    remainingRevenue: 2000
+                  - description: Daily trip to client site
+                    category: Car Rental
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 40
+                    units: 20
+              - name: Risk Contingency
+                stage: config engagements elements
+                rateOverride: 0.20
+        risks:
+          - stage: create 'high' commercial risk
+            reference: risk3
+            category: Commercial
+            summary: something bad could happen
+            raisedDate: 01/01/2013
+            probability: Medium
+            impact: High
+
+            
+expectedResults:
+  - testStage: validate sales opportunity after configuration
+    salesOpportunity: 
+        name: Sales Opp x'x x&x <testName> <dt>
+        deliveryEngagements:
+          - name: "Build and Run - Fixed Price"
+            stage: validate sales opportunity after configuration
+            deliveryElements:
+              - name: Risk Contingency
+                stage: validate sales opportunity after configuration
+                servicesCost: 1000.00
+                servicesCostOverridden: 500.00
+                rateItemName: High
+                rateDefault: 0.10
+                rateOverride: 0.20
+                rateSourceValue: 5000.00
+                      

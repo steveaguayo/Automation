@@ -1,0 +1,36 @@
+1) install eclipse TestNG plugin
+	- Help>Install New Software
+	- Enter Work with: http://beust.com/eclipse and select TestNG plugin verison 6.9.10
+	
+2) PATH Environment Variable needs to include path to Lib folder, e.g. :
+	- C:\MXS\Kimble\Workspaces\Selenium\TestAutomation\lib
+	
+3) do to clashes in the dependencies between testNG and SnakeYaml we need to tell testNG not to use it's own dependencies
+	- right-click the project in eclipse, choose Properties
+	- in the TestNG section, click "use project TestNG.jar"
+
+4) jre7 or jdk7 is needed, especially if you get an exception around Method Not found for BaseConstructor
+	- download latest from java.com
+	- add path to Java bin to PATH environment variable, e.g. C:\Program Files (x86)\Java\jre7\bin
+	
+----------------------------------------------------------------------------------------------------------------
+Adding to the PATH environment variable:
+	- Right Click "Computer" in Windows Explorer and click "Properties"
+	- Click the "Advanced System Settings" link
+	- Click the "Environment Variables" button
+	- Edit the Path system variable and append anything needed with a semi-colon for each distinct entry
+	
+	
+	
+----------------------------------------------------------------------------------------------------------------
+TestNG from Ant [Taken from http://testng.org/doc/ant.html]
+
+<taskdef resource="testngtasks" classpath="lib/testng.jar"/>
+
+<testng classpath="lib/jxl.jar;lib/snakeyaml-1.11.jar;lib/SauceREST.jar;lib/testng-6.8.jar"
+        outputDir="${testng.report.dir}"
+        sourcedir="${test.src.dir}"
+        haltOnfailure="true">
+  
+   <xmlfileset dir="${test14.dir}" includes="RemoteRegressionPack.xml"/>
+</testng>

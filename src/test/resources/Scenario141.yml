@@ -1,0 +1,181 @@
+---
+# Test overview
+# Testing the Trend analysis functionality
+
+#businessUnit:
+#  -businessUnitName: UK Co 6 Scenario 41 (Operating/Trading GBP)
+#   currency: British Pound
+#   active?: true
+#   isOperatingEntity: true
+#   businessUnitGroup: Group 1 (UK, US & EMEA)
+#   timePatternVariant: 7.5 hours/day
+#   expenseItemSubmissionDays: 100
+#   calendar: UK Calendar
+#   timePatternRule: activity
+#   isTradingEntity: true
+#   purchaseOrderRule: Purchase Order not required
+#   invoicingCurrency: GBP
+#   defaultInvoiceTemplate: Invoice T1
+#   invoiceBankAccount: Big Bank Account
+#   defaultCreditNoteTemplate: Credit Note T1
+ 
+# Resource:
+#  -resourceType: Employee
+#   firstName: UK Co 6 Scenario 41 x'x x&x Employee
+#   lastName: Nine
+#   businessUnitName: UK Co 6 Scenario 41 (Operating/Trading GBP
+#   grade: Director
+#   calendar: UK Calendar
+#   timePatternVariant: 7.5 hours/day
+#   currency: British Pound
+#   expenseReimburesementCurrency: GBP
+#   standardRevenueCurrency: GBP
+#   actualCost: 650.00
+#   actualCostUnitType: Day
+#   startDate: 01/01/2017
+   
+   
+accounts:
+- name: Standard Rate UK Co 6 Account x'x x&x <testName> <dt>
+  operatingBusinessUnit: UK Co 6 Scenario 41 (Operating/Trading GBP)
+  invoicingCurrency: GBP
+  taxCode: Standard Rate VAT
+  allowPartItemInvoicing: true
+  locale: en_GB
+  
+  salesOpportunities:
+  - name: Sales Opp x'x x&x <testName> <dt> test 1 
+    businessUnit: UK Co 6 Scenario 41 (Operating/Trading GBP) ###????? UK Co 1 (Operating/Trading GBP)
+    source: Direct Enquiry
+    proposition: General Consulting
+    responseRequiredDate: 01/10/2017
+    closeDate: 01/10/2017
+    forecastStatus: Probable (60%)
+           
+    deliveryEngagements:
+    - name: T&M Delivery Engagement x'x x&x <testName> <dt> test 1
+      productGroup: General Consulting (No Delivery Elements)
+      expectedStartDate: 01/10/2017
+      expectedEndDate: 01/11/2017
+    
+      deliveryElements:
+      - name: T&M
+        product: T&M
+          
+        activityAssignments:
+        - resourceName: UK Co 6 Scenario 41 x'x x&x Employee Nine                    
+          costRate: 650
+          usageBehaviourRule: Defined Effort with variable End Date
+          startDate: 01/10/2017
+          remainingEffort: 22
+          utilisationPct: 100
+                
+  - name: Sales Opp x'x x&x <testName> <dt> test 2
+    businessUnit: UK Co 6 Scenario 41 (Operating/Trading GBP) ###????? UK Co 1 (Operating/Trading GBP)
+    source: Direct Enquiry
+    proposition: General Consulting
+    responseRequiredDate: 01/11/2017
+    closeDate: 01/11/2017
+    forecastStatus: Probable (60%)
+           
+    deliveryEngagements:
+    - name: T&M Delivery Engagement x'x x&x <testName> <dt> 2
+      productGroup: General Consulting (No Delivery Elements)
+      expectedStartDate: 01/11/2017
+      expectedEndDate: 01/12/2017
+    
+      deliveryElements:
+      - name: Fixed Price
+        product: Fixed Price
+        
+        revenueMilestones:
+        - name: Milestone
+          value: 38000
+          date: 01/11/2017
+      
+        activityAssignments:
+        - resourceName: UK Co 6 Scenario 41 x'x x&x Employee Nine    #####?????????????  UK Co 1 x'x x&x Employee One                   
+          costRate: 750
+          usageBehaviourRule: Defined Effort with variable End Date
+          startDate: 01/11/2017
+          remainingEffort: 22
+          utilisationPct: 100
+                                                 
+
+expectedResults:
+  - testStage: postInitialSetup
+    trendAnalysis:
+    - businessUnitName: UK Co 6 Scenario 41 (Operating/Trading GBP)
+      date: 01/11/2017 # WAS November 2017
+      probabilityCode: P1
+      analysisDimension: Business Unit
+      analysisFact: All
+      facts:
+      - factCard: Margin Amount
+        thisValue: GBP 21,500.00
+        lastValue: GBP 4,400.00
+        changeValue: GBP 17,100.00
+        info: Margin Amount has risen this period. This is primarily due to a rise in Revenue of 19300
+#        fyi - you must expand the Margin Amount fact card to see this card
+      - factCard: Cost
+        thisValue: GBP 16,500.00
+        lastValue: GBP 14,300.00
+        changeValue: GBP 2,200.00
+        impact: "Impact: -10%"
+        info: Cost has risen this period. This is primarily due to a rise in Average Cost Rate of 100
+#        fyi - you must expand the Margin Amount fact card to see this card
+      - factCard: Average Cost Rate
+        thisValue: GBP 750.00
+        lastValue: GBP 650.00
+        changeValue: GBP 100.00
+        impact: "Impact: 100%"
+#        fyi - you must expand the Cost fact card to see this card
+      - factCard: Delivery Resource Count
+        thisValue: 1.00
+        lastValue: 1.00
+        changeValue: .00
+        impact: "Impact: 0%"
+#        fyi - you must expand the Cost fact card to see this card
+      - factCard: Delivery Utilisation Pct
+        thisValue: 100.00
+        lastValue: 100.00
+        changeValue: .00
+        impact: "Impact: 0%"
+#        fyi - you must expand the Cost fact card to see this card
+      - factCard: Number Of Business Days
+        thisValue: 22.00
+        lastValue: 22.00
+        changeValue: .00
+        impact: "Impact: 0%"
+#        fyi - you must expand the Cost fact card to see this card
+      - factCard: Revenue
+        thisValue: GBP 38,000.00
+        lastValue: GBP 18,700.00
+        changeValue: GBP 19,300.00
+        impact: "Impact: 90%"
+        info: Revenue has risen this period. This is primarily due to a rise in Average Revenue Rate of 877.27
+#        fyi - you must expand the Margin Amount fact card to see this card
+      - factCard: Average Revenue Rate
+        thisValue: GBP 1,727.27
+        lastValue: GBP 850.00
+        changeValue: GBP 877.27
+        impact: "Impact: 100%"
+#        fyi - you must expand the Revenue fact card to see this card
+      - factCard: Delivery Resource Count
+        thisValue: 1.00
+        lastValue: 1.00
+        changeValue: .00
+        impact: "Impact: 0%"
+#        fyi - you must expand the Revenue fact card to see this card
+      - factCard: Delivery Utilisation Pct
+        thisValue: 100.00
+        lastValue: 100.00
+        changeValue: .00
+        impact: "Impact: 0%"
+#        fyi - you must expand the Revenue fact card to see this card
+      - factCard: Number Of Business Days
+        thisValue: 22.00
+        lastValue: 22.00
+        changeValue: .00
+        impact: "Impact: 0%"
+#        fyi - you must expand the Revenue fact card to see this card

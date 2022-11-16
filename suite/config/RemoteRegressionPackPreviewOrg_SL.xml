@@ -1,0 +1,100 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="KimblePreviewOrgRegressionSuite" parallel="tests" thread-count="1" verbose="1" >  
+
+  <listeners>
+    <listener class-name="kimble.automation.TestInterceptor" />
+    <listener class-name="kimble.automation.KimbleEmailableReporter" />
+  </listeners>
+  
+  <!-- Login Credentials File -->
+
+  <parameter name="credentialsSource" value="superUserLogin" />
+
+  <!-- Target Environment -->
+
+  <parameter name="targetEnvironments" value="environmentsUnPkgPreview" />
+
+  <parameter name="packagedOrg" value="true" />
+  <parameter name="lightning" value="false" /> 
+  
+  <!-- Remote Execution -->
+  
+  <parameter name="remoteExecution" value="true" />
+  <parameter name="remotePlatform" value="Windows 8.1" />
+  <parameter name="remoteProvider" value="SL" />
+
+  <!-- Remote Browser and Version -->
+  <!-- See https://saucelabs.com/docs/platforms for full list -->
+
+  <parameter name="remoteBrowser" value="Chrome" />
+  <parameter name="remoteBrowserVersion" value="52" />
+<!--   <parameter name="remoteBrowser" value="FireFox" /> -->
+<!--   <parameter name="remoteBrowserVersion" value="25" /> -->
+<!--   <parameter name="remoteBrowser" value="IE" /> -->
+<!--   <parameter name="remoteBrowserVersion" value="10" /> -->
+
+  <!-- Mobile details -->
+
+   <parameter name="DEFAULT_WEEK" value="2013-06-18" /> 
+   
+  <!-- Andriod details -->
+
+  <parameter name="androidPlatformName" value="Android" />
+  <parameter name="androidDeviceName" value="Android GoogleAPI Emulator" />
+  <parameter name="androidPlatformVersion" value="6.0" />
+  <parameter name="androidAppiumVersion" value="1.9.1" />
+  <parameter name="androidDeviceOrientation" value="portrait" />
+
+  <!-- iOS details -->
+
+  <parameter name="iOSPlatformName" value="iOS" />
+  <parameter name="iOSDeviceName" value="iPhone 8 Simulator" />
+  <parameter name="iOSPlatformVersion" value="11.2" />
+  <parameter name="iOSAppiumVersion" value="1.9.1" />
+  <parameter name="iOSNoReset" value="true" />
+
+  <!-- Debug -->
+  
+  <parameter name="validateExpectedResults" value="true" />
+  <parameter name="debugExecution" value="false" />
+
+  <!-- Cleardown Action -->     
+      
+  <parameter name="dataClearDownAction" value="dataandperiodreset" />
+
+  <!-- Scenario Tests -->
+  
+  <test name="Scenario101" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario101Test"/></classes></test> 
+  <test name="Scenario102" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario102Test"/></classes></test> 
+  <test name="Scenario103" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario103Test"/></classes></test> 
+  <test name="Scenario104" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario104Test"/></classes></test> 
+  <test name="Scenario105" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario105Test"/></classes></test> 
+  <test name="Scenario106" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario106Test"/></classes></test> 
+  <test name="Scenario107" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario107Test"/></classes></test> 
+  <test name="Scenario108" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario108Test"/></classes></test> 
+  <test name="Scenario109" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario109Test"/></classes></test> 
+  <test name="Scenario110" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario110Test"/></classes></test> 
+  <test name="Scenario111" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario111Test"/></classes></test> 
+  <test name="Scenario112" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario112Test"/></classes></test> 
+  <test name="Scenario113" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario113Test"/></classes></test> 
+  <test name="Scenario114" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario114Test"/></classes></test>
+  <test name="Scenario115" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario115Test"/></classes></test> 
+  <test name="Scenario116" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario116Test"/></classes></test>
+  <test name="Scenario117" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario117Test"/></classes></test>
+  <test name="Scenario118" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario118Test"/></classes></test> 
+  <test name="Scenario119" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario119Test"/></classes></test> 
+  <test name="Scenario120" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario120Test"/></classes></test>  
+  <test name="Scenario121" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario121Test"/></classes></test>  
+  <test name="Scenario123" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario123Test"/></classes></test>  
+  <test name="Scenario124" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario124Test"/></classes></test>  
+  <test name="Scenario125" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario125Test"/></classes></test>  
+  <test name="Scenario126" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario126Test"/></classes></test>  
+  <test name="Scenario127" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario127Test"/></classes></test>  
+  <test name="Scenario128" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario128Test"/></classes></test>  
+  <test name="Scenario129" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario129Test"/></classes></test>  
+  <test name="Scenario130" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario130Test"/></classes></test>  
+  <test name="Scenario133" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario133Test"/></classes></test>  
+  <test name="Scenario134" preserve-order="true"><classes><class name="kimble.automation.scenarios.Scenario134Test"/></classes></test>   
+</suite>
+  

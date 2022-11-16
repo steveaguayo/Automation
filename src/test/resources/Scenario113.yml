@@ -1,0 +1,455 @@
+---
+accounts:
+  - name: Zero Rate Asia Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: Asia Co 1 (Operating/Trading GBP)
+    businessUnitGroup: Group 2 (Asia)
+    invoicingCurrency: GBP
+    taxCode: Zero Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: Asia Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/01/2013
+        closeDate: 01/01/2013
+        forecastStatus: Probable (60%)
+        
+        deliveryEngagements:
+          - name: Delivery Engagement x'x x&x <testName> <dt>
+            productGroup: General Consulting (No Delivery Elements)
+            expectedStartDate: 01/05/2013
+            expectedEndDate: 01/01/2014
+            contractRevenue: 100000            
+
+            deliveryElements:                    
+              - name: VAPM Delivery Element x'x x&x <testName> <dt>
+                product: Fixed Price                
+                activityAssignments:
+                  - resourceName: Asia Co 1 x'x x&x Employee One
+                    costRate: 600
+                    usageBehaviourRule: Defined Effort between two Dates
+                    startDate: 02/01/2013
+                    remainingEffort: 4
+                    remainingEffortStage2: 10
+                    remainingEffortStage3: 0
+                    endDate: 30/04/2013
+                    costOnlyAssignment: true
+                revenueMilestones:
+                  - name: Project Complete
+                    value: 100000
+                    date: 30/04/2013
+
+trackingPeriodActions:
+  - testStage: close tracking periods post first time booking
+    businessUnitGroup: Group 2 (Asia)
+    action: close
+    periodName: Jan / 1 / 2013
+  - testStage: close tracking periods post first time booking
+    businessUnitGroup: Group 2 (Asia)
+    action: close
+    periodName: Jan / 2 / 2013
+  - testStage: close tracking periods post first time booking
+    businessUnitGroup: Group 2 (Asia)
+    action: close
+    periodName: Jan / 3 / 2013
+  - testStage: close tracking periods post first time booking
+    businessUnitGroup: Group 2 (Asia)
+    action: close
+    periodName: Jan / 4 / 2013
+  - testStage: close tracking periods post first time booking
+    businessUnitGroup: Group 2 (Asia)
+    action: close
+    periodName: Jan / 5 / 2013
+  - testStage: closeFebruaryPeriodWithoutBookingTime
+    businessUnitGroup: Group 2 (Asia)
+    action: close
+    removeUsage: true
+    periodName: Feb / 1 / 2013
+  - testStage: closeFebruaryPeriodWithoutBookingTime
+    businessUnitGroup: Group 2 (Asia)
+    action: close
+    removeUsage: true
+    periodName: Feb / 2 / 2013
+  - testStage: closeFebruaryPeriodWithoutBookingTime
+    businessUnitGroup: Group 2 (Asia)
+    action: close
+    removeUsage: true
+    periodName: Feb / 3 / 2013
+  - testStage: closeFebruaryPeriodWithoutBookingTime
+    businessUnitGroup: Group 2 (Asia)
+    action: close
+    removeUsage: true
+    periodName: Feb / 4 / 2013
+  - testStage: closeFebruaryPeriodWithoutBookingTime
+    businessUnitGroup: Group 2 (Asia)
+    action: close
+    removeUsage: true
+    periodName: Feb / 5 / 2013
+
+forecastingPeriodActions:
+  - testStage: close forecasting periods post first time booking
+    businessUnitGroup: Group 2 (Asia)
+    action: close
+    periodName: January 2013
+  - testStage: closeFebruaryPeriodWithoutBookingTime
+    businessUnitGroup: Group 2 (Asia)
+    action: close
+    periodName: February 2013
+
+timesheets:
+  - testStage: firstTimeBooking
+    resourceName: Asia Co 1 x'x x&x Employee One
+    trackingPeriodStartDate: 01/01/2013
+    timeEntries:
+    - startDate: 02/01/2013
+      endDate: 04/01/2013
+      entryUnits: 7.5
+      plannedActivity: Zero Rate Asia Co 1 Account x'x x&x <testName> <dt>-VAPM Delivery Element x'x x&x <testName> <dt>
+  - testStage: firstTimeBooking
+    resourceName: Asia Co 1 x'x x&x Employee One
+    trackingPeriodStartDate: 07/01/2013
+    timeEntries:
+    - startDate: 07/01/2013
+      endDate: 11/01/2013
+      entryUnits: 7.5
+      plannedActivity: Zero Rate Asia Co 1 Account x'x x&x <testName> <dt>-VAPM Delivery Element x'x x&x <testName> <dt>
+  - testStage: firstTimeBooking
+    resourceName: Asia Co 1 x'x x&x Employee One
+    trackingPeriodStartDate: 14/01/2013
+    timeEntries:
+    - startDate: 14/01/2013
+      endDate: 18/01/2013
+      entryUnits: 7.5
+      plannedActivity: Zero Rate Asia Co 1 Account x'x x&x <testName> <dt>-VAPM Delivery Element x'x x&x <testName> <dt>
+  - testStage: firstTimeBooking
+    resourceName: Asia Co 1 x'x x&x Employee One
+    trackingPeriodStartDate: 21/01/2013
+    timeEntries:
+    - startDate: 21/01/2013
+      endDate: 25/01/2013
+      entryUnits: 7.5
+      plannedActivity: Zero Rate Asia Co 1 Account x'x x&x <testName> <dt>-VAPM Delivery Element x'x x&x <testName> <dt>
+  - testStage: firstTimeBooking
+    resourceName: Asia Co 1 x'x x&x Employee One
+    trackingPeriodStartDate: 28/01/2013
+    timeEntries:
+    - startDate: 28/01/2013
+      endDate: 31/01/2013
+      entryUnits: 7.5
+      plannedActivity: Zero Rate Asia Co 1 Account x'x x&x <testName> <dt>-VAPM Delivery Element x'x x&x <testName> <dt>
+
+expectedResults:
+  - testStage: postSalesOppWin
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 100000.00
+      - factName: RevenueForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 26506.02
+      - factName: RevenueForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 24096.39
+      - factName: RevenueForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: March 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 24096.39
+      - factName: RevenueForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: April 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 25301.20
+      - factName: RevenueForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 100000.00
+  - testStage: postFirstTimeBooking
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 100000.00
+      - factName: RevenueForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 88212.56
+      - factName: RevenueForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 3864.73
+      - factName: RevenueForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: March 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 3864.73
+      - factName: RevenueForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: April 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 4057.97
+      - factName: RevenueForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 99999.99
+  - testStage: postJanuaryPeriodCloseAndUpdateRemainingUsage
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 100000.00
+      - factName: RevenueForecast
+        ignoreReason: "ticket #3291 - revenue forecast incorrect following update of remaining usage"
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 88212.56
+      - factName: RevenueForecast
+        ignoreReason: "ticket #3291 - revenue forecast incorrect following update of remaining usage"
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: -9216.66
+      - factName: RevenueForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: March 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 10245.90
+      - factName: RevenueForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: April 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 10758.20
+      - factName: RevenueForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 100000.00
+  - testStage: postFebruaryRemoveAllUsageAndCloseTracking
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 100000.00
+      - factName: RevenueForecast
+        ignoreReason: "ticket #3291 - revenue forecast incorrect following update of remaining usage"
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 88212.56
+      - factName: RevenueForecast
+        ignoreReason: "ticket #3291 - revenue forecast incorrect following update of remaining usage"
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: -11614.39
+      - factName: RevenueForecast
+        ignoreReason: "ticket #3291 - revenue forecast incorrect following update of remaining usage"
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: March 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 11415.53
+      - factName: RevenueForecast
+        ignoreReason: "ticket #3291 - revenue forecast incorrect following update of remaining usage"
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: April 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 11986.30
+      - factName: RevenueForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 100000.00
+  - testStage: postFebruaryPeriodClose
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 100000.00
+      - factName: RevenueForecast
+        ignoreReason: "ticket #3291 - revenue forecast incorrect following update of remaining usage"
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 88212.56
+      - factName: RevenueForecast
+        ignoreReason: "ticket #3291 - revenue forecast incorrect following update of remaining usage"
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: -11614.39
+      - factName: RevenueForecast
+        ignoreReason: "ticket #3291 - revenue forecast incorrect following update of remaining usage"
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: March 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 11415.53
+      - factName: RevenueForecast
+        ignoreReason: "ticket #3291 - revenue forecast incorrect following update of remaining usage"
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: April 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 11986.30
+      - factName: RevenueForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 100000.00
+  - testStage: postUpdateToZeroRemainingUsage
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 100000.00
+      - factName: RevenueForecast
+        ignoreReason: "ticket #3291 - revenue forecast incorrect following update of remaining usage"
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 88212.56
+      - factName: RevenueForecast
+        ignoreReason: "ticket #3291 - revenue forecast incorrect following update of remaining usage"
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: -11614.39
+      - factName: RevenueForecast
+        ignoreReason: "ticket #3291 - revenue forecast incorrect following update of remaining usage"
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: March 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 23401.83
+      - factName: RevenueForecast
+        businessUnitName: Asia Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 100000.00

@@ -1,0 +1,211 @@
+
+loginUser: Employee One, UK Co 1 x'x x&x
+loginName: UK Co 1 x'x x&x Employee One
+accounts:
+- name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+  operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+  invoicingCurrency: GBP
+  taxCode: Standard Rate VAT
+  allowPartItemInvoicing: true
+  locale: en_GB
+  salesOpportunities:
+  - name: Sales Opp x'x x&x <testName> <dt>
+    businessUnit: UK Co 1 (Operating/Trading GBP)
+    source: Direct Enquiry
+    proposition: General Consulting
+    responseRequiredDate: 01/07/2017
+    closeDate: 31/07/2017
+    forecastStatus: Probable (60%)
+    deliveryEngagements:
+    - name: T&M Delivery Engagement x'x x&x <testName> <dt>
+      productGroup: General Consulting (No Delivery Elements)
+      expectedStartDate: 01/08/2017
+      expectedEndDate: 31/08/2017
+      deliveryElements:
+      - name: T&M
+        product: T&M
+        activityAssignments:
+        - resourceName: UK Co 1 x'x x&x Employee One           
+          revenueRate: 650
+          costRate: 500
+          usageBehaviourRule: Defined Utilisation between two Dates
+          startDate: 01/08/2017
+          endDate: 31/08/2017
+          utilisationPct: 50          
+  changeControls:
+    - name: Sales Opp x'x x&x <testName> <dt> EXTENSION
+      deliveryEngagements:
+        - name: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElements:
+            - name: T&M EXTENSION
+              parentElementName: T&M
+              product: T&M
+              operatedWithPrimary: false
+              changeEffective: Immediately              
+              activityAssignments:
+                - resourceName: UK Co 1 x'x x&x Employee One  
+                  revenueRate: 700
+                  costRate: 500
+                  usageBehaviourRule: Defined Utilisation between two Dates
+                  startDate: 02/08/2017
+                  endDate: 29/09/2017
+                  utilisationPct: 50     
+expenseClaims:
+- resourceName: UK Co 1 x'x x&x Employee One
+  testStage: enter draft expense
+  expenseEntries:
+  - name: Weekly Train Pass
+    incurredDate: 02/08/2017
+    activityName: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M EXTENSION
+    expenseDetails:
+    - category: Train
+      currency: GBP
+      amount: 50.34
+      notes: Weekly Train Pass
+
+journeys:
+- name: Trip to Croatia
+  resourceName: UK Co 1 x'x x&x Employee One
+  legs: 
+  - departingFrom: Armenia
+    departureDate: 01/08/2017
+    departureTime: 05:00
+    arrivingAt: Belgium
+    arrivalDate: 01/08/2017
+    arrivalTime: 09:00
+  - departingFrom: Belgium
+    departureDate: 03/08/2017
+    departureTime: 06:30
+    arrivingAt: Croatia
+    arrivalDate: 03/08/2017
+    arrivalTime: 07:30
+  - departingFrom: Croatia
+    departureDate: 05/08/2017
+    departureTime: 15:00
+    arrivingAt: Armenia
+    arrivalDate: 05/08/2017
+    arrivalTime: 21:00
+  adjustments:
+  - period: 01/08/2017
+    accommodation: true
+    airportTransport: true
+  - period: 02/08/2017
+    accommodation: true
+    localTransport: true
+  - period: 03/08/2017
+    accommodation: true
+  - period: 04/08/2017
+    accommodation: true
+  - period: 05/08/2017
+    airportTransport: true
+  - period: 01/08/2017 05:00
+    breakfast: true
+  - period: 02/08/2017 05:00
+    breakfast: true
+  - period: 03/08/2017 05:00
+    lunch: true
+  - period: 05/08/2017 05:00
+    dinner: true
+  allocations:
+  - period: 01/08/2017 
+    activity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M 
+    activityName: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+    amount: 64.00
+  - period: 02/08/2017
+    activity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+    activityName: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+    amount: 134.98
+  - period: 03/08/2017
+    activity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+    activityName: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+    amount: 24.16
+  - period: 03/08/2017
+    activity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M EXTENSION
+    activityName: Standard Rate UK Co 1 Account x'x x&x Scenario127 <dt>-T&M EXTENSION
+    amount: 70.00
+  - period: 04/08/2017
+    activity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M EXTENSION
+    activityName: Standard Rate UK Co 1 Account x'x x&x Scenario127 <dt>-T&M EXTENSION
+    amount: 94.16
+  - period: 05/08/2017
+    activity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+    activityName: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+    amount: 21.00
+  - period: 01/08/2017 05:00
+    activity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+    activityName: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+    amount: 40.80
+  - period: 02/08/2017 05:00
+    activity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+    activityName: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+    amount: 40.80
+  - period: 03/08/2017 05:00
+    activity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M EXTENSION
+    activityName: Standard Rate UK Co 1 Account x'x x&x Scenario127 <dt>-T&M EXTENSION
+    amount: 21.00
+  - period: 03/08/2017 05:00
+    activity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+    activityName: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+    amount: 8.40
+  - period: 04/08/2017 05:00
+    activity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M EXTENSION
+    activityName: Standard Rate UK Co 1 Account x'x x&x Scenario127 <dt>-T&M EXTENSION
+    amount: 42.00
+  - period: 05/08/2017 05:00
+    activity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M EXTENSION
+    activityName: Standard Rate UK Co 1 Account x'x x&x Scenario127 <dt>-T&M EXTENSION
+    amount: 29.40
+  allowanceAmountValidations:
+    validate allowance amounts pre-allocation:
+      '01/08/2017': EUR 64.00
+      '02/08/2017': PLN 134.98
+      '03/08/2017': PLN 94.16
+      '04/08/2017': PLN 94.16
+      '05/08/2017': EUR 21.00
+      '01/08/2017 05:00': EUR 40.80
+      '02/08/2017 05:00': EUR 40.80
+      '03/08/2017 05:00': EUR 29.40
+      '04/08/2017 05:00': EUR 42.00
+      '05/08/2017 05:00': EUR 29.40
+  expectedExpenseEntries:
+  - activityName: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+    expenseDetails:
+    - incurredDate: 01/08/2017
+      currency: GBP
+      amount: 46.23
+    - incurredDate: 01/08/2017
+      currency: GBP
+      amount: 29.47
+    - incurredDate: 02/08/2017
+      currency: GBP
+      amount: 29.47
+    - incurredDate: 02/08/2017
+      currency: GBP
+      amount: 32.36
+    - incurredDate: 03/08/2017
+      currency: GBP
+      amount: 6.07
+    - incurredDate: 03/08/2017
+      currency: GBP
+      amount: 5.79
+    - incurredDate: 05/08/2017
+      currency: GBP
+      amount: 15.17
+  - activityName: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M EXTENSION
+    expenseDetails:
+    - incurredDate: 03/08/2017
+      currency: GBP
+      amount: 15.17
+    - incurredDate: 03/08/2017
+      currency: GBP
+      amount: 16.78
+    - incurredDate: 04/08/2017
+      currency: GBP
+      amount: 22.57
+    - incurredDate: 04/08/2017
+      currency: GBP
+      amount: 30.34
+    - incurredDate: 05/08/2017
+      currency: GBP
+      amount: 21.24
+      

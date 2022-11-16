@@ -1,0 +1,231 @@
+---
+
+#CONFIGURATION NOTES
+# Other activity set up
+# - name: UK TOIL
+#  isTimeOffInLieu: true
+#  canSelfAssign: true
+#  scheduleTimeRule: DateOnly
+#  requiresApproval: true
+otherResourcedActivities:
+- name: UK TOIL
+  activityAssignments:
+  - resourceName: EMEA Co 3 x'x x&x Employee Three
+    startDate: 01/03/2013
+    usageBehaviourRule: Entitlement between two Dates, with Adjustments
+    remainingEffort: 0
+    endDate: 31/12/2013
+    
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit:  UK Co 3 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: UK Co 3 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 22/03/2013
+        closeDate: 01/03/2013
+        forecastStatus: Probable (60%)
+               
+        deliveryEngagements:
+          - name: General Consulting Delivery Engagement x'x x&x <testName> <dt>
+            productGroup: General Consulting (No Delivery Elements)
+            expectedStartDate: 01/03/2013
+            expectedEndDate: 31/03/2013
+            contractRevenue: 200000
+            activities: 
+            - businessDayStandardToilFactor: 1
+              businessDayOvertimeToilFactor: 1.75
+              nonBusinessDayStandardToilFactor: 2
+            deliveryElements:
+              - name: T&M 129
+                product: T&M
+                
+                activityAssignments:
+                  - resourceName: EMEA Co 3 x'x x&x Employee Three                  
+                    costRate: 650
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 01/03/2013
+                    remainingEffort: 21
+                    utilisationPct: 100          
+   
+timesheets:
+  - testStage: firstTimeBooking
+    resourceName: EMEA Co 3 x'x x&x Employee Three
+    trackingPeriodStartDate: 01/03/2013
+    timeEntries:
+    - startDate: 01/03/2013
+      endDate: 01/03/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M 129
+  - testStage: firstTimeBooking
+    resourceName: EMEA Co 3 x'x x&x Employee Three
+    trackingPeriodStartDate: 04/03/2013
+    timeEntries:
+    - startDate: 04/03/2013
+      endDate: 08/03/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M 129
+  - testStage: secondTimeBooking
+    resourceName: EMEA Co 3 x'x x&x Employee Three
+    trackingPeriodStartDate: 11/03/2013
+    timeEntries:
+    - startDate: 11/03/2013
+      endDate: 15/03/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M 129
+  - testStage: secondTimeBooking
+    resourceName: EMEA Co 3 x'x x&x Employee Three
+    trackingPeriodStartDate: 11/03/2013
+    timeEntries:
+    - timeType: Business Day - Overtime
+      startDate: 12/03/2013
+      endDate: 12/03/2013
+      entryUnits: 2
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M 129
+  - testStage: secondTimeBooking
+    resourceName: EMEA Co 3 x'x x&x Employee Three
+    trackingPeriodStartDate: 11/03/2013
+    timeEntries:
+    - timeType: Business Day - Overtime
+      startDate: 14/03/2013
+      endDate: 14/03/2013
+      entryUnits: 4
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M 129
+  - testStage: thirdTimeBooking
+    resourceName: EMEA Co 3 x'x x&x Employee Three
+    trackingPeriodStartDate: 18/03/2013
+    timeEntries:
+    - startDate: 18/03/2013
+      endDate: 22/03/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M 129
+  - testStage: thirdTimeBooking
+    resourceName: EMEA Co 3 x'x x&x Employee Three
+    trackingPeriodStartDate: 18/03/2013
+    timeEntries:
+    - timeType: Business Day - Overtime
+      startDate: 22/03/2013
+      endDate: 22/03/2013
+      entryUnits: 1
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M 129
+  - testStage: thirdTimeBooking
+    resourceName: EMEA Co 3 x'x x&x Employee Three
+    trackingPeriodStartDate: 18/03/2013
+    timeEntries:
+    - timeType: Non-Business Day - Standard Time
+      startDate: 23/03/2013
+      endDate: 23/03/2013
+      entryUnits: 4
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M 129
+  - testStage: fourthTimeBooking
+    resourceName: EMEA Co 3 x'x x&x Employee Three
+    trackingPeriodStartDate: 25/03/2013
+    timeEntries:
+    - startDate: 25/03/2013
+      endDate: 27/03/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M 129
+  - testStage: fourthTimeBooking
+    resourceName: EMEA Co 3 x'x x&x Employee Three
+    trackingPeriodStartDate: 25/03/2013
+    timeEntries:
+    - startDate: 28/03/2013
+      endDate: 28/03/2013
+      entryUnits: 7.5
+      plannedActivity: UK TOIL
+      startTime: 09:00
+      endTime: 16:30
+
+expectedResults: 
+  - testStage: postIntitialSetUp
+    resourceForecasts:
+    - resourceName: EMEA Co 3 x'x x&x Employee Three
+      facts:
+      - factName: UsageForecast
+        period: March 2013
+        businessUnitName: EMEA Co 3 (Operating EUR)
+        deliveryEngagementName: General Consulting Delivery Engagement x'x x&x <testName> <dt>
+        deliveryElementName: T&M 129
+        activityName: T&M 129
+        expectedValues: 
+        - measure: Actual
+          value: 6
+        - measure: P2 Forecast
+          value: 20
+   
+    resourceUsageAdjustments:
+      #postIntitialSetUp
+    - resourceName: EMEA Co 3 x'x x&x Employee Three
+      assignment: EMEA Co 3 x\'x x&amp;x Employee Three - UK TOIL
+      baselineUsage: 0 Day
+      adjustments: 0 Day
+      totalActualUsage: 0 Day
+      scheduledUsage: 0 Day
+      remainingUsage: 0 Day
+      unforecastUsage: 0 Day
+      #postOvertimeBooking
+    - resourceName: EMEA Co 3 x'x x&x Employee Three
+      assignment: EMEA Co 3 x\'x x&amp;x Employee Three - UK TOIL
+      baselineUsage: 0 Day
+      adjustments: 0 Day
+      totalActualUsage: 0 Day
+      scheduledUsage: 0 Day
+      remainingUsage: 1.4 Day
+      unforecastUsage: 0 Day 
+      # postWeekendTimeBooking
+    - resourceName: EMEA Co 3 x'x x&x Employee Three
+      assignment: EMEA Co 3 x\'x x&amp;x Employee Three - UK TOIL
+      baselineUsage: 0 Day
+      adjustments: 0 Day
+      totalActualUsage: 0 Day
+      scheduledUsage: 0 Day
+      remainingUsage: 2.7 Day
+      unforecastUsage: 0 Day
+      #fouth
+    - resourceName: EMEA Co 3 x'x x&x Employee Three
+      assignment: EMEA Co 3 x\'x x&amp;x Employee Three - UK TOIL
+      baselineUsage: 0 Day
+      adjustments: 0 Day
+      totalActualUsage: 1 Day
+      scheduledUsage: 0 Day
+      remainingUsage: 1.7 Day
+      unforecastUsage: 0 Day
+      
+  - testStage: postOvertimeBooking
+    resourceForecasts:
+       - resourceName: EMEA Co 3 x'x x&x Employee Three
+         facts:
+         - factName: UsageForecast
+           period: March 2013
+           businessUnitName: EMEA Co 3 (Operating EUR)
+           deliveryEngagementName: General Consulting Delivery Engagement x'x x&x <testName> <dt>
+           deliveryElementName: T&M 129
+           activityName: T&M 129
+           expectedValues: 
+           - measure: Actual
+             value: 11.8
+           - measure: P2 Forecast
+             value: 20.8
+          
+  - testStage: postWeekendTimeBooking
+    resourceForecasts:
+       - resourceName: EMEA Co 3 x'x x&x Employee Three
+         facts:
+         - factName: UsageForecast
+           period: March 2013
+           businessUnitName: EMEA Co 3 (Operating EUR)
+           deliveryEngagementName: General Consulting Delivery Engagement x'x x&x <testName> <dt>
+           deliveryElementName: T&M 129
+           activityName: T&M 129
+           expectedValues: 
+           - measure: Actual
+             value: 17.467
+           - measure: P2 Forecast
+             value: 21.467

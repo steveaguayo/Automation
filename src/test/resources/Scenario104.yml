@@ -1,0 +1,347 @@
+---
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/01/2013
+        closeDate: 01/01/2013
+        forecastStatus: Probable (60%)
+        winDate: 01/07/2013
+        
+        deliveryDateEdits:
+          - name: High Level Forecast #  automatically set
+            date: 01/01/2013
+            isActive: false
+            checkBox: true
+            isAutomatic: true
+          - name: StuffDone (Revenue)
+            date: 01/05/2013
+            isActive: true
+            checkBox: true
+            isAutomatic: true
+          - name: licenses
+            date: 01/04/2013
+            isActive: true
+            checkBox: true
+            isAutomatic: true
+            
+          - name: Employee One
+            isActive: false
+            checkBox: true
+            isAutomatic: true
+          - name: Associate One
+            isActive: false
+            checkBox: true
+            isAutomatic: true
+            
+          - name: High Level Forecast #  manually set
+            date: 01/05/2013
+            isActive: true
+            checkBox: false
+            isAutomatic: false
+          - name: StuffDone (Revenue)
+            date: 01/06/2013
+            isActive: true
+            checkBox: true
+            isAutomatic: false
+          - name: licenses
+            date: 01/05/2013
+            isActive: true
+            checkBox: true
+            isAutomatic: false
+            
+          - name: Employee One
+            isActive: false
+            checkBox: true
+            isAutomatic: false
+          - name: Associate One
+            isActive: false
+            checkBox: true
+            isAutomatic: false
+
+        deliveryEngagements:
+          - name: Delivery Engagement x'x x&x <testName> <dt>
+            productGroup: General Consulting (No Delivery Elements)
+#            expectedStartDate: 01/05/2013      UPDATE
+            expectedStartDate: 01/04/2013
+            expectedEndDate: 02/12/2013
+            contractRevenue: 100000            
+
+            deliveryElements:
+              - name: T&M Delivery Element x'x x&x <testName> <dt>
+                product: T&M           
+                activityAssignments:
+                  - resourceName: UK Co 1 x'x x&x Employee One
+                    revenueRate: 1000
+                    costRate: 600
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 27/05/2013
+                    remainingEffort: 5
+                    utilisationPct: 100
+                    
+              - name: VAPP Delivery Element x'x x&x <testName> <dt>
+                product: Variable Amount Per Period
+                annuities:
+                  - name: licenses
+#                    startDate: 01/05/2013    UPDATE
+                    startDate: 01/04/2013
+                    numberOfPeriods: 2
+                    cost: 500
+                    revenue: 1000
+                    
+              - name: VAPM Delivery Element x'x x&x <testName> <dt>
+                product: Fixed Price                
+                activityAssignments:
+                  - resourceName: UK Co 1 x'x x&x Associate One
+                    costRate: 600
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 27/05/2013      
+                    remainingEffort: 5
+                    utilisationPct: 100
+                    costOnlyAssignment: true
+                revenueMilestones:
+                  - name: StuffDone
+                    value: 100000
+#                    date: 01/06/2013           UPDATE
+                    date: 01/05/2013
+
+expectedResults:
+  - testStage: preSalesOppWin
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 100000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 100000.00
+                  
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 30/05/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          value: 0
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 31/05/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          value: 0
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 03/06/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          value: 0        
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 01/06/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          value: 0
+   
+#
+#  - testStage: AcceptanceDateChange
+#        OffsetType: StartofWeek
+#        IsAutomatic: true 
+#        FirstNewAcceptanceDate: 12/06/2013 
+#        expectedResults:
+#        - AssignmentStartDate: 17/06/2013
+#        SecondNewAcceptanceDate: 01/07/2013
+#         
+#
+#   
+  - testStage: postSalesOppWin
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      # was skipped for #2769 now active for retest in 1.19
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: July 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 107000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 107000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 85000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 22000.00
+          
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 5300.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 1700.00
+          
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 30/05/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 2000.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 31/05/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 4000.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 03/06/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 1000.00        
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 01/06/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 100000.00
+
+  - testStage: postStartDateWizard
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      # was skipped for #2769 now active for retest in 1.19
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: July 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 107000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 107000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 1000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 1000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: July 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 105000.00
+          
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 500.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 500.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: July 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 6000.00
+          
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 30/05/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 2000.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 05/07/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 5000.00     
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 01/06/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 100000.00

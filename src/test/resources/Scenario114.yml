@@ -1,0 +1,545 @@
+---
+# WORKING AT RISK
+# Resourced Project with Time Entries invoiced 
+# for an account without VAT and a product that requires POs
+# PO allocated and time invoiced in full, check on PerfAnalysis to check values as expected
+# Resource Assignments and time entered spans months and 2 non-working days
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/01/2013
+        closeDate: 01/01/2013
+        forecastStatus: Probable (60%)
+
+        deliveryEngagements:
+          - name: Delivery Engagement x'x x&x <testName> <dt>
+            productGroup: General Consulting (No Delivery Elements)
+            expectedStartDate: 01/01/2013
+            expectedEndDate: 01/01/2014
+            contractRevenue: 100000            
+            deliveryStatus: Won
+            
+            deliveryElements:
+              - name: T&M
+                step2Name: Fixed Price (was T&M)
+                product: T&M
+                step2Product: Fixed Price
+                
+                bulkEdits:
+                  - operation: Decrease by %
+                    value: 10
+                
+                activityAssignments:
+                  - resourceName: US Co 1 x'x x&x Associate Four                     
+                    revenueRate: 1000
+                    costRate: 600
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 28/02/2013
+                    remainingEffort: 23
+                    utilisationPct: 100                    
+                revenueMilestones:
+                  - name: Work Done
+                    creationStage: create step 2 revenue milestones for delivery elements
+                    value: 100000
+                    date: 05/04/2013
+                    
+timesheets:
+  - resourceName: US Co 1 x'x x&x Associate Four 
+    trackingPeriodStartDate: 28/02/2013
+    timeEntries:
+    - startDate: 28/02/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+  - resourceName: US Co 1 x'x x&x Associate Four 
+    trackingPeriodStartDate: 01/03/2013
+    timeEntries:
+    - startDate: 01/02/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M   
+      entryUnits: 7.5 
+  - resourceName: US Co 1 x'x x&x Associate Four 
+    trackingPeriodStartDate: 04/03/2013
+    timeEntries:
+    - startDate: 04/03/2013
+      endDate: 08/03/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+  - resourceName: US Co 1 x'x x&x Associate Four 
+    trackingPeriodStartDate: 11/03/2013
+    timeEntries:
+    - startDate: 11/03/2013
+      endDate: 15/03/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+  - resourceName: US Co 1 x'x x&x Associate Four 
+    trackingPeriodStartDate: 18/03/2013
+    timeEntries:
+    - startDate: 18/03/2013
+      endDate: 22/03/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5    
+  - resourceName: US Co 1 x'x x&x Associate Four 
+    trackingPeriodStartDate: 25/03/2013
+    timeEntries:
+    - startDate: 25/03/2013
+      endDate: 28/03/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+  - resourceName: US Co 1 x'x x&x Associate Four 
+    trackingPeriodStartDate: 01/04/2013
+    timeEntries:
+    - startDate: 02/04/2013
+      endDate: 03/04/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+
+expenseClaims:
+  - resourceName: US Co 1 x'x x&x Associate Four 
+    testStage: enterExpenses
+    expenseEntries:
+    - name: Weekly Train Pass
+      incurredDate: 28/02/2013
+      activityName: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+      expenseDetails:
+      - category: Train
+        currency: GBP
+        amount: 50.34
+        notes: Weekly Train Pass
+
+invoices:
+  - testStage: preMilestoneComplete
+    deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+    expectedInvoiceValue: GBP 60.41
+    invoiceGroups:
+      'Fixed Price (was T&M) Expenses':
+        items: 
+        - path: Fixed Price (was T&M) Expenses
+    purchaseOrders:
+      - reference: PO0114 FP Exp <dt>.1
+        orderValue: 1000
+        orderDate: 11/03/2013
+  - testStage: postMilestoneComplete
+    deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+    expectedInvoiceValue: GBP 120,000.00
+    invoiceGroups:
+      'Fixed Price (was T&M) Services':
+        items: 
+        - path: Fixed Price (was T&M) Services
+    purchaseOrders:
+      - reference: PO0114 FP <dt>.2
+        orderValue: 100000
+        orderDate: 11/03/2013    
+          
+expectedResults:
+  - testStage: preRateReduction
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: XXX
+          value: 0
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 23050.34
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 787.75
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: March 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 15000.00 
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: April 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 1500.00 
+          
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 650.34
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: March 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 12000.00 
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: April 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 1200.00
+          
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 28/02/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 1000.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 31/03/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 20000.00 
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 03/04/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 2000.00
+  - testStage: postRateReduction
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        # was skipped for #2769 now active for retest in 1.19
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: XXX
+          value: 0
+      - factName: BookingForecast
+        # was skipped for #2769 now active for retest in 1.19
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 20750.34
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 712.75
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: March 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 13500.00 
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: April 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 1350.00 
+          
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 650.34
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: March 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 12000.00 
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: April 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 1200.00
+          
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 28/02/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 900.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 31/03/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 18000.00 
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 03/04/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 1800.00
+  - testStage: postProductChange
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        # was skipped for #2769 now active for retest in 1.19
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: XXX
+          value: 0
+      - factName: BookingForecast
+        # was skipped for #2769 now active for retest in 1.19
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 100050.34
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 3298.62
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: March 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 65217.39
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: April 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 6521.74
+          
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 650.34
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: March 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 12000.00 
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: April 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 1200.00
+          
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 05/04/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 100000.00
+  - testStage: postSalesOppWin
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        # was skipped for #2769 now active for retest in 1.19
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 100050.34
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 4398.17
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: March 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 86956.52
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: April 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 8695.65
+          
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 650.34
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: March 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 12000.00 
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: April 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 1200.00
+          
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 05/04/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 100000.00
+  - testStage: postInvoicing
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        # was skipped for #2769 now active for retest in 1.19
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 100050.34
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 4398.17
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: March 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 86956.52
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: April 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 8695.65
+          
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: February 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 650.34
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: March 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 12000.00 
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: April 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 1200.00
+          
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 05/04/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 100000.00          

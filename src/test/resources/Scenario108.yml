@@ -1,0 +1,1091 @@
+---
+# Test overview
+# A Group Assignment test: checking revenue at different states before and after group members are scheduled and time actualised
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/01/2013
+        closeDate: 01/01/2013
+        forecastStatus: Probable (60%)
+               
+        deliveryEngagements:
+          - name: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+            productGroup: General Consulting (No Delivery Elements)
+            expectedStartDate: 01/05/2013
+            expectedEndDate: 31/05/2013
+            contractRevenue: 200000
+            
+            deliveryElements:
+              - name: Fixed Price
+                product: Fixed Price
+                
+                activityAssignments:
+                  - resourceName: UK DBAs
+                    groupAssignmentsEnabled: true             
+                    costRate: 375
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 06/05/2013
+                    remainingEffort: 20
+                    utilisationPct: 100
+                
+                    scheduledActivity:
+                      - parentResourceName: UK DBAs
+                        resourceName: UK Co 1 x'x x&x Employee One
+                        scheduledDays:
+                          - date: 6/05/2013
+                            numberOfHours: 7.5
+                          - date: 7/05/2013
+                            numberOfHours: 7.5
+                      - parentResourceName: UK DBAs
+                        resourceName: UK Co 2 x'x x&x Employee Two
+                        scheduledDays:
+                          - date: 9/05/2013
+                            numberOfHours: 7.5
+                          - date: 10/05/2013
+                            numberOfHours: 7.5
+
+                  - resourceName: US Co 1 x'x x&x Employee Four                    
+                    costRate: 750
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 06/05/2013
+                    remainingEffort: 20
+                    utilisationPct: 100
+
+                revenueMilestones:
+                  - name: First Month
+                    value: 200000
+                    date: 01/08/2013
+
+timesheets:
+  - testStage: firstTimeBooking
+    resourceName: UK Co 1 x'x x&x Employee One 
+    trackingPeriodStartDate: 06/05/2013
+    timeEntries:
+    - actualiseForecastEntry: true
+      startDate: 07/05/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Fixed Price
+  - testStage: firstTimeBooking
+    resourceName: UK Co 2 x'x x&x Employee Two
+    trackingPeriodStartDate: 06/05/2013
+    timeEntries:
+    - actualiseForecastEntry: true
+      startDate: 10/05/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Fixed Price
+  - testStage: firstTimeBooking
+    resourceName: US Co 1 x'x x&x Employee Four 
+    trackingPeriodStartDate: 06/05/2013
+    timeEntries:
+    - actualiseForecastEntry: true
+      startDate: 10/05/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Fixed Price
+  - testStage: secondTimeBooking
+    resourceName: UK Co 1 x'x x&x Employee One 
+    trackingPeriodStartDate: 13/05/2013
+    timeEntries:
+    - startDate: 13/05/2013
+      endDate: 17/05/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Fixed Price
+      entryUnits: 7.5
+  - testStage: secondTimeBooking
+    resourceName: UK Co 2 x'x x&x Employee Two
+    trackingPeriodStartDate: 13/05/2013
+    timeEntries:
+    - startDate: 13/05/2013
+      endDate: 17/05/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Fixed Price
+      entryUnits: 7.5
+  - testStage: secondTimeBooking
+    resourceName: US Co 1 x'x x&x Employee Four 
+    trackingPeriodStartDate: 13/05/2013
+    timeEntries:
+    - actualiseForecastEntry: true
+      startDate: 17/05/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Fixed Price
+
+expectedResults:
+  - testStage: postInitialSetup
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 200000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 200000.00
+    resourceForecasts:
+      - resourceName: UK DBAs
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Start Date
+            value: 06/05/2013
+          - measure: Forecast P2 End Date
+            value: 04/06/2013
+      - resourceName: US Co 1 x'x x&x Employee Four
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Start Date
+            value: 06/05/2013
+          - measure: Forecast P2 End Date
+            value: 04/06/2013
+  - testStage: postSalesOppWin
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 200000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 90000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 10000.00
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 90000.00
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 10000.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 6750.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 750.00
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 13500.00
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 1500.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 200000.00
+    resourceForecasts:
+      - resourceName: UK DBAs
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Start Date
+            value: 06/05/2013
+          - measure: Forecast P1 End Date
+            value: 04/06/2013
+      - resourceName: US Co 1 x'x x&x Employee Four
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Start Date
+            value: 06/05/2013
+          - measure: Forecast P2 End Date
+            value: 04/06/2013
+  - testStage: postScheduledWork
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 200000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 90000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 10000.00
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 90000.00
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 10000.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 6750.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 750.00
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 13500.00
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 1500.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 200000.00
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Start Date
+            value: 06/05/2013
+          - measure: Forecast P1 End Date
+            value: 04/06/2013
+        - factName: UsageForecast
+          period: May / 2 / 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2   
+        - factName: UsageForecast
+          period: May 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+            value: 0
+          - measure: P1 Forecast
+            value: 2
+      - resourceName: UK Co 2 x'x x&x Employee Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Start Date
+            value: 06/05/2013
+          - measure: Forecast P1 End Date
+            value: 04/06/2013
+        - factName: UsageForecast
+          period: May / 2 / 2013
+          businessUnitName: UK Co 2 (Operating GBP)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2   
+        - factName: UsageForecast
+          period: May 2013
+          businessUnitName: UK Co 2 (Operating GBP)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2
+      - resourceName: US Co 1 x'x x&x Employee Four
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Start Date
+            value: 06/05/2013
+          - measure: Forecast P1 End Date
+            value: 04/06/2013
+        - factName: UsageForecast
+          period: May / 2 / 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 4   
+        - factName: UsageForecast
+          period: May / 3 / 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 5   
+        - factName: UsageForecast
+          period: May / 4 / 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 5   
+        - factName: UsageForecast
+          period: May / 5 / 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 4   
+        - factName: UsageForecast
+          period: May 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 18
+        - factName: UsageForecast
+          period: Jun / 2 / 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2   
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2
+  - testStage: postFirstTimeBooking
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 200000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 5714.29
+        - measure: P1 Forecast
+          currency: GBP
+          value: 85714.29
+      - factName: RevenueForecast
+        businessUnitName: UK Co 2 (Operating GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 5714.29
+        - measure: P1 Forecast
+          currency: GBP
+          value: 5714.29
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 5714.29
+        - measure: P1 Forecast
+          currency: GBP
+          value: 85714.29
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 11428.57
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 11428.57
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 750.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 11250.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 650.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 5900.00
+      - factName: CostForecast
+        businessUnitName: UK Co 2 (Operating GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 650.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 650.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 750.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 200000.00
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Start Date
+            value: 06/05/2013
+          - measure: Forecast P1 End Date
+            value: 04/06/2013
+        - factName: UsageForecast
+          period: May / 2 / 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 1
+          - measure: P1 Forecast
+            value: 1
+        - factName: UsageForecast
+          period: May 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 1
+          - measure: P1 Forecast
+            value: 1
+      - resourceName: UK Co 2 x'x x&x Employee Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Start Date
+            value: 06/05/2013
+          - measure: Forecast P1 End Date
+            value: 04/06/2013
+        - factName: UsageForecast
+          period: May / 2 / 2013
+          businessUnitName: UK Co 2 (Operating GBP)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 1
+          - measure: P1 Forecast
+            value: 1
+        - factName: UsageForecast
+          period: May 2013
+          businessUnitName: UK Co 2 (Operating GBP)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 1
+          - measure: P1 Forecast
+            value: 1
+      - resourceName: US Co 1 x'x x&x Employee Four
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Start Date
+            value: 06/05/2013
+          - measure: Forecast P1 End Date
+            value: 04/06/2013
+        - factName: UsageForecast
+          period: May / 2 / 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 1
+          - measure: P1 Forecast
+            value: 1   
+        - factName: UsageForecast
+          period: May / 3 / 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 5   
+        - factName: UsageForecast
+          period: May / 4 / 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 5   
+        - factName: UsageForecast
+          period: May / 5 / 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 4   
+        - factName: UsageForecast
+          period: May 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 1
+          - measure: P1 Forecast
+            value: 15
+        - factName: UsageForecast
+          period: Jun / 2 / 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2   
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2
+  - testStage: postSecondTimeBooking
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 200000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 33333.33
+        - measure: P1 Forecast
+          currency: GBP
+          value: 83333.33
+      - factName: RevenueForecast
+        businessUnitName: UK Co 2 (Operating GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 33333.33
+        - measure: P1 Forecast
+          currency: GBP
+          value: 33333.33
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 11111.11
+        - measure: P1 Forecast
+          currency: GBP
+          value: 61111.11
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 11111.11
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 11111.11
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 3900.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 7275.00
+      - factName: CostForecast
+        businessUnitName: UK Co 2 (Operating GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 3900.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 3900.00
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: May 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 1500.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 8250.00
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 1500.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 0.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 750.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 200000.00
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Start Date
+            value: 06/05/2013
+          - measure: Forecast P1 End Date
+            value: 04/06/2013
+        - factName: UsageForecast
+          period: May / 2 / 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 1
+          - measure: P1 Forecast
+            value: 1
+        - factName: UsageForecast
+          period: May / 3 / 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 5
+          - measure: P1 Forecast
+            value: 5
+        - factName: UsageForecast
+          period: May 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 6
+          - measure: P1 Forecast
+            value: 6
+      - resourceName: UK Co 2 x'x x&x Employee Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Start Date
+            value: 06/05/2013
+          - measure: Forecast P1 End Date
+            value: 04/06/2013
+        - factName: UsageForecast
+          period: May / 2 / 2013
+          businessUnitName: UK Co 2 (Operating GBP)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 1
+          - measure: P1 Forecast
+            value: 1
+        - factName: UsageForecast
+          period: May / 3 / 2013
+          businessUnitName: UK Co 2 (Operating GBP)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 5
+          - measure: P1 Forecast
+            value: 5
+        - factName: UsageForecast
+          period: May 2013
+          businessUnitName: UK Co 2 (Operating GBP)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 6
+          - measure: P1 Forecast
+            value: 6
+      - resourceName: US Co 1 x'x x&x Employee Four
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Start Date
+            value: 06/05/2013
+          - measure: Forecast P1 End Date
+            value: 04/06/2013
+        - factName: UsageForecast
+          period: May / 2 / 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 1
+          - measure: P1 Forecast
+            value: 1
+        - factName: UsageForecast
+          period: May / 3 / 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 1
+          - measure: P1 Forecast
+            value: 1
+        - factName: UsageForecast
+          period: May / 4 / 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 5
+        - factName: UsageForecast
+          period: May / 5 / 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 4
+        - factName: UsageForecast
+          period: May 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 2
+          - measure: P1 Forecast
+            value: 11
+        - factName: UsageForecast
+          period: Jun / 2 / 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2 
+        

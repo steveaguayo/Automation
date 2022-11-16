@@ -1,0 +1,115 @@
+---
+# Test overview
+#Mobile Automation
+#
+#CONFIGURATION NOTES
+#
+#Create new Business Unit Group = Group 5 (Mobile)
+#Create new Business Unit = UK Co 5 iPhone (Operating/Trading GBP)
+#Create new Business Unit = UK Co 5 iPhone (Operating/Trading GBP)
+#Create new Resource = UK Co 5 iPhone x'x x&x Employee Eight
+#Create new Resource = UK Co 5 iPhone x'x x&x Employee Eight
+#Create new User = UK Co 5 iPhone x'x x&x Employee Eight
+#Create new User = UK Co 5 iPhone x'x x&x Employee Eight
+#
+userCredentials:
+  - operatingSystem: iOS
+accounts:
+  - name: Standard Rate UK Co 5 iPhone Account <testName> <dt>
+    operatingBusinessUnit:  UK Co 5 iPhone (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+       
+    salesOpportunities:
+      - name: Sales Opp iPhone <testName> <dt>
+        businessUnit:   UK Co 5 iPhone (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 31/08/2013
+        closeDate: 01/09/2013
+        forecastStatus: Probable (60%)
+               
+        deliveryEngagements:
+          - name: T&M Delivery Engagement iPhone <testName> <dt>
+            productGroup: General Consulting (No Delivery Elements)
+            expectedStartDate: 02/09/2013
+            expectedEndDate: 20/09/2013
+          
+            deliveryElements:
+              - name: 134
+                product: T&M 
+                activityAssignments:
+                  - resourceName: UK Co 5 iPhone x'x x&x Employee Eight         
+                    revenueRate: 700
+                    costRate: 575
+                    usageBehaviourRule: Defined Utilisation between two Dates
+                    startDate: 02/09/2013
+                    endDate: 20/09/2013
+                    utilisationPct: 100
+#mobile dates are US format            
+#  MOBILE ENTRY        
+timesheets:
+- testStage: timeBooking
+  resourceName: UK Co 5 iPhone x'x x&x Employee Eight 
+  trackingPeriodStartDate: 9/2/13
+  mobilePeriodDate: September 02
+  timeEntries:
+  - startDate: Monday, September 2, 2013
+    endDate: Monday, September 2, 2013
+    timeType: Business Day - Standard Time
+    entryUnits: 7.50
+    plannedActivity: Standard Rate UK Co 5 iPhone Account <testName> <dt>
+#  AMENDED ITEMS 
+- testStage: webTimeEdit
+  resourceName: UK Co 5 iPhone x'x x&x Employee Eight 
+  trackingPeriodStartDate: 02/09/2013
+  mobileTrackingPeriodStartDate: 9/2/13
+  mobilePeriodDate: September 02
+  timeEntries:
+  - startDate: 02/09/2013
+    endDate: 02/09/2013
+    entryUnits: 6.5
+    plannedActivity: Standard Rate UK Co 5 iPhone Account <testName> <dt>      
+#  MOBILE VALIDATION       
+- testStage: verifyTime
+  resourceName: UK Co 5 iPhone x'x x&x Employee Eight 
+  trackingPeriodStartDate: 9/2/13
+  mobilePeriodDate: September 02
+  timeEntries:
+  - startDate: Monday
+    entryUnits: 6.5 hours
+#  MOBILE ENTRY
+expenseClaims:
+- resourceName: UK Co 5 iPhone x'x x&x Employee Eight 
+  expenseEntries:
+  - name: Car Mileage
+    incurredDate: 9/3/2013
+    activityName: Standard Rate UK Co 5 iPhone Account <testName> <dt>-134
+    monthBeginning: 01 September 2013
+    incurredDay: 3
+    expenseDetails:
+    - category: Mileage
+      currency: GBP
+      miles: 40
+      startLocation: Work
+      endLocation: Project X
+      notes: Journey from work to Project X
+#  AMENDED ITEMS
+- resourceName: UK Co 5 iPhone x'x x&x Employee Eight 
+  expenseEntries:
+  - name: Car Mileage
+    incurredDate: 03/09/2013
+    activityName: Standard Rate UK Co 5 iPhone Account <testName> <dt>-Sales Opp iPhone <testName> <dt>
+    expenseDetails:
+    - category: Mileage
+      currency: GBP
+      startLocation: Work
+      endLocation: Project X
+      notes: Journey from work to Project X  
+- resourceName: UK Co 5 iPhone x'x x&x Employee Eight 
+  expenseEntries:
+  - name: Car Mileage
+    expenseDetails:
+    - taxCode: Zero Rate VAT

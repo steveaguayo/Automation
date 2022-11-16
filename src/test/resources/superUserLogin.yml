@@ -1,0 +1,375 @@
+userCredentials:
+  - environment: kimbleAutomation128
+    username: system@kimble_auto128.com
+    password: nji98uhb
+    securityToken: KZiYEZENO4KWuBPEaLBgD34hw
+    androidUsername: androidautodev128_1@kimbleapps.com
+    iPhoneUsername: iphoneautodev128_1@kimbleapps.com
+    
+  - environment: kimbleAutomation128[2]
+    username: system@kimble_auto128[2].com
+    password: nji98uhb
+#   id: 00D1t000000E3UM
+    securityToken: Ci805gXGeZ8DBhm1FvWSaqlj
+    androidUsername: androidautodev128_2@kimbleapps.com
+    iPhoneUsername:  iphoneautodev128_2@kimbleapps.com
+    
+  - environment: kimbleAutomation128[3]
+    username: system@kimble_auto128[3].com
+    password: nji98uhb
+#   id: 00D1t000000E3UW
+    securityToken: 6fmax2Q8I0bEiUozmJE7fwDkV
+    androidUsername: androidautodev128_3@kimbleapps.com
+    iPhoneUsername:  iphoneautodev128_3@kimbleapps.com 
+
+  - environment: kimbleAutomationLDV
+    username: kimble.admin@kimble_ldv127.com
+    password: Salesforce1
+    securityToken: 0BhQnfGK4orxVeY2YPzZeCPc     
+    loginUrl: https://test.salesforce.com/
+    
+  - environment: kimbleAutomation130
+    username: auto1@kimble_autotst130.com
+    password: vgt59ikm
+#   id: 00D1t000000tJOG
+    securityToken: diVLKzRwaKM7aRUFj2HkVcHIa    
+    androidUsername: androidautodev130_1@kimbleapps.com
+    iPhoneUsername: iphoneautodev130_1@kimbleapps.com
+    
+  - environment: kimbleAutomation130[2]
+    username: auto2@kimble_autotst130.com
+    password: vgt59ikm
+#   id: 00D4J000000GQwf
+    securityToken: 4WJHzkP8f6rgDK34v83hhjPb   
+    androidUsername: androidautodev130_2@kimbleapps.com
+    iPhoneUsername: iphoneautodev130_2@kimbleapps.com
+    
+  - environment: kimbleAutomation130[3]
+    username: automation3@kimble_autotst130.com
+    password: cft67ygv
+#   id: 00D4J000000pzEZ
+    securityToken: s79NumA7hRV5AyyGtKNLpH0Tt   
+    androidUsername: androidautodev130_3@kimbleapps.com
+    iPhoneUsername: iphoneautodev130_3@kimbleapps.com  
+    
+  - environment: kimbleAutomationHarry131
+    username: auto1@kimble_dev131.com
+    password: xdr56tfc
+#   id: 00D4J000000oz7J
+    securityToken: EfsNirBzZdmaJLBBgwlc9bMR
+    androidUsername: androidautodev131_1@kimbleapps.com
+    iPhoneUsername: iphoneautodev131_1@kimbleapps.com
+    
+  - environment: kimbleAutomation131Pkg[1]
+    username: system@kimble_autopkg131(1).com
+    password: nji90okm
+    securityToken: JYMHAkEjS7o6ufw04oXmKxL9u
+    androidUsername: androidautodev131pkg_1@kimbleapps.com
+    iPhoneUsername: iphoneautodev131pkg_1@kimbleapps.com
+#   orgId: 00D4J00000020MD
+
+  - environment: kimbleAutomation131Pkg[2]
+    username: system@kimble_autopkg131(2).com
+    password: nji90okm
+    securityToken: DPif0rg6Rik6hzQWe55Nv0Nx
+    androidUsername: androidautodev131pkg_2@kimbleapps.com
+    iPhoneUsername: iphoneautodev131pkg_2@kimbleapps.com
+#   orgId: 00D3z000002Mesl
+
+  - environment: kimbleAutomation131Pkg[3]
+    username: system@kimble_autopkg131(3).com
+    password: nji90okm
+    securityToken: YAFcnq7oNDYKpKo0Hk9ZQwLuY
+    androidUsername: androidautodev131pkg_3@kimbleapps.com
+    iPhoneUsername: iphoneautodev131pkg_3@kimbleapps.com
+#   orgId: 00D3z000002Met5
+
+  - environment: kimbleAutomation131
+    username: auto1@kimble_dev131.com
+    password: xdr56tfc
+#   id: 00D3z000001BObg
+    securityToken: EfsNirBzZdmaJLBBgwlc9bMR    
+    androidUsername: androidautodev131_1@kimbleapps.com
+    iPhoneUsername: iphoneautodev131_1@kimbleapps.com
+    
+  - environment: kimbleAutomation131[2]
+    username: auto2@kimble_dev131.com
+    password: xdr56tfc
+#   id: 00D3z000001CmOi
+    securityToken: ZXalVpTeTWFUQk5nDeNOKqXkS
+    androidUsername: androidautodev131_2@kimbleapps.com
+    iPhoneUsername: iphoneautodev131_2@kimbleapps.com
+    
+  - environment: kimbleAutomation131[3]
+    username: auto3@kimble_dev131.com
+    password: xdr56tfc
+#   id: 00D3z000001CmTj
+    securityToken: poOfAXyaHBYoHgDyd11akYPK4
+    androidUsername: androidautodev131_3@kimbleapps.com
+    iPhoneUsername: iphoneautodev131_3@kimbleapps.com
+    
+  - environment: kimbleAutomation131PkgPreviewSummer20
+    username: harry.fothergill-zs3r@force.com
+    password: xdr56tfc
+    usernameLightning: harry.fothergill-zs3r@force.com
+    passwordLightning: xdr56tfc
+    securityToken: 8H8YqikMNVt9yrDz7ZUnBHFVS
+    androidUsername: androidautodev131pkg_1@summer20.com
+    iPhoneUsername: iphoneautodev131pkg_1@summer20.com
+#   orgId: 00DB0000000YgCz
+
+  - environment: KimbleEncryption[1]
+    username: encryptorg@kimbleapps.com
+    password: cft67ygv
+    securityToken: F2AhbtzQgoCrqDag9MG8T5swZ
+    androidUsername: androidautodev133_1encrypt@kimbleapps.com
+    iPhoneUsername: iphoneautodev133_1encrypt@kimbleapps.com
+#   orgId: 00D4L000000Fn7P
+
+  - environment: kimbleAutomation132[1]
+    username: auto1@kimble_dev132.com
+    password: cft67ygv
+#   id: 
+    securityToken: P0JVZCVO8lO0ZaduG7gEbUWs
+    androidUsername: androidautodev132_1@kimbleapps.com
+    iPhoneUsername: iphoneautodev132_1@kimbleapps.com
+    
+  - environment: kimbleAutomation132[2]
+    username: auto2@kimble_dev132.com
+    password: cft67ygv    
+#   id: 
+    securityToken: 207a20W59tTFYiUErQJqfC21
+    androidUsername: androidautodev132_2@kimbleapps.com
+    iPhoneUsername: iphoneautodev132_2@kimbleapps.com
+    
+  - environment: kimbleAutomation132[3]
+    username: auto3@kimble_dev132.com
+    password: cft67ygv
+#   id: 
+    securityToken: W5PnoYOe2CAYBRRazYZZfnfkw
+    androidUsername: androidautodev132_3@kimbleapps.com
+    iPhoneUsername: iphoneautodev132_3@kimbleapps.com
+
+  - environment: Martin132Auto
+    username: testauto2@kimble_tst131.com
+    password: nji90okm
+#   id: 
+    securityToken: BCAQNSTUgL1XcMVSuHyjBdpx
+    androidUsername: androidautodevmartin@kimbleapps.com
+    iPhoneUsername: iphoneautodevmartin@kimbleapps.com
+    
+  - environment: kimbleAutomation132Pkg[1]
+    username: system@kimble_autopkg132(1).com
+    password: xdr56tfc
+    securityToken: VEswkqS6EyKlyWZWDSYkrormw
+    androidUsername: androidautodev132pkg_1@kimbleapps.com
+    iPhoneUsername: iphoneautodev132pkg_1@kimbleapps.com
+#   orgId: 00D4K000002TY9b
+
+  - environment: kimbleAutomation132Pkg[2]
+    username: system@kimble_autopkg132(2).com
+    password: xdr56tfc
+    securityToken: tdmamXcOToztYJ9Fb22eWPSRD
+    androidUsername: androidautodev132pkg_2@kimbleapps.com
+    iPhoneUsername: iphoneautodev132pkg_2@kimbleapps.com
+#   orgId: 00D4K000002TYEN
+
+  - environment: kimbleAutomation132Pkg[3]
+    username: system@kimble_autopkg132(3).com
+    password: xdr56tfc
+    securityToken: 3tl6buF0D2phURbtL0O8cKW0v
+    androidUsername: androidautodev132pkg_3@kimbleapps.com
+    iPhoneUsername: iphoneautodev132pkg_3@kimbleapps.com
+#   orgId: 00D4K000002TYEX
+
+  - environment: kimbleAutomation133[1]
+    username: auto1@kimble_dev133.com
+    password: cft67ygv
+#   id: 
+    securityToken: GEWXfwkDiHpw8i41gzW6msE3p
+    androidUsername: androidautodev133_1@kimbleapps.com
+    iPhoneUsername: iphoneautodev133_1@kimbleapps.com
+    
+  - environment: kimbleAutomation133[2]
+    username: auto2@kimble_dev133.com
+    password: cft67ygv    
+#   id: 
+    securityToken: dYpKxnPIwF82OxsTmRsWxJYon
+    androidUsername: androidautodev133_2@kimbleapps.com
+    iPhoneUsername: iphoneautodev133_2@kimbleapps.com
+    
+  - environment: kimbleAutomation133[3]
+    username: auto3@kimble_dev133.com
+    password: cft67ygv
+#   id: 
+    securityToken: YvnPhfQIBxVfhxC9g2ThxH7us
+    androidUsername: androidautodev133_3@kimbleapps.com
+    iPhoneUsername: iphoneautodev133_3@kimbleapps.com
+    
+  - environment: kimbleAutomation133Pkg[1]
+    username: 1.33pkg[1]@kimbleapps.com
+    password: xdr56tfc1
+    securityToken: CdkMo8n2Lh4HygCTDTMIF5C6w
+    androidUsername: androidautodev133pkg_1@kimbleapps.com
+    iPhoneUsername: iphoneautodev133pkg_1@kimbleapps.com
+#   orgId: 00D4L000000G0Hl
+
+  - environment: kimbleAutomation133Pkg[2]
+    username: 1.33pkg[2]@kimbleapps.com
+    password: xdr56tfc
+    securityToken: QqJp1Zwh1EzH4vAkRhNfogAC
+    androidUsername:  androidautodev133pkg_2@kimbleapps.com
+    iPhoneUsername: iphoneautodev133pkg_2@kimbleapps.com
+#   orgId: 00D4L000000G0IF
+
+  - environment: kimbleAutomation133Pkg[3]
+    username: 1.33pkg[3]@kimbleapps.com
+    password: xdr56tfc
+    securityToken: be2qXoSsUMIROm3m1lVtKUPZ
+    androidUsername: androidautodev133pkg_3@kimbleapps.com
+    iPhoneUsername: iphoneautodev133pkg_3@kimbleapps.com
+#   orgId: 00D4L000000G0Ie
+
+  - environment: kimbleAutomation134[1]
+    username: auto1@kimble_dev134.com
+    password: Passw0rd1
+#   id: 
+    securityToken: oMG9oXkNyx76dWlALaajZhRU
+    androidUsername: androidautodev134_1@kimbleapps.com
+    iPhoneUsername: iphoneautodev134_1@kimbleapps.com
+    
+  - environment: kimbleAutomation134[2]
+    username: auto2@kimble_dev134.com
+    password: Passw0rd2    
+#   id: 
+    securityToken: akvZyxiDUWA7LIuRuDxKb0DEX
+    androidUsername: androidautodev134_2@kimbleapps.com
+    iPhoneUsername: iphoneautodev134_2@kimbleapps.com
+    
+  - environment: kimbleAutomation134[3]
+    username: auto3@kimble_dev134.com
+    password: Passw0rd3
+#   id: 
+    securityToken: np4RiyAJg9ay5uRkR8l9W1AJ
+    androidUsername:  androidautodev134_3@kimbleapps.com
+    iPhoneUsername: iphoneautodev134_3@kimbleapps.com
+    
+  - environment: kimbleAutomation134Pkg[1]
+    username: 134pkgauto[1]@kimbleapps.com
+    password: zse45rdx
+    securityToken: CdkMo8n2Lh4HygCTDTMIF5C6w
+    androidUsername: androidautodev134pkg_1@kimbleapps.com
+    iPhoneUsername: iphoneautodev134pkg_1@kimbleapps.com
+#   orgId: 00D4H000001IjJ6
+
+  - environment: kimbleAutomation134Pkg[2]
+    username: 134pkgauto[2]@kimbleapps.com
+    password: zse45rdx
+    securityToken: QqJp1Zwh1EzH4vAkRhNfogAC
+    androidUsername:  androidautodev134pkg_2@kimbleapps.com
+    iPhoneUsername: iphoneautodev134pkg_2@kimbleapps.com
+#   orgId: 00D4H000001IjJL
+
+  - environment: kimbleAutomation134Pkg[3]
+    username: 134pkgauto[3]@kimbleapps.com
+    password: zse45rdx
+    securityToken: be2qXoSsUMIROm3m1lVtKUPZ
+    androidUsername: androidautodev134pkg_3@kimbleapps.com
+    iPhoneUsername: iphoneautodev134pkg_3@kimbleapps.com
+#   orgId: 00D4H000001IjJV
+    
+  - environment: kimbleAutomation135[1]
+    username: autouser1@kimble_dev135.com
+    password: zse45rdx
+#   id: 
+    securityToken: W9GaU2Thq0b24HPvbNCawQXKG
+    androidUsername: androidautodev135_1@kimbleapps.com
+    iPhoneUsername: iphoneautodev135_1@kimbleapps.com
+    
+  - environment: kimbleAutomation135[2]
+    username: autouser2@kimble_dev135.com
+    password: zse45rdx
+#   id: 
+    securityToken: 3AOXN1k7tPOwOoNCQdbqOS45
+    androidUsername: androidautodev135_2@kimbleapps.com
+    iPhoneUsername: iphoneautodev135_2@kimbleapps.com
+    
+  - environment: kimbleAutomation135[3]
+    username: autouser3@kimble_dev135.com
+    password: zse45rdx
+#   id: 
+    securityToken: wOj81zoFdzhoSPfQsgVTaIHN
+    androidUsername:  androidautodev135_3@kimbleapps.com
+    iPhoneUsername: iphoneautodev135_3@kimbleapps.com
+    
+  - environment: kimbleAutomation135Pkg[1]
+    username: 1.35pkg[1]@kimbleapps.com
+    password: bhu89ijn
+    securityToken: 5ZhgL43a3PH3k6EfswuGQhgbj
+    androidUsername: androidautodev135pkg_1@kimbleapps.com
+    iPhoneUsername: iphoneautodev135pkg_1@kimbleapps.com
+#   orgId: 00D8d000004GvG5
+
+  - environment: kimbleAutomation135Pkg[2]
+    username: 1.35pkg[2]@kimbleapps.com
+    password: bhu89ijn
+    securityToken: ADcuu1PPLBknTQsw6XbBEUeu
+    androidUsername:  androidautodev135pkg_2@kimbleapps.com
+    iPhoneUsername: iphoneautodev135pkg_2@kimbleapps.com
+#   orgId: 00D8d000004Gw2M
+
+  - environment: kimbleAutomation135Pkg[3]
+    username: 1.35pkg[3]@kimbleapps.com
+    password: bhu89ijn
+    securityToken: xOVBOiyR5pXmpCg7LRLBxDJgd
+    androidUsername: androidautodev135pkg_3@kimbleapps.com
+    iPhoneUsername: iphoneautodev135pkg_3@kimbleapps.com
+#   orgId: 00D8d000004GwbI
+
+  - environment: kimbleAutomation136[1]
+    username: autouser1@kimble_dev136.com
+    password: xsw21qaz
+#   id: 
+    securityToken: rF7eD8pq8Jjxtui9Q5wBdaux
+    androidUsername: androidautodev136_1@kimbleapps.com
+    iPhoneUsername: iphoneautodev136_1@kimbleapps.com
+    
+  - environment: kimbleAutomation136[2]
+    username: autouser2@kimble_dev136.com
+    password: xsw21qaz
+#   id: 
+    securityToken: X9BFnN21nBf5ZHff87Nca3FR
+    androidUsername:  androidautodev136_2@kimbleapps.com
+    iPhoneUsername: iphoneautodev136_2@kimbleapps.com
+    
+  - environment: kimbleAutomation136[3]
+    username: autouser3@kimble_dev136.com
+    password: xsw21qaz
+#   id: 
+    securityToken: IS7tFuXk121IP2YWYvPjF9NI
+    androidUsername:  androidautodev136_3@kimbleapps.com
+    iPhoneUsername:  iphoneautodev136_3@kimbleapps.com
+
+  - environment: kimbleAutomation136Pkg[1]
+    username: 1.36pkg[5]@kimbleapps.com
+    password: mko09ijn
+    securityToken: D4jHeLA1EDuejUOhZLAzsG2HM
+    androidUsername: androidautodev136pkg_1@kimbleapps.com
+    iPhoneUsername: iphoneautodev136pkg_1@kimbleapps.com
+#   orgId: 00D8d000007X5eN
+
+  - environment: kimbleAutomation136Pkg[2]
+    username: 1.36pkg[6]@kimbleapps.com
+    password: mko09ijn
+    securityToken: IrRdfAWKxUr7rTVzZf27LljN
+    androidUsername: androidautodev136pkg_5@kimbleapps.com
+    iPhoneUsername: iphoneautodev136pkg_6@kimbleapps.com
+#   orgId: 00D8d000007X5eh
+
+  - environment: kimbleAutomation136Pkg[3]
+    username: 1.36pkg[7]@kimbleapps.com
+    password: mko09ijn
+    securityToken: Ls8ZjXBhA3JwONkPWNoxyCWJ
+    androidUsername: androidautodev136pkg_7@kimbleapps.com
+    iPhoneUsername: iphoneautodev136pkg_7@kimbleapps.com
+#   orgId: 00D8d000007X5er

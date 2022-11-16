@@ -1,0 +1,407 @@
+---
+# Test overview
+
+#CONFIGURATION NOTES
+#canEditCostRate = false on costBehaviourRule delivery-ResourceType
+
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit:  UK Co 4 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+       
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit:   UK Co 4 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/12/2012
+        closeDate: 01/01/2013
+        forecastStatus: Probable (60%)
+               
+        deliveryEngagements:
+          - name: Delivery Engagement x'x x&x <testName> <dt> 
+            productGroup: General Consulting (No Delivery Elements)
+            expectedStartDate: 14/01/2013
+            expectedEndDate: 22/03/2013
+            
+            activities:
+            - name: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+              timeEntryRule: DateAndTime
+          
+            deliveryElements:
+            - name: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+              product: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+              purchaseOrderRule: Purchase Order not required
+              
+              revenueMilestones:
+                  - name: Proposal Start Date
+                    value: 50000
+                    date: 01/01/2013
+                    
+              activityAssignments:
+                - resourceName: UK Co 4 x'x x&x Employee Six          
+                  costRate: 575
+                  usageBehaviourRule: Defined Utilisation between two Dates
+                  startDate: 14/01/2013
+                  endDate: 22/03/2013
+                  utilisationPct: 100
+             
+interfaceRuns:
+  - interfaceType: TimeEntryImport
+    interfaceRunData: >
+                         [  { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "14/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "15/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "16/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "17/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "18/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "21/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "22/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "23/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "24/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "25/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "28/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "29/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "30/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "31/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "01/02/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "04/02/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "05/02/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "06/02/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "07/02/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "08/02/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  }
+                         ]
+  - interfaceType: TimeEntryImport
+    interfaceRunData: >
+                        [
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "04/03/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "05/03/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "06/03/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "07/03/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+                            { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "08/03/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  }
+                        ]         
+                
+#timesheets:     #invalid now as we are using interface runs to import time
+#- testStage: firstTimeBooking
+#  resourceName: UK Co 4 x'x x&x Employee Six
+#  trackingPeriodStartDate: 14/01/2013
+#  timeEntries:
+#  - startDate: 14/01/2013
+#    endDate: 18/01/2013
+#    startTime: 08:30
+#    endTime: 16:00
+#    entryUnits: 7.5
+#    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName>-Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+#- testStage: firstTimeBooking
+#  resourceName: UK Co 4 x'x x&x Employee Six
+#  trackingPeriodStartDate: 21/01/2013
+#  timeEntries:
+#  - startDate: 21/01/2013
+#    endDate: 25/01/2013
+#    startTime: 09:30
+#    endTime: 17:00
+#    entryUnits: 7.5
+#    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName>-Cost%Complete exc Expenses and inc 3rd Party Costs (128) 
+#- testStage: firstTimeBooking
+#  resourceName: UK Co 4 x'x x&x Employee Six
+#  trackingPeriodStartDate: 28/01/2013
+#  timeEntries:
+#  - startDate: 28/01/2013
+#    endDate: 31/01/2013
+#    startTime: 08:00
+#    endTime: 15:30
+#    entryUnits: 7.5
+#    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName>-Cost%Complete exc Expenses and inc 3rd Party Costs (128) 
+#- testStage: firstTimeBooking
+#  resourceName: UK Co 4 x'x x&x Employee Six
+#  trackingPeriodStartDate: 01/02/2013
+#  timeEntries:
+#  - startDate: 01/02/2013
+#    endDate: 01/02/2013
+#    startTime: 09:00
+#    endTime: 16:30
+#    entryUnits: 7.5
+#    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName>-Cost%Complete exc Expenses and inc 3rd Party Costs (128) 
+#- testStage: firstTimeBooking
+#  resourceName: UK Co 4 x'x x&x Employee Six
+#  trackingPeriodStartDate: 04/02/2013
+#  timeEntries:
+#  - startDate: 04/02/2013
+#    endDate: 08/02/2013
+#    startTime: 09:00
+#    endTime: 16:30
+#    entryUnits: 7.5
+#    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName>-Cost%Complete exc Expenses and inc 3rd Party Costs (128) 
+#- testStage: secondTimeBooking
+#  resourceName: UK Co 4 x'x x&x Employee Six
+#  trackingPeriodStartDate: 04/03/2013
+#  timeEntries:
+#  - startDate: 04/03/2013
+#    endDate: 08/03/2013
+#    startTime: 09:00
+#    endTime: 16:30
+#    entryUnits: 7.5
+#    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName>-Cost%Complete exc Expenses and inc 3rd Party Costs (128) 
+
+        
+timeAdjustmentLists:
+  adjust time entries:
+    resourceName: UK Co 4 x'x x&x Employee Six
+    timeAdjustments:
+    - plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+      day: 22/01/2013
+      startTime: 07:30
+      endTime: 11:00
+    - plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+      day: 24/01/2013
+      startTime: 12:00
+      endTime: 16:00
+
+resources:
+    change initial resource grade:
+      resources:
+      - { name: UK Co 4 x'x x&x Employee Six, grade: Senior Tester, gradeChangeDate: 01/01/2013 }
+    
+    change test resource grade:
+     resources:
+     - { name: UK Co 4 x'x x&x Employee Six, grade: Director, gradeChangeDate: 04/03/2013 }
+    
+whatIfScenarios:
+  "create what if scenario":  { name: '128', date: 04/03/2013, type: 'AssignmentCostBasis' }     
+  
+trackingPeriodActions:
+- testStage: closeTrackingPeriods
+  businessUnitGroup: Group 4 (128)
+  action: close
+  periodName: Jan / 1 / 2013
+  removeUsage: true
+  force: false
+- testStage: closeTrackingPeriods
+  businessUnitGroup: Group 4 (128)
+  action: close
+  periodName: Jan / 2 / 2013
+  removeUsage: true
+  force: false
+- testStage: closeTrackingPeriods
+  businessUnitGroup: Group 4 (128)
+  action: close
+  periodName: Jan / 3 / 2013
+  removeUsage: true
+  force: false
+- testStage: closeTrackingPeriods
+  businessUnitGroup: Group 4 (128)
+  action: close
+  periodName: Jan / 4 / 2013
+  removeUsage: true
+  force: false
+- testStage: closeTrackingPeriods
+  businessUnitGroup: Group 4 (128)
+  action: close
+  periodName: Jan / 5 / 2013
+  removeUsage: true
+  force: false   
+
+forecastingPeriodActions:
+- testStage: closeForecastingPeriods
+  businessUnitGroup: Group 4 (128)
+  action: close
+  periodName: January 2013
+  force: false
+
+expectedResults:
+  - testStage: postInitialSetup
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 50000.00
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 14000.00
+      - factName: CostForecast
+        period: February 2013
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 11500.00
+      - factName: CostForecast
+        period: March 2013
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 9200.00
+
+    resourceForecasts:
+      - resourceName: UK Co 4 x'x x&x Employee Six
+        facts:
+        - factName: UsageForecast
+          period: January 2013
+          businessUnitName: UK Co 4 (Operating/Trading GBP)
+          deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+          activityName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 14
+        - factName: UsageForecast
+          period: February 2013
+          businessUnitName: UK Co 4 (Operating/Trading GBP)
+          deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+          activityName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 20
+  
+  - testStage: postCostRateChange 
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 13472.80
+      - factName: RevenueForecast
+        period: March 2013
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 17280.33
+      - factName: CostForecast
+        period: February 2013
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 3450.00 
+      - factName: CostForecast
+        period: March 2013
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 10325.00 
+
+    resourceForecasts:
+      - resourceName: UK Co 4 x'x x&x Employee Six
+        facts:
+        - factName: UsageForecast
+          period: January 2013
+          businessUnitName: UK Co 4 (Operating/Trading GBP)
+          deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+          activityName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+          expectedValues: 
+          - measure: Actual
+            value: 14
+          - measure: P2 Forecast
+            value: 14
+        - factName: UsageForecast
+          period: March 2013
+          businessUnitName: UK Co 4 (Operating/Trading GBP)
+          deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+          activityName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+          expectedValues: 
+          - measure: Actual
+            value: 5
+          - measure: P2 Forecast
+            value: 16
+ 
+  - testStage: postTimeAdjustment
+    resourceForecasts:
+    - resourceName: UK Co 4 x'x x&x Employee Six
+      facts:
+      - factName: UsageForecast
+        period: January 2013
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+        activityName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+        expectedValues: 
+        - measure: Actual
+          value: 13
+        - measure: P2 Forecast
+          value: 13
+            
+  - testStage: calculateCost%CompleteRevRec
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+        - factName: CostForecast
+          period: January 2013
+          businessUnitName: UK Co 4 (Operating/Trading GBP)
+          deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+          expectedValues: 
+          - measure: Actual
+            currency: GBP
+            value: 8050.00
+        - factName: CostForecast
+          period: January 2013
+          businessUnitName: UK Co 4 (Operating/Trading GBP)
+          deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+          expectedValues: 
+          - measure: P1 Forecast
+            currency: GBP
+            value: 8050.00
+        - factName: CostForecast
+          period: February 2013
+          businessUnitName: UK Co 4 (Operating/Trading GBP)
+          deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+          expectedValues: 
+          - measure: Actual
+            currency: GBP
+            value: 2875.00
+        - factName: CostForecast
+          period: February 2013
+          businessUnitName: UK Co 4 (Operating/Trading GBP)
+          deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+          expectedValues: 
+          - measure: P1 Forecast
+            currency: GBP
+            value: 10925.00
+        - factName: CostForecast
+          period: March 2013
+          businessUnitName: UK Co 4 (Operating/Trading GBP)
+          deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+          expectedValues: 
+          - measure: Actual
+            currency: GBP
+            value: 3250.00
+        - factName: CostForecast
+          period: March 2013
+          businessUnitName: UK Co 4 (Operating/Trading GBP)
+          deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+          expectedValues: 
+          - measure: P1 Forecast
+            currency: GBP
+            value: 10325.00

@@ -1,0 +1,609 @@
+---
+# Test overview
+accounts:
+  - name: Acc <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: Build and Run - Fixed Price
+        responseRequiredDate: 01/01/2013
+        closeDate: 21/01/2013
+        winDate: 01/01/2013
+        forecastStatus: Probable (60%)
+
+        deliveryEngagements:
+          - name: Build and Run - Fixed Price
+            stage: activate engagements
+            deliveryElements:
+              - name: Fixed Price Build and Run
+              - name: T&M Call Off
+          - name: Build and Run - Fixed Price
+            stage: config engagements elements
+
+            deliveryElements:
+              - name: Fixed Price Build and Run
+                stage: config engagements elements
+                forecastMode: target
+                servicesRevenue: 10000
+                
+                productExtension: Small Team
+                targetMargin: 50
+                
+                configurableAssignmentLineItems:
+                  - resourceName: US Co 1 x'x x&x Employee One                    
+                    role: Business Analyst
+                    usagePercent: 60
+                    startDate: 14/01/2013
+                    endDate: 18/01/2013
+                    cost: 500
+                  - resourceName: US Co 1 x'x x&x Employee Two
+                    role: Industry Expert
+                    usagePercent: 40
+                    startDate: 14/01/2013
+                    endDate: 16/01/2013
+                    cost: 600
+                expenseLineItems:
+                  - description: Flight to Congo
+                    category: Air Ticket
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 1500
+                    units: 1
+                    remainingRevenue: 2000
+                  - description: Daily trip to client site
+                    category: Car Rental
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 40
+                    units: 20
+              - name: T&M Call Off
+                stage: config engagements elements
+                forecastMode: expected
+                servicesRevenue: 10000
+                 
+                expectedUsage: 10
+                
+                createableAssignmentLineItems:
+                  - resourceName: US Co 1 x'x x&x Employee Four                    
+                    role: Business Analyst
+                    usagePercent: 60
+                    startDate: 14/01/2013
+                    utilisation: 100
+                    cost: 500
+                  - resourceName: US Co 1 x'x x&x Employee Two
+                    role: Industry Expert
+                    usagePercent: 40
+                    startDate: 14/01/2013
+                    utilisation: 100
+                    cost: 500
+                expenseLineItems:
+                  - description: Flight to Congo
+                    category: Air Ticket
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 1500
+                    units: 1
+                    remainingRevenue: 2000
+                  - description: Daily trip to client site
+                    category: Car Rental
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 40
+                    units: 20
+
+timesheets:
+  - testStage: enter time
+    timeEntries:
+      - localId: te1
+        startDate: 14/01/2013
+        task: "Acc <testName> <dt>-T&M Call Off "
+        entryUnits: 7.5
+        rateBand: Business Day - Standard Time
+        notes: blah
+      - localId: te2
+        startDate: 15/01/2013
+        task: "Acc <testName> <dt>-T&M Call Off "
+        entryUnits: 7.5
+        rateBand: Business Day - Standard Time
+        notes: blah
+      - localId: te3
+        startDate: 16/01/2013
+        task: "Acc <testName> <dt>-T&M Call Off "
+        entryUnits: 7.5
+        rateBand: Business Day - Standard Time
+        notes: blah
+      - localId: te4
+        startDate: 17/01/2013
+        task: "Acc <testName> <dt>-T&M Call Off "
+        entryUnits: 7.5
+        rateBand: Business Day - Standard Time
+        notes: blah
+      - localId: te5
+        startDate: 18/01/2013
+        task: "Acc <testName> <dt>-T&M Call Off "
+        entryUnits: 7.5
+        rateBand: Business Day - Standard Time
+        notes: blah
+  - testStage: validate timesheets after entering
+    timeEntries:
+      - localId: te1
+        startDate: 14/01/2013
+        task: "Acc <testName> <dt>-T&M Call Off "
+        entryUnits: 7.5
+        rateBand: Business Day - Standard Time
+        statuses: 
+          - Draft
+        notes: blah
+      - localId: te2
+        startDate: 15/01/2013
+        task: "Acc <testName> <dt>-T&M Call Off "
+        entryUnits: 7.5
+        rateBand: Business Day - Standard Time
+        statuses: 
+          - Draft
+        notes: blah
+      - localId: te3
+        startDate: 16/01/2013
+        task: "Acc <testName> <dt>-T&M Call Off "
+        entryUnits: 7.5
+        statuses: 
+          - Draft
+        rateBand: Business Day - Standard Time
+        notes: blah
+      - localId: te4
+        startDate: 17/01/2013
+        task: "Acc <testName> <dt>-T&M Call Off "
+        entryUnits: 7.5
+        rateBand: Business Day - Standard Time
+        statuses: 
+          - Draft
+        notes: blah
+      - localId: te5
+        startDate: 18/01/2013
+        task: "Acc <testName> <dt>-T&M Call Off "
+        entryUnits: 7.5
+        rateBand: Business Day - Standard Time
+        statuses: 
+          - Draft
+        notes: blah
+  - testStage: edit time
+    timeEntries:
+      - localId: te1
+        entryUnits: 6
+        notes: edited
+      - localId: te2
+        entryUnits: 7
+        notes: edited
+  - testStage: validate timesheets after editing
+    timeEntries:
+      - localId: te1
+        startDate: 14/01/2013
+        task: "Acc <testName> <dt>-T&M Call Off "
+        entryUnits: 6
+        rateBand: Business Day - Standard Time
+        statuses: 
+          - Draft
+        notes: edited
+      - localId: te2
+        startDate: 15/01/2013
+        task: "Acc <testName> <dt>-T&M Call Off "
+        entryUnits: 7
+        rateBand: Business Day - Standard Time
+        statuses: 
+          - Draft
+        notes: edited
+  - testStage: delete time
+    timeEntries:
+      - localId: te5
+  - testStage: submit time
+    timeEntries:
+      - localId: te1
+      - localId: te2
+      - localId: te3
+  - testStage: validate timesheets after submitting
+    timeEntries:
+      - localId: te1
+        startDate: 14/01/2013
+        statuses: 
+          - Submitted
+          - Approved
+          - ReadyForApproval
+      - localId: te2
+        startDate: 15/01/2013
+        statuses: 
+          - Submitted
+          - Approved
+          - ReadyForApproval
+      - localId: te3
+        startDate: 16/01/2013
+        statuses: 
+          - Submitted
+          - Approved
+          - ReadyForApproval
+        
+expenseEntries:
+  - testStage: enter claims
+    localId: ec1
+    name: expense claim 1 <testName> <dt>
+    activityName: "Acc <testName> <dt>-T&M Call Off "
+  - testStage: enter claims
+    localId: ec2
+    name: expense claim 2 <testName> <dt>
+    activityName: "Acc <testName> <dt>-T&M Call Off "
+  - testStage: validate claims after entering
+    localId: ec1
+    name: expense claim 1 <testName> <dt>
+    activityName: "Acc <testName> <dt>-T&M Call Off "
+  - testStage: validate claims after entering
+    localId: ec2
+    name: expense claim 2 <testName> <dt>
+    activityName: "Acc <testName> <dt>-T&M Call Off "
+  - testStage: edit claims
+    localId: ec1
+    name: expense claim 1 edited <testName> <dt>
+  - testStage: validate claims after editing
+    localId: ec1
+    name: expense claim 1 edited <testName> <dt>
+    activityName: "Acc <testName> <dt>-T&M Call Off "
+  - testStage: delete claims
+    localId: ec2
+  - testStage: add expense items
+    localId: ec1
+    expenseDetails:
+      - localId: ei1
+        category: Air Ticket
+        currency: GBP
+        incurredGrossAmount: 1000
+        amount: 1000
+        notes: Caught a coffee with Bob
+        incurredDate: 14/01/2013
+        startLocation: Gatwick
+        endLocation: Heathrow 
+      - localId: ei2
+        category: Car Rental
+        currency: GBP
+        incurredGrossAmount: 100
+        amount: 100
+        notes: Milk from the shop
+        incurredDate: 15/01/2013
+      - localId: ei3
+        category: Client Entertainment
+        currency: GBP
+        incurredGrossAmount: 15000 
+        amount: 15000 
+        notes: Drinks with the boys
+        incurredDate: 16/01/2013
+  - testStage: validate claims after adding items
+    localId: ec1
+    statuses: 
+      - Draft
+    expenseDetails:
+      - localId: ei1
+        category: Air Ticket
+        currency: GBP
+        incurredGrossAmount: 1000
+        notes: Caught a coffee with Bob
+        incurredDate: 14/01/2013
+        startLocation: Gatwick
+        endLocation: Heathrow 
+      - localId: ei2
+        category: Car Rental
+        currency: GBP
+        incurredGrossAmount: 100
+        notes: Milk from the shop
+        incurredDate: 15/01/2013
+      - localId: ei3
+        category: Client Entertainment
+        currency: GBP
+        incurredGrossAmount: 15000 
+        notes: Drinks with the boys
+        incurredDate: 16/01/2013
+  - testStage: edit expense items
+    localId: ec1
+    expenseDetails:
+      - localId: ei1
+        incurredGrossAmount: 2000
+        amount: 2000
+        notes: Bob didn't show up for coffee so I took a return flight
+        endLocation: Gatwick 
+  - testStage: validate claims after editing items
+    localId: ec1
+    statuses: 
+      - Draft
+    expenseDetails:
+      - localId: ei1
+        category: Air Ticket
+        currency: GBP
+        incurredGrossAmount: 2000
+        notes: Bob didn't show up for coffee so I took a return flight
+        incurredDate: 14/01/2013
+        startLocation: Gatwick
+        endLocation: Gatwick 
+      - localId: ei2
+        category: Car Rental
+        currency: GBP
+        incurredGrossAmount: 100
+        notes: Milk from the shop
+        incurredDate: 15/01/2013
+      - localId: ei3
+        category: Client Entertainment
+        currency: GBP
+        incurredGrossAmount: 15000 
+        notes: Drinks with the boys
+        incurredDate: 16/01/2013
+  - testStage: delete expense items
+    localId: ec1
+    expenseDetails:
+      - localId: ei3
+  - testStage: submit claims
+    localId: ec1
+  - testStage: validate claims after submitting
+    localId: ec1
+    statuses: 
+      - Submitted
+      - Approved
+      - ReadyForApproval
+    expenseDetails:
+      - localId: ei1
+        category: Air Ticket
+        currency: GBP
+        incurredGrossAmount: 2000
+        notes: Bob didn't show up for coffee so I took a return flight
+        incurredDate: 14/01/2013
+        startLocation: Gatwick
+        endLocation: Gatwick 
+      - localId: ei2
+        category: Car Rental
+        currency: GBP
+        incurredGrossAmount: 100
+        notes: Milk from the shop
+        incurredDate: 15/01/2013
+          
+expectedResults:
+  - testStage: validate sales forecast after entering, editing and deleteing time and expenses
+    salesOpportunityForecasts:
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        period: January 2013
+        expectedValues: 
+        - { measure: Actual, currency: GBP, value: 25600.00 }
+          
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        resourceName: US Co 1 x'x x&x Employee One
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 5560.00 }
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        resourceName: US Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 4440.00 }
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off
+        resourceName: US Co 1 x'x x&x Employee Four
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 6000.00 }
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off
+        resourceName: US Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 4000.00 }
+      - factName: RevenueForecast
+        period: January 2013
+        domainClass: Expenses 
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 2800.00 }
+      - factName: RevenueForecast
+        period: January 2013
+        domainClass: Expenses 
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 2800.00 }
+          
+      - factName: CostForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        resourceName: US Co 1 x'x x&x Employee One
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 2780.00 }
+      - factName: CostForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        resourceName: US Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 2220.00 }
+      - factName: CostForecast
+        period: January 2013
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off 
+        resourceName: US Co 1 x'x x&x Employee Four
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 3000.00 }
+      - factName: CostForecast
+        period: January 2013
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off 
+        resourceName: US Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 2000.00 }
+      - factName: CostForecast
+        period: January 2013
+        domainClass: Expenses
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run 
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 2300.00 }
+      - factName: CostForecast
+        period: January 2013
+        domainClass: Expenses
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off  
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 2300.00 }
+          
+     
+  - testStage: validate sales forecast after submitting time and expenses
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        period: January 2013
+        expectedValues: 
+        - { measure: Actual, currency: GBP, value: 25600.00 }
+          
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        resourceName: US Co 1 x'x x&x Employee One
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 5560.00 }
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        resourceName: US Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 4440.00 }
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off
+        resourceName: US Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - {measure: P1 Forecast, currency: GBP, value: 4000.00}
+      - factName: RevenueForecast
+        period: January 2013
+        domainClass: Services
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off
+        resourceName: US Co 1 x'x x&x Employee Four
+        expectedValues: 
+        - {measure: Actual, currency: GBP, value: 2733.33}
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off
+        resourceName: US Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - {measure: P1 Forecast, currency: GBP, value: 4000.00}
+      - factName: RevenueForecast
+        period: January 2013
+        domainClass: Expenses
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run 
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 2800.00 }
+      - factName: RevenueForecast
+        period: January 2013
+        domainClass: Expenses
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off
+        resourceName: US Co 1 x'x x&x Employee Four
+        expectedValues: 
+        - { measure: Actual, currency: GBP, value: 2100.00 }
+          
+      - factName: CostForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        resourceName: US Co 1 x'x x&x Employee One
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 2780.00 }
+      - factName: CostForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        resourceName: US Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 2220.00 }
+      - factName: CostForecast
+        period: January 2013
+        domainClass: Services
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off 
+        resourceName: US Co 1 x'x x&x Employee Four
+        expectedValues: 
+        - { measure: Actual, currency: GBP, value: 1366.67 }
+      - factName: CostForecast
+        period: January 2013
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off 
+        resourceName: US Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 2000.00 }
+      - factName: CostForecast
+        period: January 2013
+        domainClass: Expenses
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run 
+        expectedValues: 
+        - { measure: P1 Forecast, currency: GBP, value: 2300.00 }
+      - factName: CostForecast
+        period: January 2013
+        domainClass: Expenses
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off
+        resourceName: US Co 1 x'x x&x Employee Four
+        expectedValues: 
+        - { measure: Actual, currency: GBP, value: 2100.00 }
+
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run 
+        receivableDate: 21/01/2013
+        expectedValues: 
+        - {measure: ForecastRevenue, currency: GBP, value: 10000.00} # this is wrong - see scenario 118
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off
+        receivableDate: 21/01/2013
+        expectedValues: 
+        - {measure: ForecastRevenue, currency: GBP, value: 7733.33} # this is wrong - see scenario 118            

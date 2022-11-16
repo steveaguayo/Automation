@@ -1,0 +1,241 @@
+#Config/Notes:
+#- have asked Hubert about amending AssignmentImport Interface Type to include Utilisation %
+#- ensure activity is Date&Time
+#- create Payment Card
+# update sales UBR name
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry  
+        proposition: General Consulting
+        responseRequiredDate: 01/10/2017
+        closeDate: 01/10/2017
+        forecastStatus: Probable (60%)
+               
+        deliveryEngagements:
+        - name: T&M Delivery Engagement x'x x&x <testName> <dt>
+          productGroup: General Consulting (No Delivery Elements)
+          expectedStartDate: 01/10/2017
+          expectedEndDate: 20/10/2017
+          contractRevenue: 70000
+                       
+          deliveryElements:
+          - name: T&M 131
+            product: T&M
+              
+interfaceRuns:
+  - interfaceType: UpsertActivityAssignment
+    interfaceRunData:  >
+                          [  
+                             {"Resource" : "UK Co 1 x'x x&x Employee Three" , "Activity Role" : "Tester" , "Cost Rate" : "400" , "End Date" : "2017-10-13" , "Start Date" : "2017-10-02" , "Remaining Usage" : "75" , "Revenue Rate" : "1500" , "Activity" : "T&M 131" , "Usage Behaviour Rule" : "UBR_HERE" , "Utilisation Percentage" : "100", "Remaining Usage Unit Type" : "Hour"},
+                             {"Resource" : "UK Co 1 x'x x&x Employee Two" , "Activity Role" : "Industry Expert" , "Cost Rate" : "350" , "End Date" : "2017-10-12" , "Start Date" : "2017-10-04" , "Remaining Usage" : "52.5" , "Revenue Rate" : "1275" , "Activity" : "T&M 131" , "Usage Behaviour Rule" : "UBR_HERE" , "Utilisation Percentage" : "100", "Remaining Usage Unit Type" : "Hour" },
+                             {"Resource" : "UK Co 1 x'x x&x Employee One" , "Activity Role" : "Project Manager" , "Cost Rate" : "575" , "End Date" : "2017-10-10" , "Start Date" : "2017-10-05" , "Remaining Usage" : "30" , "Revenue Rate" : "1100" , "Activity" : "T&M 131" , "Usage Behaviour Rule" : "UBR_HERE" , "Utilisation Percentage" : "100", "Remaining Usage Unit Type" : "Hour" }
+                          ]
+
+  - interfaceType: TimeEntryImport
+    interfaceRunData: >
+                         [  
+                            { "Resource" : "UK Co 1 x'x x&x Employee Three" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "02/10/2017" , "Project" : "T&M 131"  },
+                            { "Resource" : "UK Co 1 x'x x&x Employee Three" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "03/10/2017" , "Project" : "T&M 131"  }, 
+                            { "Resource" : "UK Co 1 x'x x&x Employee Three" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "04/10/2017" , "Project" : "T&M 131"  },
+                            { "Resource" : "UK Co 1 x'x x&x Employee Three" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "05/10/2017" , "Project" : "T&M 131"  },
+                            { "Resource" : "UK Co 1 x'x x&x Employee Three" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "06/10/2017" , "Project" : "T&M 131"  },
+                            { "Resource" : "UK Co 1 x'x x&x Employee Two" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "04/10/2017" , "Project" : "T&M 131"  },
+                            { "Resource" : "UK Co 1 x'x x&x Employee Two" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "05/10/2017" , "Project" : "T&M 131"  },
+                            { "Resource" : "UK Co 1 x'x x&x Employee Two" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "06/10/2017" , "Project" : "T&M 131"  },
+                            { "Resource" : "UK Co 1 x'x x&x Employee Two" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "09/10/2017" , "Project" : "T&M 131"  },
+                            { "Resource" : "UK Co 1 x'x x&x Employee Two" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "10/10/2017" , "Project" : "T&M 131"  },
+                            { "Resource" : "UK Co 1 x'x x&x Employee Two" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "11/10/2017" , "Project" : "T&M 131"  },
+                            { "Resource" : "UK Co 1 x'x x&x Employee One" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "05/10/2017" , "Project" : "T&M 131"  },
+                            { "Resource" : "UK Co 1 x'x x&x Employee One" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "06/10/2017" , "Project" : "T&M 131"  },
+                            { "Resource" : "UK Co 1 x'x x&x Employee One" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "09/10/2017" , "Project" : "T&M 131"  },
+                            { "Resource" : "UK Co 1 x'x x&x Employee One" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "10/10/2017" , "Project" : "T&M 131"  }
+                         ]
+                          
+  - interfaceType: ExpenseItemImport
+    interfaceRunData: >                    
+                        [   
+                            { "resource" : "UK Co 1 x'x x&x Employee Three" , "project" : "T&M 131" , "expenseitemtype" : "EmployeePaid" , "date" : "03/10/2017" , "category" : "Hotel", "amount" : "500", "currency" : "GBP", "Tax Code" : "Standard Rate VAT"},
+                            { "resource" : "UK Co 1 x'x x&x Employee Two" , "project" : "T&M 131" , "expenseitemtype" : "EmployeePaid" , "date" : "06/10/2017" , "category" : "Train", "amount" : "39.50", "currency" : "GBP", "Tax Code" : "Standard Rate VAT"},
+                            { "resource" : "UK Co 1 x'x x&x Employee One" , "project" : "T&M 131" , "expenseitemtype" : "EmployeePaid" , "date" : "10/10/2017" , "category" : "Hotel", "amount" : "180", "currency" : "GBP", "Tax Code" : "Standard Rate VAT"}
+                        ]             
+              
+  - interfaceType: PaymentCardStatement
+    interfaceRunData: >
+                        [
+                           {"Date" : "03/10/2017", "Description" : "Hotel", "Cardholder" : "UK Co 1 x'x x&x Employee Three", "Card" : "111222", "Amt" : "500", "IncurredCurrencyAmt" : "500", "CurrencyCode" : "GBP"}, 
+                           {"Date" : "06/10/2017", "Description" : "Train", "Cardholder" : "UK Co 1 x'x x&x Employee Three", "Card" : "111222333", "Amt" : "70", "IncurredCurrencyAmt" : "70", "CurrencyCode" : "GBP"},
+                        ]
+                         
+  - interfaceType: ResourcePaymentStatement
+    interfaceRunData: >
+                        [
+                           {"CurrencyISOCode" : "GBP", "Account" : "INSERT ACCOUNT HERE", "Invoice" : "INSERT INVOICE NUMBER HERE", "PaymentAmount" : "INSERT", "PaymentDate" : "14/10/2017", "PaymentReference" : "31(a)", "TransactionIdentifier" : "PYMNT31(a)"}, 
+                        ]
+
+expectedResults:
+  - testStage: postInitialSetup
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: RevenueForecast
+        period: October 2017
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        resourceName: UK Co 1 x'x x&x Employee Three
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 8500.00
+      - factName: RevenueForecast
+        period: October 2017
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        resourceName: UK Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 5950.00
+      - factName: CostForecast
+        period: October 2017
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        resourceName: UK Co 1 x'x x&x Employee One
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 2600.00
+      - factName: CostForecast
+        period: October 2017
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        resourceName: UK Co 1 x'x x&x Employee Three
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 6500.00
+      - factName: CostForecast
+        period: October 2017
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        resourceName: UK Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 4550.00
+      - factName: CostForecast
+        period: October 2017
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        resourceName: UK Co 1 x'x x&x Employee One
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 2600.00
+  - testStage: postTimeEntryImport
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: CostForecast
+        period: October 2017
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        resourceName: UK Co 1 x'x x&x Employee Three
+        domainClass: Services
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 3250.00
+      - factName: CostForecast
+        period: October 2017
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        resourceName: UK Co 1 x'x x&x Employee Two
+        domainClass: Services
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 3900.00
+      - factName: CostForecast
+        period: October 2017
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        resourceName: UK Co 1 x'x x&x Employee One
+        domainClass: Services
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 2600.00
+      - factName: RevenueForecast
+        period: October 2017
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        resourceName: UK Co 1 x'x x&x Employee Three
+        domainClass: Services
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 4250.00
+      - factName: RevenueForecast
+        period: October 2017
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        resourceName: UK Co 1 x'x x&x Employee Two
+        domainClass: Services
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 5100.00
+      - factName: RevenueForecast
+        period: October 2017
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        resourceName: UK Co 1 x'x x&x Employee One
+        domainClass: Services
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 3400.00
+           
+  - testStage: postExpenseItemImport
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: CostForecast
+        period: October 2017
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        resourceName: UK Co 1 x'x x&x Employee Three
+        domainClass: Expenses
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 500.00
+      - factName: CostForecast
+        period: October 2017
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        resourceName: UK Co 1 x'x x&x Employee Two
+        domainClass: Expenses
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 39.50
+      - factName: CostForecast
+        period: October 2017
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        resourceName: UK Co 1 x'x x&x Employee One
+        domainClass: Expenses
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 180.00

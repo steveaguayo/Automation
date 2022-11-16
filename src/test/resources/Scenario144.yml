@@ -1,0 +1,137 @@
+---
+# Test overview
+# A Group Assignment test: Testing Bulk Assignment Functionality
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/01/2014
+        closeDate: 01/01/2014
+        forecastStatus: Probable (60%)
+               
+        deliveryEngagements:
+          - name: T&M Delivery Engagement x'x x&x <testName> <dt>
+            productGroup: General Consulting - T&M #General Consulting (No Delivery Elements)
+            expectedStartDate: 06/01/2014
+            expectedEndDate: 10/01/2014
+            contractRevenue: 200000
+            
+            deliveryElements:
+              - name: T&M
+                product: T&M
+                
+                activityAssignments:
+                  - resourceName: UK Co 1 x'x x&x Employee One                   
+                    revenueRate: 850
+                    costRate: 650
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 06/01/2014
+                    remainingEffort: 5
+                    utilisationPct: 100                    
+                
+                  - resourceName: UK Co 1 x'x x&x Employee Two                   
+                    revenueRate: 850
+                    costRate: 650
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 06/01/2014
+                    remainingEffort: 5
+                    utilisationPct: 100                    
+                
+                  - resourceName: UK Co 3 x'x x&x Employee Three                   
+                    revenueRate: 750
+                    costRate: 550
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 06/01/2014
+                    remainingEffort: 5
+                    utilisationPct: 100
+                    
+                  - resourceName: UK Co 3 x'x x&x Employee Four                   
+                    revenueRate: 750
+                    costRate: 550
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 06/01/2014
+                    remainingEffort: 5
+                    utilisationPct: 100
+                                   
+       
+ActivityAssignmentsMany:
+     - resourceName: UK Co 1 x'x x&x Employee One
+       revenueRateChange: Increase by %
+       revenueRate: 10
+       revenueExpected: 935
+     - resourceName: UK Co 3 x'x x&x Employee Three
+       costRate: 684
+       startDate: 07/01/2014
+       costExpected: 684
+     - resourceName: UK Co 3 x'x x&x Employee Four
+       usageBehaviourRule: Defined Effort between two Dates
+       usageBehaviorExpected: Defined Effort between two Dates
+     - resourceName: UK Co 3 x'x x&x Employee Four
+       remainingEffortChange: Decrease by value
+       remainingEffort: 2
+       utilisationExpected: 60
+     - resourceName: UK Co 1 x'x x&x Employee Two
+       selectAll: true
+       utilisation: 95
+       utilisationExpected: 95
+     - resourceName: UK Co 3 x'x x&x Employee Four
+       startDate: 09/01/2014
+       startDateChange: Move start date to
+       utilisationExpected: 100
+     - resourceName: UK Co 1 x'x x&x Employee One
+       selectAll: true
+       utilisation: 100
+       utilisationExpected: 100
+     - resourceName: UK Co 1 x'x x&x Employee One
+       selectAll: true
+       startDate: 07/01/2014
+       startDateChange: Move start date to
+       startDateExpected: 07/01/2014
+            
+expectedResults:
+  - testStage: post Many Assignment Edit
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 16000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 3 (Operating/Trading GBP)
+        resourceName: UK Co 3 x'x x&x Employee Four
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2014
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 2250.00
+      - factName: CostForecast
+        businessUnitName: UK Co 3 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2014
+        resourceName: UK Co 3 x'x x&x Employee Three
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 3420.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 13/01/2014
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 14925.00

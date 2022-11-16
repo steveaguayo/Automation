@@ -1,0 +1,226 @@
+---
+# Test overview
+# Testing the two models of the Travel Requisition
+accounts:
+  - name: Travel Requisition Suppliers    
+    isSupplier: true
+    supplierProducts:
+    - supplierProductName: TR Flight
+      supplierAccount: Travel Requisition Suppliers
+      travelCategory: Flight
+      isSupplierRequisitioned: true
+    - supplierProductName: TR Hotel
+      supplierAccount: Travel Requisition Suppliers
+      travelCategory: Hotel
+      isSupplierRequisitioned: true
+    - supplierProductName: TR Car Hire
+      supplierAccount: Travel Requisition Suppliers
+      travelCategory: CarHire
+      isSupplierRequisitioned: true
+      
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/11/2017
+        closeDate: 01/11/2017
+        forecastStatus: Probable (60%)
+               
+        deliveryEngagements:
+          - name: T&M Delivery Engagement x'x x&x <testName> <dt>
+            productGroup: General Consulting (No Delivery Elements)
+            expectedStartDate: 01/11/2017
+            expectedEndDate: 30/11/2017
+            contractRevenue: 200000
+            
+            deliveryElements:
+              - name: T&M
+                product: T&M
+                
+                activityAssignments:
+                  - resourceName: UK Co 1 x'x x&x Employee One                    
+                    costRate: 650
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 01/11/2017
+                    remainingEffort: 5
+                    utilisationPct: 100
+ 
+     
+travelRequisitions:
+  - resource: UK Co 1 x'x x&x Employee One
+    fromDate: 01/11/2017 
+    activity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+    name: TravelReqItinYes
+    toDate: 07/11/2017
+    #add flight
+    flight: true
+    departureAirport: LGW
+    destinationAirport: DUB
+    departureDate: 01/11/2017
+    departureTime: am
+    returnFromAirport: DUB
+    returnDate: 07/11/2017
+    returnTime: pm
+    #add hotel
+    hotel: true
+    checkIn: 01/11/2017
+    checkOut: 07/11/2017
+    preference: test hotel 1
+    #add car hire
+    car: true
+    pickUp: Airport
+    pickUpDate: 01/11/2017
+    pickUpTime: 10:00
+    dropOff: Airport
+    dropOffDate: 07/11/2017
+    dropOffTime: 16:00
+
+    travelRequisitionItineraryEdit:
+    #flight 1
+    - itineraryOptionsAndCost: flight1
+      currency: GBP
+      amount: 100.00
+      departureAirline: Airline1
+      returnAirline: Airline1
+      requiresApproval: true
+    #flight 2
+    - itineraryOptionsAndCost: flight2
+      currency: GBP
+      amount: 120.00
+      departureAirline: Airline2
+      returnAirline: Airline2
+      requiresApproval: true
+    #hotel 1
+    - itineraryOptionsAndCost: hotel1
+      currency: GBP
+      amount: 250.00
+      requiresApproval: true
+    #hotel 2 
+    - itineraryOptionsAndCost: hotel2
+      currency: GBP
+      amount: 300.00
+      requiresApproval: true
+    #car hire 1
+    - itineraryOptionsAndCost: carHire1
+      currency: GBP
+      amount: 75.00
+      requiresApproval: true
+    #car hire 2
+    - itineraryOptionsAndCost: carHire2
+      currency: GBP
+      amount: 80.00
+      requiresApproval: true
+
+    travelRequisitionBooking:
+    - chooseOptionsFlight: Test Flight 1
+      chooseOptionHotel: Test Hotel 1
+      chooseOptionCarHire: Test Car 1
+    # book now Flight
+      flightSupplier: TR Flight 
+      flightCurrency: British Pound
+      flightNetAmount: 100.00
+      flightBookingReference: TRF001
+    #book now hotel
+      hotelSupplier: TR Hotel  
+      hotelCurrency: British Pound
+      hotelNetAmount: 250.00
+      hotelBookingReference: TRH002
+    #book now hotel
+      carHireSupplier: TR Car Hire  
+      carHireCurrency: British Pound
+      carHireNetAmount: 75.00
+      carHireBookingReference: TRC003
+                
+  - resource: UK Co 1 x'x x&x Employee One
+    fromDate: 01/11/2017 
+    activity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+    name: TravelReqItinNo
+    toDate: 07/11/2018
+    #add flight
+    flight: true
+    departureAirport: LHR
+    destinationAirport: BFS
+    departureDate: 01/11/2017
+    departureTime: am
+    returnFromAirport: BFS
+    returnDate: 07/11/2017
+    returnTime: pm
+    #add hotel
+    hotel: true
+    checkIn: 01/11/2017
+    checkOut: 07/11/2017
+    preference: test hotel 2
+    #add car hire
+    car: true
+    pickUp: car hire center
+    pickUpDate: 01/11/2017
+    pickUpTime: 09:00
+    dropOff: car hire center
+    dropOffDate: 07/11/2017
+    dropOffTime: 17:00
+                          
+
+expectedResults:
+  - testStage: postSetup
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 4250.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 4250.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: November 2017
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 3250.00
+  - testStage: postFirstRequisition
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+          - measure: P2 Forecast
+            currency: GBP
+            value: 4250.00
+      - factName: RevenueForecast
+        domainClass: Expenses
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+          - measure: P2 Forecast
+            currency: GBP
+            value: 425.00
+      - factName: CostForecast
+        domainClass: Expenses
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+          - measure: P2 Forecast
+            currency: GBP
+            value: 425.00

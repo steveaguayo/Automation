@@ -1,0 +1,145 @@
+trackingPeriodActions:
+  - testStage: close Jan tracking periods unforced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Jan / 1 / 2013
+    removeUsage: true
+    force: false
+  - testStage: close Jan tracking periods unforced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Jan / 2 / 2013
+    removeUsage: true
+    force: false
+  - testStage: close Jan tracking periods unforced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Jan / 3 / 2013
+    removeUsage: true
+    force: false
+  - testStage: close Jan tracking periods unforced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Jan / 4 / 2013
+    removeUsage: true
+    force: false
+  - testStage: close Jan tracking periods unforced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Jan / 5 / 2013
+    removeUsage: true
+    force: false
+    
+  - testStage: try closing Jan tracking periods again unforced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Jan / 1 / 2013
+    removeUsage: true
+    force: false
+  - testStage: try closing Jan tracking periods again unforced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Jan / 2 / 2013
+    removeUsage: true
+    force: false
+  - testStage: try closing Jan tracking periods again unforced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Jan / 3 / 2013
+    removeUsage: true
+    force: false
+  - testStage: try closing Jan tracking periods again unforced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Jan / 4 / 2013
+    removeUsage: true
+    force: false
+  - testStage: try closing Jan tracking periods again unforced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Jan / 5 / 2013
+    removeUsage: true
+    force: false
+    
+  - testStage: close Feb tracking periods forced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Feb / 1 / 2013
+    removeUsage: true
+  - testStage: close Feb tracking periods forced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Feb / 2 / 2013
+    removeUsage: true
+  - testStage: close Feb tracking periods forced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Feb / 3 / 2013
+    removeUsage: true
+  - testStage: close Feb tracking periods forced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Feb / 4 / 2013
+    removeUsage: true
+  - testStage: close Feb tracking periods forced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Feb / 5 / 2013
+    removeUsage: true
+    
+  - testStage: try closing Feb tracking periods again unforced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Feb / 1 / 2013
+    removeUsage: true
+    force: false
+  - testStage: try closing Feb tracking periods again unforced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Feb / 2 / 2013
+    removeUsage: true
+    force: false
+  - testStage: try closing Feb tracking periods again unforced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Feb / 3 / 2013
+    removeUsage: true
+    force: false
+  - testStage: try closing Feb tracking periods again unforced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Feb / 4 / 2013
+    removeUsage: true
+    force: false
+  - testStage: try closing Feb tracking periods again unforced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: Feb / 5 / 2013
+    removeUsage: true
+    force: false
+    
+forecastingPeriodActions:
+  - testStage: close Jan forecasting periods unforced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: January 2013
+    force: false
+    
+  - testStage: try closing Jan forecasting periods again unforced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: January 2013
+    force: false
+    
+  - testStage: close Feb forecasting periods forced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: February 2013
+
+  - testStage: try closing Feb forecasting periods again unforced
+    businessUnitGroup: Group 3 (Acquisitions)
+    action: close
+    periodName: February 2013
+    force: false
+    
+    

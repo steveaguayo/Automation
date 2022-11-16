@@ -1,0 +1,705 @@
+!!kimble.automation.domain.TestState
+data:
+  ActivityAssignmentsMany: null
+  accounts:
+  - accountCurrency: null
+    allowPartItemInvoicing: true
+    billingAddress: null
+    billingContact: null
+    businessUnitGroup: null
+    changeControls: null
+    industry: null
+    invoiceFormat: null
+    invoiceTemplate: null
+    invoicingCurrency: GBP
+    isCustomer: false
+    isInternal: false
+    isSupplier: false
+    locale: en_GB
+    name: Standard Rate UK Co 1 Account x'x x&x Scenario128 24102022 120012
+    operatingBusinessUnit: UK Co 4 (Operating/Trading GBP)
+    opportunities: null
+    proposals: null
+    purchaseOrderRule: null
+    salesOpportunities:
+    - bidTeamActivityAssignments: null
+      businessUnit: UK Co 4 (Operating/Trading GBP)
+      closeDate: 01/01/2013
+      contractCost: null
+      contractMargin: null
+      contractRevenue: null
+      deliveryDateEdits: null
+      deliveryEngagements:
+      - activities:
+        - {allocationType: null, businessDayOvertimeToilFactor: null, businessDayStandardToilFactor: null,
+          calendarIsPrivate: false, calendarShowAs: null, canSelfAssign: false, externalId: null,
+          hideForecastTimeEntries: false, name: Cost%Complete exc Expenses and inc 3rd Party Costs (128),
+          nonBusinessDayOvertimeToilFactor: null, nonBusinessDayStandardToilFactor: null,
+          scheduledTimeRule: null, timeEntryRule: DateAndTime, toilFactor: null, usageTrackingModel: null,
+          usageUnits: null, utilisationRule: null}
+        approvalRule: null
+        contractRevenue: null
+        contractRevenueDisplay: null
+        deliveryElements:
+        - accountCredits: null
+          activate: true
+          activityAssignments:
+          - {candidateResources: null, costOnlyAssignment: false, costRate: '575',
+            endDate: 22/03/2013, entryUnits: null, groupAssignmentsEnabled: null,
+            groupName: null, location: null, monthlyProfiles: null, remainingEffort: null,
+            remainingEffortStage2: null, remainingEffortStage3: null, resourceName: UK Co 4 x'x x&x Employee Six,
+            resourceRole: null, revenueRate: null, scheduledActivity: null, scopedWith: null,
+            startDate: 14/01/2013, templateName: null, usageBehaviourRule: Defined Utilisation between two Dates,
+            utilisationPct: '100'}
+          allocatedValue: null
+          annuities: null
+          bulkEdits: null
+          changeEffective: null
+          changeOrderBehaviourRule: null
+          configurableAssignmentLineItems: null
+          costMilestones: null
+          createableAssignmentLineItems: null
+          creditAllocation: null
+          creditValue: null
+          endDate: null
+          expectedUsage: null
+          expenseLineItems: null
+          expensesCost: null
+          expensesRevenue: null
+          forecastMode: null
+          id: null
+          name: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+          operatedWithPrimary: false
+          parentElementName: null
+          product: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+          productExtension: null
+          purchaseOrderRule: Purchase Order not required
+          rateDefault: null
+          rateItemName: null
+          rateOverride: null
+          rateSourceValue: null
+          revenueMilestones:
+          - {completionStage: null, creationStage: null, date: 01/01/2013, name: Proposal Start Date,
+            status: null, value: 50000.0}
+          servicesCost: null
+          servicesCostOverridden: null
+          servicesRevenue: null
+          stage: null
+          startDate: null
+          step2Name: null
+          step2Product: null
+          step2RevenueMilestones: null
+          targetMargin: null
+          tasks: null
+          taxCode: null
+          unallocatedValue: null
+        deliveryStatus: null
+        endDate: null
+        expectedEndDate: 22/03/2013
+        expectedStartDate: 14/01/2013
+        forecastStatus: null
+        isExisting: false
+        issues: null
+        lossNarrative: null
+        lossReason: null
+        name: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        owner: null
+        productGroup: General Consulting (No Delivery Elements)
+        purchaseOrderAllocations: null
+        reference: null
+        revenue: null
+        risks: null
+        stage: null
+        startDate: null
+        statusSummary: null
+      forecastStatus: Probable (60%)
+      lostCloseDate: null
+      lostNarrative: null
+      lostReason: null
+      name: Sales Opp x'x x&x Scenario128 24102022 120012
+      proposition: General Consulting
+      responseRequiredDate: 01/12/2012
+      risks: null
+      source: Direct Enquiry
+      step2BusinessUnit: null
+      step2CloseDate: null
+      winDate: null
+    shippingAddress: null
+    supplierProducts: null
+    taxCode: Standard Rate VAT
+    tradingBusinessUnit: null
+    type: null
+  approvalProcesses: null
+  approvalRuleTemplates: null
+  businessUnitGroups: null
+  customLabels: null
+  expectedResults:
+  - deliveryEngagements: null
+    proposals: null
+    resourceForecasts:
+    - facts:
+      - activityName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: null, measure: Actual, value: '0'}
+        - {currency: null, measure: P2 Forecast, value: '14'}
+        factCard: null
+        factName: UsageForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: January 2013
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      - activityName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: null, measure: Actual, value: '0'}
+        - {currency: null, measure: P2 Forecast, value: '20'}
+        factCard: null
+        factName: UsageForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: February 2013
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      resourceName: UK Co 4 x'x x&x Employee Six
+    resourceUsageAdjustments: null
+    riskDashboards: null
+    risksSales: null
+    salesOpportunity: null
+    salesOpportunityForecasts:
+      facts:
+      - activityName: null
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: null
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: GBP, measure: Actual, value: '50000.00'}
+        factCard: null
+        factName: BookingForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: October 2022
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      - activityName: null
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: null
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: GBP, measure: P1 Forecast, value: '14000.00'}
+        factCard: null
+        factName: RevenueForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: January 2013
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      - activityName: null
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: null
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: GBP, measure: P1 Forecast, value: '11500.00'}
+        factCard: null
+        factName: CostForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: February 2013
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      - activityName: null
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: null
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: GBP, measure: P1 Forecast, value: '9200.00'}
+        factCard: null
+        factName: CostForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: March 2013
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      salesOpportunityName: Sales Opp x'x x&x Scenario128 24102022 120012
+    supplierInvoices: null
+    supplierRequisitions: null
+    testStage: postInitialSetup
+    trackingPlanTotals: null
+    trendAnalysis: null
+  - deliveryEngagements: null
+    proposals: null
+    resourceForecasts:
+    - facts:
+      - activityName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: null, measure: Actual, value: '14'}
+        - {currency: null, measure: P2 Forecast, value: '14'}
+        factCard: null
+        factName: UsageForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: January 2013
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      - activityName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: null, measure: Actual, value: '5'}
+        - {currency: null, measure: P2 Forecast, value: '16'}
+        factCard: null
+        factName: UsageForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: March 2013
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      resourceName: UK Co 4 x'x x&x Employee Six
+    resourceUsageAdjustments: null
+    riskDashboards: null
+    risksSales: null
+    salesOpportunity: null
+    salesOpportunityForecasts:
+      facts:
+      - activityName: null
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: null
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: GBP, measure: Actual, value: '13472.80'}
+        factCard: null
+        factName: RevenueForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: January 2013
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      - activityName: null
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: null
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: GBP, measure: P1 Forecast, value: '17280.33'}
+        factCard: null
+        factName: RevenueForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: March 2013
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      - activityName: null
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: null
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: GBP, measure: Actual, value: '3450.00'}
+        factCard: null
+        factName: CostForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: February 2013
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      - activityName: null
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: null
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: GBP, measure: P1 Forecast, value: '10325.00'}
+        factCard: null
+        factName: CostForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: March 2013
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      salesOpportunityName: Sales Opp x'x x&x Scenario128 24102022 120012
+    supplierInvoices: null
+    supplierRequisitions: null
+    testStage: postCostRateChange
+    trackingPlanTotals: null
+    trendAnalysis: null
+  - deliveryEngagements: null
+    proposals: null
+    resourceForecasts:
+    - facts:
+      - activityName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: Cost%Complete exc Expenses and inc 3rd Party Costs (128)
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: null, measure: Actual, value: '13'}
+        - {currency: null, measure: P2 Forecast, value: '13'}
+        factCard: null
+        factName: UsageForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: January 2013
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      resourceName: UK Co 4 x'x x&x Employee Six
+    resourceUsageAdjustments: null
+    riskDashboards: null
+    risksSales: null
+    salesOpportunity: null
+    salesOpportunityForecasts: null
+    supplierInvoices: null
+    supplierRequisitions: null
+    testStage: postTimeAdjustment
+    trackingPlanTotals: null
+    trendAnalysis: null
+  - deliveryEngagements: null
+    proposals: null
+    resourceForecasts: null
+    resourceUsageAdjustments: null
+    riskDashboards: null
+    risksSales: null
+    salesOpportunity: null
+    salesOpportunityForecasts:
+      facts:
+      - activityName: null
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: null
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: GBP, measure: Actual, value: '8050.00'}
+        factCard: null
+        factName: CostForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: January 2013
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      - activityName: null
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: null
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: GBP, measure: P1 Forecast, value: '8050.00'}
+        factCard: null
+        factName: CostForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: January 2013
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      - activityName: null
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: null
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: GBP, measure: Actual, value: '2875.00'}
+        factCard: null
+        factName: CostForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: February 2013
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      - activityName: null
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: null
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: GBP, measure: P1 Forecast, value: '10925.00'}
+        factCard: null
+        factName: CostForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: February 2013
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      - activityName: null
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: null
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: GBP, measure: Actual, value: '3250.00'}
+        factCard: null
+        factName: CostForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: March 2013
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      - activityName: null
+        businessUnitName: UK Co 4 (Operating/Trading GBP)
+        changeValue: null
+        deliveryElementName: null
+        deliveryEngagementName: Delivery Engagement x'x x&x Scenario128 24102022 120012
+        domainClass: null
+        expectedValues:
+        - {currency: GBP, measure: P1 Forecast, value: '10325.00'}
+        factCard: null
+        factName: CostForecast
+        ignoreReason: null
+        impact: null
+        info: null
+        lastValue: null
+        period: March 2013
+        receivableDate: null
+        resourceName: null
+        salesOpportunityName: null
+        secondaryDeliveryElementName: null
+        thisValue: null
+      salesOpportunityName: Sales Opp x'x x&x Scenario128 24102022 120012
+    supplierInvoices: null
+    supplierRequisitions: null
+    testStage: calculateCost%CompleteRevRec
+    trackingPlanTotals: null
+    trendAnalysis: null
+  expenseClaims: null
+  expenseEntries: null
+  forecastingPeriodActions:
+  - {action: close, businessUnitGroup: Group 4 (128), force: false, periodName: January 2013,
+    removeUsage: false, testStage: closeForecastingPeriods}
+  interfaceRuns:
+  - interfaceRunData: |
+      [  { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "14/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "15/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "16/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "17/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "18/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "21/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "22/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "23/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "24/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "25/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "28/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "29/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "30/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "31/01/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "01/02/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "04/02/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "05/02/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "06/02/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "07/02/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  },
+         { "Resource" : "UK Co 4 x'x x&x Employee Six" , "Hours" : "7.5" , "Start Time" : "08:30" , "End Time" : "16:00" , "Date" : "08/02/2013" , "Project" : "Cost%Complete exc Expenses and inc 3rd Party Costs (128)"  }
+      ]
+    interfaceType: TimeEntryImport
+  - interfaceRunData: "[\n    { \"Resource\" : \"UK Co 4 x'x x&x Employee Six\" ,\
+      \ \"Hours\" : \"7.5\" , \"Start Time\" : \"08:30\" , \"End Time\" : \"16:00\"\
+      \ , \"Date\" : \"04/03/2013\" , \"Project\" : \"Cost%Complete exc Expenses and\
+      \ inc 3rd Party Costs (128)\"  },\n    { \"Resource\" : \"UK Co 4 x'x x&x Employee\
+      \ Six\" , \"Hours\" : \"7.5\" , \"Start Time\" : \"08:30\" , \"End Time\" :\
+      \ \"16:00\" , \"Date\" : \"05/03/2013\" , \"Project\" : \"Cost%Complete exc\
+      \ Expenses and inc 3rd Party Costs (128)\"  },\n    { \"Resource\" : \"UK Co\
+      \ 4 x'x x&x Employee Six\" , \"Hours\" : \"7.5\" , \"Start Time\" : \"08:30\"\
+      \ , \"End Time\" : \"16:00\" , \"Date\" : \"06/03/2013\" , \"Project\" : \"\
+      Cost%Complete exc Expenses and inc 3rd Party Costs (128)\"  },\n    { \"Resource\"\
+      \ : \"UK Co 4 x'x x&x Employee Six\" , \"Hours\" : \"7.5\" , \"Start Time\"\
+      \ : \"08:30\" , \"End Time\" : \"16:00\" , \"Date\" : \"07/03/2013\" , \"Project\"\
+      \ : \"Cost%Complete exc Expenses and inc 3rd Party Costs (128)\"  },\n    {\
+      \ \"Resource\" : \"UK Co 4 x'x x&x Employee Six\" , \"Hours\" : \"7.5\" , \"\
+      Start Time\" : \"08:30\" , \"End Time\" : \"16:00\" , \"Date\" : \"08/03/2013\"\
+      \ , \"Project\" : \"Cost%Complete exc Expenses and inc 3rd Party Costs (128)\"\
+      \  }\n]         \n"
+    interfaceType: TimeEntryImport
+  invoices: null
+  journeys: null
+  loginName: null
+  loginUser: null
+  otherResourcedActivities: null
+  performanceAnalysis: null
+  preserveData:
+    accounts: []
+    opportunities: []
+    resources: []
+  productDomains: null
+  productGroups: null
+  products: null
+  proposals: null
+  propositions: null
+  purchaseOrders: null
+  rateChangeValidations: {}
+  reports: null
+  resourcedActivityTemplates: null
+  resources:
+    change initial resource grade:
+      resources:
+      - {actualCost: null, actualCostUnit: null, allowanceScheme: null, businessUnitPrimary: null,
+        businessUnitSecondary: null, calendar: null, candidateAction: null, currency: null,
+        endDate: null, expenseReimbursementCurrency: null, firstName: null, grade: Senior Tester,
+        gradeChangeDate: 01/01/2013, lastName: null, location: null, name: UK Co 4 x'x x&x Employee Six,
+        standardCost: null, standardCostUnit: null, startDate: null, targetRate: null,
+        targetRateUnit: null, timePatternVariant: null, type: null, user: null}
+    change test resource grade:
+      resources:
+      - {actualCost: null, actualCostUnit: null, allowanceScheme: null, businessUnitPrimary: null,
+        businessUnitSecondary: null, calendar: null, candidateAction: null, currency: null,
+        endDate: null, expenseReimbursementCurrency: null, firstName: null, grade: Director,
+        gradeChangeDate: 04/03/2013, lastName: null, location: null, name: UK Co 4 x'x x&x Employee Six,
+        standardCost: null, standardCostUnit: null, startDate: null, targetRate: null,
+        targetRateUnit: null, timePatternVariant: null, type: null, user: null}
+  revenueItemAdjustments: null
+  seedDate: null
+  supplierInvoices: null
+  supplierRequisitions: null
+  timeAdjustmentLists:
+    adjust time entries:
+      resourceName: UK Co 4 x'x x&x Employee Six
+      timeAdjustments:
+      - {day: 22/01/2013, endTime: '11:00', plannedActivity: Standard Rate UK Co 1 Account x'x x&x Scenario128 24102022 120012-Cost%Complete exc Expenses and inc 3rd Party Costs (128),
+        startTime: '07:30'}
+      - {day: 24/01/2013, endTime: '16:00', plannedActivity: Standard Rate UK Co 1 Account x'x x&x Scenario128 24102022 120012-Cost%Complete exc Expenses and inc 3rd Party Costs (128),
+        startTime: '12:00'}
+  timeEntriesWithStartAndEndTimes: null
+  timesheets: null
+  trackingPeriodActions:
+  - {action: close, businessUnitGroup: Group 4 (128), force: false, periodName: Jan / 1 / 2013,
+    removeUsage: true, testStage: closeTrackingPeriods}
+  - {action: close, businessUnitGroup: Group 4 (128), force: false, periodName: Jan / 2 / 2013,
+    removeUsage: true, testStage: closeTrackingPeriods}
+  - {action: close, businessUnitGroup: Group 4 (128), force: false, periodName: Jan / 3 / 2013,
+    removeUsage: true, testStage: closeTrackingPeriods}
+  - {action: close, businessUnitGroup: Group 4 (128), force: false, periodName: Jan / 4 / 2013,
+    removeUsage: true, testStage: closeTrackingPeriods}
+  - {action: close, businessUnitGroup: Group 4 (128), force: false, periodName: Jan / 5 / 2013,
+    removeUsage: true, testStage: closeTrackingPeriods}
+  travelRequisitions: null
+  userCredentials: null
+  whatIfScenarios:
+    create what if scenario: {date: 04/03/2013, name: '128', type: AssignmentCostBasis}
+date: 24102022 120012
+environment: kimbleAutomation136[1]
+localToRemoteIdsMap: {}
+remoteToLocalIdsMap: {}
+stage: 'create what if scenario > create what if scenario: 128 > input scenario values
+  and save'
+testIndex: 1
+url: https://automation1361-dev-ed.my.salesforce.com/a6m

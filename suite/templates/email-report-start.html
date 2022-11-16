@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>TestNG Report</title>
+<style type="text/css">
+table {margin-bottom:10px;border-collapse:collapse;empty-cells:show}
+td,th {border:1px solid #009;padding:.25em .5em}
+.result th {vertical-align:bottom}
+.param th {padding-left:1em;padding-right:1em}
+.param td {padding-left:.5em;padding-right:2em}
+.stripe td,.stripe th {background-color: #E6EBF9}
+.numi,.numi_attn {text-align:right}
+.total td {font-weight:bold}
+.passedodd td {background-color: #0A0}
+.passedeven td {background-color: #3F3}
+.skippedodd td {background-color: #CCC}
+.skippedodd td {background-color: #DDD}
+.failedodd td,.numi_attn {background-color: #F33}
+.failedeven td,.stripe .numi_attn {background-color: #D00}
+.stacktrace {white-space:pre;font-family:monospace}
+.totop {font-size:85%;text-align:center;border-bottom:2px solid #000}
+
+/* skipped odd */
+table.testOverview>tbody>tr>td:nth-child(4).numi_attn {
+  background-color: #fce94f;
+}
+/* skipped even */
+table.testOverview>tbody>tr.stripe>td:nth-child(4).numi_attn {
+  background-color: #d7c743;
+}
+
+/* failed odd */
+table.testOverview>tbody>tr>td:nth-child(5).numi_attn {
+  background-color: #FF3333;
+}
+/* failed even */
+table.testOverview>tbody>tr.stripe>td:nth-child(5).numi_attn {
+  background-color: #DD0000;
+}
+</style>
+</head>
+<body>
+

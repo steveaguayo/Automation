@@ -1,0 +1,72 @@
+---
+# Test overview
+#Mobile Automation
+#
+#
+userCredentials:
+  - operatingSystem: Android
+accounts:
+  - name: Standard Rate UK Co 5 Android Account <testName> <dt>
+    operatingBusinessUnit:  UK Co 5 Android (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+       
+    salesOpportunities:
+      - name: Sales Opp Android <testName> <dt>
+        businessUnit:   UK Co 5 Android (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 31/08/2013
+        closeDate: 01/09/2013
+        forecastStatus: Probable (60%)
+               
+        deliveryEngagements:
+          - name: T&M Delivery Engagement Android <testName> <dt>
+            productGroup: General Consulting (No Delivery Elements)
+            expectedStartDate: 09/09/2013
+            expectedEndDate: 13/09/2013
+          
+            deliveryElements:
+              - name: 135
+                product: T&M 
+                activityAssignments:
+                  - resourceName: UK Co 5 Android x'x x&x Employee Seven         
+                    revenueRate: 700
+                    costRate: 575
+                    usageBehaviourRule: Defined Utilisation between two Dates
+                    startDate: 09/09/2013
+                    endDate: 13/09/2013
+                    utilisationPct: 100
+
+#Usage Unit = Day#
+          
+#mobile dates are US format            
+#  MOBILE ENTRY   
+# ACTUALISE TIME ENTRIES WITH BUTTON
+     
+timesheets:
+- testStage: timeBooking
+  resourceName: UK Co 5 Android x'x x&x Employee Seven 
+  trackingPeriodStartDate: 09/09/2013
+  mobileTrackingPeriodStartDate: 9/9/13
+  mobilePeriodDate: September 09
+  timeEntries:
+  - startDate: 9/9/2013
+    endDate: 9/12/2013
+    timeType: Business Day - Standard Time
+    entryUnits: 1.0
+    plannedActivity: Standard Rate UK Co 5 Android Account <testName> <dt>
+expenseClaims:
+- resourceName: UK Co 5 Android x'x x&x Employee Seven 
+  expenseEntries:
+  - name: Overnight Hotel
+    incurredDate: 03/09/2013
+    activityName: Standard Rate UK Co 5 Android Account <testName> <dt>-135
+    monthBeginning: 01 September 2013
+    incurredDay: 9
+    expenseDetails:
+    - category: Hotel
+      currency: EUR
+      amount: 150.00

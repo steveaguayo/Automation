@@ -1,0 +1,307 @@
+accounts:
+- name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+  operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+  invoicingCurrency: GBP
+  taxCode: Standard Rate VAT
+  allowPartItemInvoicing: true
+  locale: en_GB
+  salesOpportunities:
+  - name: Sales Opp x'x x&x <testName> <dt>
+    businessUnit: UK Co 1 (Operating/Trading GBP)
+    source: Direct Enquiry
+    proposition: General Consulting
+    responseRequiredDate: 01/01/2013
+    closeDate: 01/01/2013
+    forecastStatus: Probable (60%)
+    deliveryEngagements:
+    - name: Delivery Engagement x'x x&x <testName> <dt>
+      productGroup: General Consulting - T&M
+      expectedStartDate: 01/01/2013
+      expectedEndDate: 01/01/2014
+      contractRevenue: 100000
+      deliveryElements:
+      - name: T&M
+        product: T&M
+        activityAssignments:
+        - resourceName: UK Co 1 x'x x&x Employee One
+          revenueRate: 1000
+          costRate: 600
+          usageBehaviourRule: Defined Effort with variable End Date
+          startDate: 07/01/2013
+          remainingEffort: 15
+          utilisationPct: 100
+          
+timesheets:
+- testStage: time 1
+  resourceName: UK Co 1 x'x x&x Employee One
+  trackingPeriodStartDate: 7/01/2013
+  timeEntries:
+  - startDate: 7/01/2013
+    endDate: 7/01/2013
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+- testStage: time 2
+  resourceName: UK Co 1 x'x x&x Employee One
+  trackingPeriodStartDate: 7/01/2013
+  timeEntries:
+  - startDate: 8/01/2013
+    endDate: 8/01/2013
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+- testStage: time 3
+  resourceName: UK Co 1 x'x x&x Employee One
+  trackingPeriodStartDate: 7/01/2013
+  timeEntries:
+  - startDate: 9/01/2013
+    endDate: 9/01/2013
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+- testStage: time 4
+  resourceName: UK Co 1 x'x x&x Employee One
+  trackingPeriodStartDate: 7/01/2013
+  timeEntries:
+  - startDate: 10/01/2013
+    endDate: 10/01/2013
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+- testStage: time 5
+  resourceName: UK Co 1 x'x x&x Employee One
+  trackingPeriodStartDate: 7/01/2013
+  timeEntries:
+  - startDate: 11/01/2013
+    endDate: 11/01/2013
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+- testStage: time 6
+  resourceName: UK Co 1 x'x x&x Employee One
+  trackingPeriodStartDate: 7/01/2013
+  timeEntries:
+  - startDate: 14/01/2013
+    endDate: 14/01/2013
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+- testStage: time 7
+  resourceName: UK Co 1 x'x x&x Employee One
+  trackingPeriodStartDate: 7/01/2013
+  timeEntries:
+  - startDate: 15/01/2013
+    endDate: 15/01/2013
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+- testStage: time 8
+  resourceName: UK Co 1 x'x x&x Employee One
+  trackingPeriodStartDate: 7/01/2013
+  timeEntries:
+  - startDate: 16/01/2013
+    endDate: 16/01/2013
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+- testStage: time 9
+  resourceName: UK Co 1 x'x x&x Employee One
+  trackingPeriodStartDate: 7/01/2013
+  timeEntries:
+  - startDate: 17/01/2013
+    endDate: 17/01/2013
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+- testStage: time 10
+  resourceName: UK Co 1 x'x x&x Employee One
+  trackingPeriodStartDate: 7/01/2013
+  timeEntries:
+  - startDate: 18/01/2013
+    endDate: 18/01/2013
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+- testStage: time 11
+  resourceName: UK Co 1 x'x x&x Employee One
+  trackingPeriodStartDate: 7/01/2013
+  timeEntries:
+  - startDate: 21/01/2013
+    endDate: 21/01/2013
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+- testStage: time 12
+  resourceName: UK Co 1 x'x x&x Employee One
+  trackingPeriodStartDate: 7/01/2013
+  timeEntries:
+  - startDate: 22/01/2013
+    endDate: 22/01/2013
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+- testStage: time 13
+  resourceName: UK Co 1 x'x x&x Employee One
+  trackingPeriodStartDate: 7/01/2013
+  timeEntries:
+  - startDate: 23/01/2013
+    endDate: 23/01/2013
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+- testStage: time 14
+  resourceName: UK Co 1 x'x x&x Employee One
+  trackingPeriodStartDate: 7/01/2013
+  timeEntries:
+  - startDate: 24/01/2013
+    endDate: 24/01/2013
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+- testStage: time 15
+  resourceName: UK Co 1 x'x x&x Employee One
+  trackingPeriodStartDate: 7/01/2013
+  timeEntries:
+  - startDate: 25/01/2013
+    endDate: 25/01/2013
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+    
+expectedResults:
+- testStage: time 1 validate
+  salesOpportunityForecasts:
+    salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+    facts:
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+      period: January 2013
+      expectedValues:
+      - { measure: Actual, currency: GBP, value: 1000.00 }
+- testStage: time 2 validate
+  salesOpportunityForecasts:
+    salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+    facts:
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+      period: January 2013
+      expectedValues:
+      - { measure: Actual, currency: GBP, value: 2000.00 }
+- testStage: time 3 validate
+  salesOpportunityForecasts:
+    salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+    facts:
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+      period: January 2013
+      expectedValues:
+      - { measure: Actual, currency: GBP, value: 3000.00 }
+- testStage: time 4 validate
+  salesOpportunityForecasts:
+    salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+    facts:
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+      period: January 2013
+      expectedValues:
+      - { measure: Actual, currency: GBP, value: 4000.00 }
+- testStage: time 5 validate
+  salesOpportunityForecasts:
+    salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+    facts:
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+      period: January 2013
+      expectedValues:
+      - { measure: Actual, currency: GBP, value: 5000.00 }
+- testStage: time 6 validate
+  salesOpportunityForecasts:
+    salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+    facts:
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+      period: January 2013
+      expectedValues:
+      - { measure: Actual, currency: GBP, value: 6000.00 }
+- testStage: time 7 validate
+  salesOpportunityForecasts:
+    salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+    facts:
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+      period: January 2013
+      expectedValues:
+      - { measure: Actual, currency: GBP, value: 7000.00 }
+- testStage: time 8 validate
+  salesOpportunityForecasts:
+    salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+    facts:
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+      period: January 2013
+      expectedValues:
+      - { measure: Actual, currency: GBP, value: 8000.00 }
+- testStage: time 9 validate
+  salesOpportunityForecasts:
+    salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+    facts:
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+      period: January 2013
+      expectedValues:
+      - { measure: Actual, currency: GBP, value: 9000.00 }
+- testStage: time 10 validate
+  salesOpportunityForecasts:
+    salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+    facts:
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+      period: January 2013
+      expectedValues:
+      - { measure: Actual, currency: GBP, value: 10000.00 }
+- testStage: time 11 validate
+  salesOpportunityForecasts:
+    salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+    facts:
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+      period: January 2013
+      expectedValues:
+      - { measure: Actual, currency: GBP, value: 11000.00 }
+- testStage: time 12 validate
+  salesOpportunityForecasts:
+    salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+    facts:
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+      period: January 2013
+      expectedValues:
+      - { measure: Actual, currency: GBP, value: 12000.00 }
+- testStage: time 13 validate
+  salesOpportunityForecasts:
+    salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+    facts:
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+      period: January 2013
+      expectedValues:
+      - { measure: Actual, currency: GBP, value: 13000.00 }
+- testStage: time 14 validate
+  salesOpportunityForecasts:
+    salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+    facts:
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+      period: January 2013
+      expectedValues:
+      - { measure: Actual, currency: GBP, value: 14000.00 }
+- testStage: time 15 validate
+  salesOpportunityForecasts:
+    salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+    facts:
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+      period: January 2013
+      expectedValues:
+      - { measure: Actual, currency: GBP, value: 15000.00 }
+      

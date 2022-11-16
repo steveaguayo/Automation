@@ -1,0 +1,268 @@
+# Test overview
+# A Group Assignment test: Testing Bulk Assignment Functionality
+accounts:
+  - name: AmericanSuppliers4U <dt>
+    isSupplier: true
+    accountCurrency: USD - U.S. Dollar
+    operatingBusinessUnit: US Co 1 (Operating/Trading USD)
+    tradingBusinessUnit: US Co 1 (Operating/Trading USD)
+    purchaseOrderRule: Purchase Order not required
+    invoicingCurrency: USD
+    invoiceFormat: Supplier Invoice Format 
+    invoiceTemplate: Supplier Invoice T2
+    taxCode: American Tax
+    allowPartItemInvoicing: true
+    locale: en_US
+  
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    tradingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    isCustomer: true
+    purchaseOrderRule: Purchase Order not required
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB  
+    
+    salesOpportunities:
+        - name: Sales Opp x'x x&x <testName> <dt>
+          businessUnit: UK Co 1 (Operating/Trading GBP)
+          source: Direct Enquiry
+          proposition: General Consulting
+          responseRequiredDate: 01/01/2014
+          closeDate: 01/01/2014
+          forecastStatus: Probable (60%)
+              
+          deliveryEngagements:
+              - name: T&M Delivery Engagement x'x x&x <testName> <dt>
+                productGroup: General Consulting (No Delivery Elements)
+                expectedStartDate: 06/01/2014
+                expectedEndDate: 31/01/2014
+                contractRevenue: 15000
+                                  
+                deliveryElements:
+                - name: T&M 1
+                  product: T&M
+                  activityAssignments:
+                   -  resourceName: US Supplier 1                       
+                      revenueRate: 750
+                      costRate: 500
+                      usageBehaviourRule: Defined Effort with variable End Date
+                      startDate: 06/01/2014
+                      remainingEffort: 10
+                      utilisationPct: 100 
+                - name: T&M 2
+                  product: T&M 
+                  activityAssignments:                 
+                   -  resourceName: US Supplier 1                       
+                      revenueRate: 750
+                      costRate: 500
+                      usageBehaviourRule: Defined Effort with variable End Date
+                      startDate: 20/01/2014
+                      remainingEffort: 9
+                      utilisationPct: 100 
+    
+                        
+supplierRequisitions:
+- engagement: T&M Delivery Engagement x'x x&x <testName> <dt>
+  deliveryElement: T&M 1
+  purchaseOrderRule: No PO Required
+  noSupperlierReq: true   
+  
+- engagement: T&M Delivery Engagement x'x x&x <testName> <dt>
+  deliveryElement: T&M 2
+  purchaseOrderRule: PO required for all
+  requestedBy: UK Co 1 x'x x&x Employee One
+  requisitionDate: 20/01/2014
+  supplier: AmericanSuppliers4U <dt>
+  supplierInvoicing: 6840.0
+  billingEntity: US Co 1 (Operating/Trading USD)
+  requisitionType: Actualisation
+  allocateFullamount: true
+  lines:
+  - { itemDescription: 'Engagement Start', unitAmount: 6840.00, netAmount: 6840.00, invoicedAmount: 6840.00 }                    
+  
+                 
+timesheets:
+- resourceName: US Supplier 1
+  testStage: book time
+  trackingPeriodStartDate: 06/01/2014
+  timeEntries:
+  - actualiseForecastEntry: false
+    startDate: 06/01/2014
+    endDate: 10/01/2014
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M 1 # was Sales Opp x'x x&x <testName> <dt>
+
+- resourceName: US Supplier 1
+  testStage: book time
+  trackingPeriodStartDate: 13/01/2014
+  timeEntries:
+  - actualiseForecastEntry: false
+    startDate: 13/01/2014
+    endDate: 17/01/2014
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M 1 # was Sales Opp x'x x&x <testName> <dt>
+
+- resourceName: US Supplier 1
+  testStage: book time
+  trackingPeriodStartDate: 20/01/2014
+  timeEntries:
+  - actualiseForecastEntry: false
+    startDate: 21/01/2014
+    endDate: 24/01/2014
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M 2 # was Sales Opp x'x x&x <testName> <dt> 
+
+- resourceName: US Supplier 1
+  testStage: book time
+  trackingPeriodStartDate: 27/01/2014
+  timeEntries:
+  - actualiseForecastEntry: false
+    startDate: 27/01/2014
+    endDate: 31/01/2014
+    entryUnits: 7.5
+    plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M 2 # was Sales Opp x'x x&x <testName> <dt>      
+    
+supplierInvoices:
+  - stage: firstSuppInvoicetest
+    supplierRequisitioned: false
+    allowSupplierInvoiceWithoutReq: true
+    supplierResource: US Supplier 1
+    resource: US Supplier 1
+    supplier: AmericanSuppliers4U <dt>
+    businessUnit: US Co 1 (Operating/Trading USD)
+    invoiceDate: 10/01/2014
+    taxCode: American Tax
+    invoiceFormat: Supplier Invoice Format
+    grossTotal: 4,826.00
+    netAmount: 3,800.00
+    taxAmount: 1,026.00
+    supplierContact: US Supplier 1
+    reference: No Supplier Req Invoice
+    itemDescriptions: 
+    - T&M 1
+    lines: 
+    - name: 06/01/2014
+    - name: 07/01/2014
+    - name: 08/01/2014
+    - name: 09/01/2014
+    - name: 10/01/2014
+    creditNotes:
+    - reasonCode: SupplierCreditNoteReasonCode:Goodwill
+      reasonDescription: Supplier Credit Note & Test 1 (No Requisition)
+      grossTotal: 4,826.00
+      netAmount: 3,800.00
+      taxAmount: 1,026.00
+      creditNoteDate: 10/01/2014
+      
+  - stage: SuppInvoiceResourceBatchGeneration
+    supplierRequisitioned: false
+    resourceBatchGenerated: true
+    supplierResource: US Supplier 1
+    resource: US Supplier 1
+    supplier: AmericanSuppliers4U <dt>
+    businessUnit: US Co 1 (Operating/Trading USD)
+    invoiceDate: 10/01/2014
+    taxCode: American Tax
+    invoiceFormat: Supplier Invoice Format
+    grossTotal: 4,826.00
+    netAmount: 3,800.00
+    taxAmount: 1,026.00
+    supplierContact: US Supplier 1
+    reference: No Supplier Req Invoice
+    deliveryElement: T&M 1
+    itemDescriptions: 
+    creditNotes:
+    - reasonCode: SupplierCreditNoteReasonCode:Goodwill
+      reasonDescription: Supplier Credit Note & Test 2 (Batch Generated Supplier Invoice)
+      grossTotal: 4,826.00
+      netAmount: 3,800.00
+      taxAmount: 1,026.00
+      creditNoteDate: 17/01/2014
+      
+  - stage: supplierInvoiceWithReq
+    supplierRequisitioned: true
+    allowSupplierInvoiceWithoutReq: true
+    supplierResource: US Supplier 1
+    selfBill: true
+    resource: US Supplier 1
+    supplier: AmericanSuppliers4U <dt>
+    businessUnit: US Co 1 (Operating/Trading USD)
+    invoiceDate: 31/01/2014
+    taxCode: American Tax
+    invoiceFormat: Supplier Invoice Format
+    grossTotal: 3,860.80
+    netAmount: 3,040.00
+    taxAmount: 820.80
+    supplierContact: US Supplier 1
+    reference: No Supplier Req Invoice
+    itemDescriptions: 
+    - US Supplier 1 - All
+    lines: 
+    - name: 21/01/2014
+    - name: 22/01/2014
+    - name: 23/01/2014
+    - name: 24/01/2014
+    creditNotes:
+    - reasonCode: SupplierCreditNoteReasonCode:Goodwill
+      reasonDescription: Partial Supplier Credit Note
+      isPartial: true
+      grossTotal: 1,930.40
+      netAmount: 1,520.00
+      taxAmount: 410.40
+      creditNoteDate: 24/01/2014
+      lines: 
+      - name: 21/01/2014
+      - name: 22/01/2014
+      
+  - stage: SuppInvoiceAccountBatchGeneration
+    supplierRequisitioned: false
+    accountBatchGenerated: true
+    supplierResource: US Supplier 1
+    resource: US Supplier 1
+    supplier: AmericanSuppliers4U <dt>
+    businessUnit: US Co 1 (Operating/Trading USD)
+    invoiceDate: 10/01/2014
+    taxCode: American Tax
+    invoiceFormat: Supplier Invoice Format
+    grossTotal: 4,826.00
+    netAmount: 3,800.00
+    taxAmount: 1,026.00
+    supplierContact: US Supplier 1
+    reference: Supplier Req Invoice account batch generated
+    deliveryElement: T&M 2
+    itemDescriptions: 
+    creditNotes:
+    - reasonCode: SupplierCreditNoteReasonCode:Error
+      reasonDescription: Supplier Credit Note after Account Batch Generated Invoice - Test 4
+      isPartial: true
+      grossTotal: 4,826.00
+      netAmount: 3,800.00
+      taxAmount: 1,026.00
+      creditNoteDate: 31/01/2014
+      lines: 
+      - name: 27/01/2014
+      - name: 28/01/2014
+      - name: 29/01/2014
+      - name: 30/01/2014
+      - name: 31/01/2014
+
+
+expectedResults:
+  - testStage: postSupplierRequisitionCreation
+    supplierRequisitions:
+    - noSupperlierReq: true
+      
+    - deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+      deliveryElementName: T&M 2
+      supplier: AmericanSuppliers4U <dt>
+      status: Approved
+      netAmount: USD 6,840.00 (GBP 4,500.00)
+      requestedBy: UK Co 1 x'x x&x Employee One
+      requisitionDate: 20/01/2014
+      billingEntity: US Co 1 (Operating/Trading USD)
+      requisitionType: Actualisation
+      lines:
+      - { itemDescription: 'US Supplier 1 - All', requiredUnits: 1.000, unitAmount: 'USD 6,840.00 (GBP 4,500.00)', netAmount: 'USD 6,840.00 (GBP 4,500.00)', invoicedAmount: 'USD 0.00 (GBP 0.00)' }
+      

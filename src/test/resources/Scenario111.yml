@@ -1,0 +1,836 @@
+---
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: EMEA Co 3 (Operating EUR)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: EMEA Co 3 (Operating EUR)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/01/2013
+        closeDate: 01/01/2013
+        forecastStatus: Probable (60%)
+               
+        deliveryEngagements:
+          - name: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+            productGroup: General Consulting (No Delivery Elements)
+            expectedStartDate: 03/06/2013
+            expectedEndDate: 28/06/2013
+            contractRevenue: 200000
+            
+            deliveryElements:
+              - name: Tracked Plan
+                product: Milestone Pct Complete - Tracked Plan
+                
+                activityAssignments:
+                  - resourceName: EMEA Co 3 x'x x&x Employee Three                  
+                    costRate: 375
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 03/06/2013
+                    remainingEffort: 20
+                    utilisationPct: 100
+                  - resourceName: US Co 2 x'x x&x Employee Five                   
+                    costRate: 382.5
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 03/06/2013
+                    remainingEffort: 20
+                    utilisationPct: 100
+                  - resourceName: EMEA Co 3 x'x x&x Associate Three                   
+                    costRate: 390
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 03/06/2013
+                    remainingEffort: 15
+                    utilisationPct: 100
+
+                revenueMilestones:
+                  - name: Final Deliverables
+                    value: 50000
+                    date: 28/06/2013
+                    
+                tasks:
+                  - testStage: create initial plan tasks and task assignments
+                    name: Workshops
+                    fixedEffort: true
+                    startDate: 03/06/2013
+                    endDate: 07/06/2013
+                    
+                    taskAssignments:
+                      - resourceName: EMEA Co 3 x'x x&x Employee Three
+                        baselineEffort: 37.5
+                        remainingEffort: 37.5
+                      - resourceName: US Co 2 x'x x&x Employee Five
+                        baselineEffort: 37.5
+                        remainingEffort: 37.5
+                      - resourceName: EMEA Co 3 x'x x&x Associate Three
+                        baselineEffort: 37.5
+                        remainingEffort: 37.5                      
+                  
+                  - testStage: create initial plan tasks and task assignments
+                    name: Functional Design
+                    startDate: 10/06/2013 
+                    
+                    taskAssignments:
+                      - resourceName: EMEA Co 3 x'x x&x Employee Three
+                        baselineEffort: 75
+                        remainingEffort: 75
+                      - resourceName: US Co 2 x'x x&x Employee Five
+                        baselineEffort: 75
+                        remainingEffort: 75
+                      - resourceName: EMEA Co 3 x'x x&x Associate Three
+                        baselineEffort: 75
+                        remainingEffort: 75
+                        
+                  - testStage: create initial plan tasks and task assignments
+                    name: Write-Up and Estimate
+                  
+                    taskAssignments:
+                      - resourceName: EMEA Co 3 x'x x&x Employee Three
+                        baselineEffort: 22.5
+                        remainingEffort: 22.5
+                      - resourceName: US Co 2 x'x x&x Employee Five
+                        baselineEffort: 22.5
+                        remainingEffort: 22.5
+
+                  - testStage: update task estimates post second time booking
+                    name: Functional Design
+                    
+                    taskAssignments:
+                      - resourceName: EMEA Co 3 x'x x&x Employee Three
+                        remainingEffort: 37.5
+                      - resourceName: US Co 2 x'x x&x Employee Five
+                        remainingEffort: 37.5
+                      - resourceName: EMEA Co 3 x'x x&x Associate Three
+                        remainingEffort: 37.5
+
+                  - testStage: update task estimates post third time booking
+                    name: Functional Design
+                    
+                    taskAssignments:
+                      - resourceName: EMEA Co 3 x'x x&x Employee Three
+                        remainingEffort: 0.0
+                      - resourceName: US Co 2 x'x x&x Employee Five
+                        remainingEffort: 0.0
+                      - resourceName: EMEA Co 3 x'x x&x Associate Three
+                        remainingEffort: 0.0
+                        
+                  - testStage: update task estimates post third time booking
+                    name: Write-Up and Estimate
+                    
+                    taskAssignments:
+                      - resourceName: EMEA Co 3 x'x x&x Employee Three
+                        remainingEffort: 37.5
+                      - resourceName: US Co 2 x'x x&x Employee Five
+                        remainingEffort: 37.5
+
+timesheets:
+  - testStage: firstTimeBooking
+    resourceName: EMEA Co 3 x'x x&x Employee Three
+    trackingPeriodStartDate: 03/06/2013
+    timeEntries:
+    - startDate: 03/06/2013
+      endDate: 07/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Workshops
+  - testStage: firstTimeBooking
+    resourceName: US Co 2 x'x x&x Employee Five 
+    trackingPeriodStartDate: 03/06/2013
+    timeEntries:
+    - startDate: 03/06/2013
+      endDate: 07/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Workshops
+  - testStage: firstTimeBooking
+    resourceName: EMEA Co 3 x'x x&x Associate Three 
+    trackingPeriodStartDate: 03/06/2013
+    timeEntries:
+    - startDate: 03/06/2013
+      endDate: 07/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Workshops
+  - testStage: secondTimeBooking
+    resourceName: EMEA Co 3 x'x x&x Employee Three
+    trackingPeriodStartDate: 10/06/2013
+    timeEntries:
+    - startDate: 10/06/2013
+      endDate: 13/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Functional Design
+    - startDate: 14/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Write-Up and Estimate
+  - testStage: secondTimeBooking
+    resourceName: US Co 2 x'x x&x Employee Five 
+    trackingPeriodStartDate: 10/06/2013
+    timeEntries:
+    - startDate: 10/06/2013
+      endDate: 13/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Functional Design
+    - startDate: 14/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Write-Up and Estimate
+  - testStage: secondTimeBooking
+    resourceName: EMEA Co 3 x'x x&x Associate Three 
+    trackingPeriodStartDate: 10/06/2013
+    timeEntries:
+    - startDate: 10/06/2013
+      endDate: 13/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Functional Design
+  - testStage: thirdTimeBooking
+    resourceName: EMEA Co 3 x'x x&x Employee Three
+    trackingPeriodStartDate: 17/06/2013
+    timeEntries:
+    - startDate: 17/06/2013
+      endDate: 18/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Functional Design
+    - startDate: 19/06/2013
+      endDate: 21/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Write-Up and Estimate
+  - testStage: thirdTimeBooking
+    resourceName: US Co 2 x'x x&x Employee Five 
+    trackingPeriodStartDate: 17/06/2013
+    timeEntries:
+    - startDate: 17/06/2013
+      endDate: 18/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Functional Design
+    - startDate: 19/06/2013
+      endDate: 21/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Write-Up and Estimate
+  - testStage: thirdTimeBooking
+    resourceName: EMEA Co 3 x'x x&x Associate Three 
+    trackingPeriodStartDate: 17/06/2013
+    timeEntries:
+    - startDate: 17/06/2013
+      endDate: 21/06/2013
+      entryUnits: 7.5
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Tracked Plan
+      task: Functional Design
+# invoices:
+  # - deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+    # expectedInvoiceValue: GBP 2,400.00
+    # purchaseOrders:
+    # - reference: PO0110 <dt>
+      # orderValue: 100000
+      # orderDate: 01/01/2013
+      # expiryDate: 01/01/2014
+      
+expectedResults:
+  - testStage: postInitialSetup
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: EMEA Co 3 (Operating EUR)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 50000.00
+      - factName: RevenueForecast
+        period: June 2013
+        businessUnitName: EMEA Co 3 (Operating EUR)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 32352.94
+      - factName: RevenueForecast
+        period: June 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 17647.06
+      - factName: CostForecast
+        period: June 2013
+        businessUnitName: EMEA Co 3 (Operating EUR)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 13350.00
+      - factName: CostForecast
+        period: June 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 7650.00
+      - factName: ReceivablesForecast
+        receivableDate: 28/06/2013
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 50000.00
+    resourceForecasts:
+      - resourceName: EMEA Co 3 x'x x&x Employee Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 28/06/2013
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: EMEA Co 3 (Operating EUR)
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 20
+      - resourceName: US Co 2 x'x x&x Employee Five
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 28/06/2013
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: US Co 2 (Operating/Trading USD)
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 20
+      - resourceName: EMEA Co 3 x'x x&x Associate Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 21/06/2013
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: EMEA Co 3 (Operating EUR)
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 15
+    trackingPlanTotals:
+      - deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        deliveryElementName: Tracked Plan
+        facts:
+        - factName: Effort
+          expectedValues: 
+          - measure: Baseline
+            value: 382.50
+          - measure: Expended
+            value: 0.00
+          - measure: Remaining
+            value: 382.50
+          - measure: Total
+            value: 382.50
+          - measure: Variance
+            value: 0.00
+        - factName: Cost
+          expectedValues: 
+          - measure: Baseline
+            value: 19,485.00
+          - measure: Expended
+            value: 0.00
+          - measure: Remaining
+            value: 19,485.00
+          - measure: Total
+            value: 19,485.00
+          - measure: Variance
+            value: 0.00
+  - testStage: postFirstTimeBooking
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: EMEA Co 3 (Operating EUR)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 50000.00
+      - factName: RevenueForecast
+        period: June 2013
+        businessUnitName: EMEA Co 3 (Operating EUR)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 32352.94
+      - factName: RevenueForecast
+        period: June 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 17647.06
+      - factName: CostForecast
+        period: June 2013
+        businessUnitName: EMEA Co 3 (Operating EUR)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 13350.00
+      - factName: CostForecast
+        period: June 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 7650.00
+      - factName: ReceivablesForecast
+        receivableDate: 28/06/2013
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 50000.00
+    resourceForecasts:
+      - resourceName: EMEA Co 3 x'x x&x Employee Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 28/06/2013
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: EMEA Co 3 (Operating EUR)
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Actual
+            value: 5
+          - measure: P2 Forecast
+            value: 20
+      - resourceName: US Co 2 x'x x&x Employee Five
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 28/06/2013
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: US Co 2 (Operating/Trading USD)
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Actual
+            value: 5
+          - measure: P2 Forecast
+            value: 20
+      - resourceName: EMEA Co 3 x'x x&x Associate Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 21/06/2013
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: EMEA Co 3 (Operating EUR)
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Actual
+            value: 5
+          - measure: P2 Forecast
+            value: 15
+    trackingPlanTotals:
+      - deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        deliveryElementName: Tracked Plan
+        facts:
+        - factName: Effort
+          expectedValues: 
+          - measure: Baseline
+            value: 382.50
+          - measure: Expended
+            value: 112.50
+          - measure: Remaining
+            value: 270.00
+          - measure: Total
+            value: 382.50
+          - measure: Variance
+            value: 0.00
+        - factName: Cost
+          expectedValues: 
+          - measure: Baseline
+            value: 19,485.00
+          - measure: Expended
+            value: 5,737.50
+          - measure: Remaining
+            value: 13,747.50
+          - measure: Total
+            value: 19,485.00
+# ignored due to assembla ticket 8170
+#          - measure: Variance
+#            value: -0.00
+  - testStage: postSecondTimeBooking
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: EMEA Co 3 (Operating EUR)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 50000.00
+      - factName: RevenueForecast
+        period: June 2013
+        businessUnitName: EMEA Co 3 (Operating EUR)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 32000.00
+      - factName: RevenueForecast
+        period: June 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 18000.00
+      - factName: CostForecast
+        period: June 2013
+        businessUnitName: EMEA Co 3 (Operating EUR)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 12960.00
+      - factName: CostForecast
+        period: June 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 7650.00
+      - factName: ReceivablesForecast
+        receivableDate: 28/06/2013
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 50000.00
+    resourceForecasts:
+      - resourceName: EMEA Co 3 x'x x&x Employee Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 28/06/2013
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: EMEA Co 3 (Operating EUR)
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Actual
+            value: 10
+          - measure: P2 Forecast
+            value: 20
+      - resourceName: US Co 2 x'x x&x Employee Five
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 28/06/2013
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: US Co 2 (Operating/Trading USD)
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Actual
+            value: 10
+          - measure: P2 Forecast
+            value: 20
+      - resourceName: EMEA Co 3 x'x x&x Associate Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 21/06/2013
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: EMEA Co 3 (Operating EUR)
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Actual
+            value: 9
+          - measure: P2 Forecast
+            value: 14
+    trackingPlanTotals:
+      - deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        deliveryElementName: Tracked Plan
+        facts:
+        - factName: Effort
+          expectedValues: 
+          - measure: Baseline
+            value: 382.50
+          - measure: Expended
+            value: 217.50
+          - measure: Remaining
+            value: 157.50
+          - measure: Total
+            value: 375.00
+          - measure: Variance
+            value: -7.50
+        - factName: Cost
+          expectedValues: 
+          - measure: Baseline
+            value: 19,485.00
+          - measure: Expended
+            value: 11,085.00
+          - measure: Remaining
+            value: 8,010.00
+          - measure: Total
+            value: 19,095.00
+          - measure: Variance
+            value: -390.00
+  - testStage: postThirdTimeBooking
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: EMEA Co 3 (Operating EUR)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 50000.00
+      - factName: RevenueForecast
+        period: June 2013
+        businessUnitName: EMEA Co 3 (Operating EUR)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 31481.48
+      - factName: RevenueForecast
+        period: June 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 18518.52
+      - factName: CostForecast
+        period: June 2013
+        businessUnitName: EMEA Co 3 (Operating EUR)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 12960.00
+      - factName: CostForecast
+        period: June 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 7650.00
+      - factName: ReceivablesForecast
+        receivableDate: 28/06/2013
+        deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 50000.00
+    resourceForecasts:
+      - resourceName: EMEA Co 3 x'x x&x Employee Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 28/06/2013
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: EMEA Co 3 (Operating EUR)
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Actual
+            value: 15
+          - measure: P2 Forecast
+            value: 20
+      - resourceName: US Co 2 x'x x&x Employee Five
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 28/06/2013
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: US Co 2 (Operating/Trading USD)
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Actual
+            value: 15
+          - measure: P2 Forecast
+            value: 20
+      - resourceName: EMEA Co 3 x'x x&x Associate Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 21/06/2013
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: EMEA Co 3 (Operating EUR)
+          deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Tracked Plan
+          activityName: Tracked Plan
+          expectedValues: 
+          - measure: Actual
+            value: 14
+          - measure: P2 Forecast
+            value: 14
+    trackingPlanTotals:
+      - deliveryEngagementName: Tracked Plan Delivery Engagement x'x x&x <testName> <dt>
+        deliveryElementName: Tracked Plan
+        facts:
+        - factName: Effort
+          expectedValues: 
+          - measure: Baseline
+            value: 382.50
+          - measure: Expended
+            value: 330.00
+          - measure: Remaining
+            value: 75.00
+          - measure: Total
+            value: 405.00
+          - measure: Variance
+            value: 22.50
+        - factName: Cost
+          expectedValues: 
+          - measure: Baseline
+            value: 19,485.00
+          - measure: Expended
+            value: 16,822.50 
+          - measure: Remaining
+            value: 3,787.50
+          - measure: Total
+            value: 20,610.00
+          - measure: Variance
+            value: 1,125.00

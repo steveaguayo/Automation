@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6eaacf72-fc2a-40d9-a71b-1f122610a9ee" name="Changes" comment="re #17764 -Update the What-if tab name">
+      <change beforePath="$PROJECT_DIR$/configCache.json" beforeDir="false" afterPath="$PROJECT_DIR$/configCache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/kimble/automation/scenarios/Scenario128Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/kimble/automation/scenarios/Scenario128Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/kimble/automation/scenarios/Scenario145Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/kimble/automation/scenarios/Scenario145Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/suite/config/LocalRegressionPack.xml" beforeDir="false" afterPath="$PROJECT_DIR$/suite/config/LocalRegressionPack.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/suite/config/environmentsDev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/suite/config/environmentsDev.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2Gad7LM9IpKjZbWKpU1e7yQNs9p" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Subversion&quot;
+  }
+}</component>
+  <component name="RunManager" selected="TestNG./Users/stevemerizan/Documents/Automation/suite/config/LocalRegressionPack.xml">
+    <configuration name="Scenario127Test" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="automation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kimble.automation.scenarios.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="kimble.automation.scenarios" />
+      <option name="MAIN_CLASS_NAME" value="kimble.automation.scenarios.Scenario127Test" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario128Test (1)" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="automation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kimble.automation.scenarios.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="kimble.automation.scenarios" />
+      <option name="MAIN_CLASS_NAME" value="kimble.automation.scenarios.Scenario128Test" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario128Test" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="automation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kimble.automation.scenarios.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="kimble.automation.scenarios" />
+      <option name="MAIN_CLASS_NAME" value="kimble.automation.scenarios.Scenario128Test" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="/Users/stevemerizan/Documents/Automation/suite/config/LocalRegressionPack.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="automation" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/suite/config/LocalRegressionPack.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG./Users/stevemerizan/Documents/Automation/suite/config/LocalRegressionPack.xml" />
+        <item itemvalue="TestNG.Scenario127Test" />
+        <item itemvalue="TestNG.Scenario128Test" />
+        <item itemvalue="TestNG.Scenario128Test (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>$USER_HOME$/.subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6eaacf72-fc2a-40d9-a71b-1f122610a9ee" name="Changes" comment="" />
+      <created>1666630465673</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666630465673</updated>
+    </task>
+    <task id="LOCAL-00001" summary="re #17764 -Update the What-if tab name">
+      <created>1666709847031</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1666709847031</updated>
+    </task>
+    <task id="LOCAL-00002" summary="re #17764 - New Packaged automation usernames">
+      <created>1667236732039</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667236732039</updated>
+    </task>
+    <task id="LOCAL-00003" summary="re #17764 -Update the environment names for packaged automation">
+      <created>1667236788037</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1667236788037</updated>
+    </task>
+    <task id="LOCAL-00004" summary="re #17764 -Update what-if creation labels">
+      <created>1667570744033</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1667570744033</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="re #17764 -Update the What-if tab name" />
+    <MESSAGE value="re #17764 - New Packaged automation usernames" />
+    <MESSAGE value="re #17764 -Update the environment names for packaged automation" />
+    <MESSAGE value="re #17764 -Update what-if creation labels" />
+    <option name="LAST_COMMIT_MESSAGE" value="re #17764 -Update what-if creation labels" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/kimble/automation/kimbleobjects/classic/WhatIfScenariosPageC.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/kimble/automation/kimbleobjects/classic/WhatIfScenariosPageC.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

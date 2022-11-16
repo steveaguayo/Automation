@@ -1,0 +1,1626 @@
+---
+accounts:
+  - name: ZeroRate US Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: US Co 1 (Operating/Trading USD)
+    invoicingCurrency: USD
+    taxCode: Zero Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: US Co 1 (Operating/Trading USD)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/01/2013
+        closeDate: 01/01/2013
+        forecastStatus: Probable (60%)
+               
+        deliveryEngagements:
+          - name: T&M Delivery Engagement x'x x&x <testName> <dt>
+            productGroup: General Consulting (No Delivery Elements)
+            expectedStartDate: 03/07/2013
+            expectedEndDate: 12/07/2013
+            contractRevenue: 110000
+            
+            deliveryElements:
+              - name: T&M
+                product: T&M
+                
+                activityAssignments:
+
+                  - resourceName: US Co 2 x'x x&x Associate One
+                    revenueRate: 1000
+                    costRate: 375
+                    usageBehaviourRule: Cover with Usage Preserved on Resource Change
+                    startDate: 01/07/2013
+                    endDate: 12/07/2013
+                    #remainingEffort: 10
+                    utilisationPct: 100  
+
+                  - resourceName: US Co 1 x'x x&x Employee Two
+                    revenueRate: 1000
+                    costRate: 375
+                    usageBehaviourRule: Finish work asap, unless Resource Unavailable
+                    startDate: 01/07/2013
+                    #endDate: 12/07/2013
+                    remainingEffort: 10
+                    utilisationPct: 100
+
+                  - resourceName: US Co 1 x'x x&x Employee Three
+                    revenueRate: 1000
+                    costRate: 375
+                    usageBehaviourRule: Finish work asap, unless Resource replaced
+                    startDate: 01/07/2013
+                    #endDate: 12/07/2013
+                    remainingEffort: 10
+                    utilisationPct: 100
+
+                  - resourceName: US Co 1 x'x x&x Employee One
+                    revenueRate: 1000
+                    costRate: 375
+                    usageBehaviourRule: Finish work asap. Manually maintain remaining Effort
+                    startDate: 01/07/2013
+                    #endDate: 12/07/2013
+                    remainingEffort: 10
+                    utilisationPct: 100
+                    
+                  - resourceName: US Co 1 x'x x&x Employee Four
+                    revenueRate: 1000
+                    costRate: 375
+                    usageBehaviourRule: Finish work asap, allow Profiling (110)
+                    startDate: 01/07/2013
+                    #endDate: 12/07/2013
+                    remainingEffort: 10
+                    utilisationPct: 100
+                    
+                  - resourceName: US Co 1 x'x x&x Employee Five
+                    revenueRate: 1000
+                    costRate: 375
+                    usageBehaviourRule: Defined Utilisation between two Dates, allow Profiling
+                    startDate: 01/07/2013
+                    endDate: 12/07/2013
+                    #remainingEffort: 10
+                    utilisationPct: 100
+                    
+                  - resourceName: US Co 1 x'x x&x Associate Two
+                    revenueRate: 1000
+                    costRate: 375
+                    usageBehaviourRule: Defined Effort between two Dates
+                    startDate: 01/07/2013
+                    endDate: 12/07/2013
+                    remainingEffort: 10
+                    #utilisationPct: 100
+
+                  - resourceName: US Co 1 x'x x&x Associate Three
+                    revenueRate: 1000
+                    costRate: 375
+                    usageBehaviourRule: Defined Utilisation between two Dates
+                    startDate: 01/07/2013
+                    endDate: 12/07/2013
+                    #remainingEffort: 10
+                    utilisationPct: 100                    
+                    
+                  - resourceName: US Co 1 x'x x&x Associate One
+                    revenueRate: 1000
+                    costRate: 375
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 01/07/2013
+                    #endDate: 12/07/2013
+                    remainingEffort: 10
+                    utilisationPct: 100
+
+                  - resourceName: US Co 1 x'x x&x Associate Four
+                    revenueRate: 1000
+                    costRate: 375
+                    usageBehaviourRule: Defined Effort with variable End Date (Fixed Usage)
+                    startDate: 01/07/2013
+                    #endDate: 12/07/2013
+                    remainingEffort: 10
+                    utilisationPct: 100
+
+                  - resourceName: US Co 1 x'x x&x Associate Five
+                    revenueRate: 1000
+                    costRate: 375
+                    usageBehaviourRule: Defined Effort between two Dates (Fixed Usage)
+                    startDate: 01/07/2013
+                    endDate: 12/07/2013
+                    remainingEffort: 10
+                    #utilisationPct: 100
+                                     
+                    scheduledActivity:
+                      - resourceName: US Co 1 x'x x&x Associate One
+                        scheduledDays:
+                          - date: 08/07/2013
+                            numberOfHours: 3.75
+                      - resourceName: US Co 1 x'x x&x Associate Two
+                        scheduledDays:
+                          - date: 08/07/2013
+                            numberOfHours: 3.75
+                      - resourceName: US Co 1 x'x x&x Associate Three
+                        scheduledDays:
+                          - date: 08/07/2013
+                            numberOfHours: 3.75
+                      - resourceName: US Co 1 x'x x&x Associate Four
+                        scheduledDays:
+                          - date: 08/07/2013
+                            numberOfHours: 3.75
+                      - resourceName: US Co 1 x'x x&x Associate Five
+                        scheduledDays:
+                          - date: 08/07/2013
+                            numberOfHours: 3.75
+                      - resourceName: US Co 1 x'x x&x Employee One
+                        scheduledDays:
+                          - date: 08/07/2013
+                            numberOfHours: 3.75
+                      - resourceName: US Co 1 x'x x&x Employee Two
+                        scheduledDays:
+                          - date: 08/07/2013
+                            numberOfHours: 3.75
+                      - resourceName: US Co 1 x'x x&x Employee Three
+                        scheduledDays:
+                          - date: 08/07/2013
+                            numberOfHours: 3.75
+                      - resourceName: US Co 1 x'x x&x Employee Four
+                        scheduledDays:
+                          - date: 08/07/2013
+                            numberOfHours: 3.75
+                      - resourceName: US Co 1 x'x x&x Employee Five
+                        scheduledDays:
+                          - date: 08/07/2013
+                            numberOfHours: 3.75
+                      - resourceName: US Co 2 x'x x&x Associate One
+                        scheduledDays:
+                          - date: 08/07/2013
+                            numberOfHours: 3.75
+
+timesheets:
+  - testStage: firstTimeBooking
+    resourceName: US Co 1 x'x x&x Associate Five
+    trackingPeriodStartDate: 01/07/2013
+    timeEntries:
+    - startDate: 01/07/2013
+      endDate: 04/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+    - startDate: 05/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 3.75
+  - testStage: firstTimeBooking
+    resourceName: US Co 1 x'x x&x Associate Four
+    trackingPeriodStartDate: 01/07/2013
+    timeEntries:
+    - startDate: 01/07/2013
+      endDate: 04/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+    - startDate: 05/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 3.75
+  - testStage: firstTimeBooking
+    resourceName: US Co 1 x'x x&x Associate One
+    trackingPeriodStartDate: 01/07/2013
+    timeEntries:
+    - startDate: 01/07/2013
+      endDate: 04/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+    - startDate: 05/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 3.75
+  - testStage: firstTimeBooking
+    resourceName: US Co 1 x'x x&x Associate Three
+    trackingPeriodStartDate: 01/07/2013
+    timeEntries:
+    - startDate: 01/07/2013
+      endDate: 04/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+    - startDate: 05/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 3.75
+  - testStage: firstTimeBooking
+    resourceName: US Co 1 x'x x&x Associate Two
+    trackingPeriodStartDate: 01/07/2013
+    timeEntries:
+    - startDate: 01/07/2013
+      endDate: 04/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+    - startDate: 05/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 3.75
+  - testStage: firstTimeBooking
+    resourceName: US Co 1 x'x x&x Employee Five
+    trackingPeriodStartDate: 01/07/2013
+    timeEntries:
+    - startDate: 01/07/2013
+      endDate: 04/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+    - startDate: 05/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 3.75
+  - testStage: firstTimeBooking
+    resourceName: US Co 1 x'x x&x Employee Four
+    trackingPeriodStartDate: 01/07/2013
+    timeEntries:
+    - startDate: 01/07/2013
+      endDate: 04/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+    - startDate: 05/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 3.75
+  - testStage: firstTimeBooking
+    resourceName: US Co 1 x'x x&x Employee One
+    trackingPeriodStartDate: 01/07/2013
+    timeEntries:
+    - startDate: 01/07/2013
+      endDate: 04/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+    - startDate: 05/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 3.75
+  - testStage: firstTimeBooking
+    resourceName: US Co 1 x'x x&x Employee Three
+    trackingPeriodStartDate: 01/07/2013
+    timeEntries:
+    - startDate: 01/07/2013
+      endDate: 04/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+    - startDate: 05/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 3.75
+  - testStage: firstTimeBooking
+    resourceName: US Co 1 x'x x&x Employee Two
+    trackingPeriodStartDate: 01/07/2013
+    timeEntries:
+    - startDate: 01/07/2013
+      endDate: 04/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+    - startDate: 05/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 3.75
+  - testStage: firstTimeBooking
+    resourceName: US Co 2 x'x x&x Associate One
+    trackingPeriodStartDate: 01/07/2013
+    timeEntries:
+    - startDate: 01/07/2013
+      endDate: 04/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+    - startDate: 05/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 3.75
+
+  
+  - testStage: secondTimeBooking
+    resourceName: US Co 1 x'x x&x Associate Five
+    trackingPeriodStartDate: 08/07/2013
+    timeEntries:
+    - startDate: 08/07/2013
+      endDate: 12/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+  - testStage: secondTimeBooking
+    resourceName: US Co 1 x'x x&x Associate Four
+    trackingPeriodStartDate: 08/07/2013
+    timeEntries:
+    - startDate: 08/07/2013
+      endDate: 12/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+  - testStage: secondTimeBooking
+    resourceName: US Co 1 x'x x&x Associate One
+    trackingPeriodStartDate: 08/07/2013
+    timeEntries:
+    - startDate: 08/07/2013
+      endDate: 12/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+  - testStage: secondTimeBooking
+    resourceName: US Co 1 x'x x&x Associate Three
+    trackingPeriodStartDate: 08/07/2013
+    timeEntries:
+    - startDate: 08/07/2013
+      endDate: 12/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+  - testStage: secondTimeBooking
+    resourceName: US Co 1 x'x x&x Associate Two
+    trackingPeriodStartDate: 08/07/2013
+    timeEntries:
+    - startDate: 08/07/2013
+      endDate: 12/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+  - testStage: secondTimeBooking
+    resourceName: US Co 1 x'x x&x Employee Five
+    trackingPeriodStartDate: 08/07/2013
+    timeEntries:
+    - startDate: 08/07/2013
+      endDate: 12/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+  - testStage: secondTimeBooking
+    resourceName: US Co 1 x'x x&x Employee Four
+    trackingPeriodStartDate: 08/07/2013
+    timeEntries:
+    - startDate: 08/07/2013
+      endDate: 12/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+  - testStage: secondTimeBooking
+    resourceName: US Co 1 x'x x&x Employee One
+    trackingPeriodStartDate: 08/07/2013
+    timeEntries:
+    - startDate: 08/07/2013
+      endDate: 12/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+  - testStage: secondTimeBooking
+    resourceName: US Co 1 x'x x&x Employee Three
+    trackingPeriodStartDate: 08/07/2013
+    timeEntries:
+    - startDate: 08/07/2013
+      endDate: 12/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+  - testStage: secondTimeBooking
+    resourceName: US Co 1 x'x x&x Employee Two
+    trackingPeriodStartDate: 08/07/2013
+    timeEntries:
+    - startDate: 08/07/2013
+      endDate: 12/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+  - testStage: secondTimeBooking
+    resourceName: US Co 2 x'x x&x Associate One
+    trackingPeriodStartDate: 08/07/2013
+    timeEntries:
+    - startDate: 08/07/2013
+      endDate: 12/07/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+      
+expectedResults:
+  - testStage: postSalesOppWin
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 110000.00
+      - factName: RevenueForecast
+        period: July 2013
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 0.00
+        - measure: P1 Forecast
+          currency: USD
+          value: 100000.00
+      - factName: RevenueForecast
+        period: July 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 0.00
+        - measure: P1 Forecast
+          currency: USD
+          value: 10000.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 12/07/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 110000.00
+
+    resourceForecasts:
+
+      - resourceName: US Co 1 x'x x&x Associate One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 10
+
+      - resourceName: US Co 1 x'x x&x Associate Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 10
+
+      - resourceName: US Co 1 x'x x&x Associate Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 10
+
+      - resourceName: US Co 1 x'x x&x Associate Four
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 10
+
+      - resourceName: US Co 1 x'x x&x Associate Five
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 10
+
+      - resourceName: US Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 10
+
+      - resourceName: US Co 1 x'x x&x Employee Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 10
+
+      - resourceName: US Co 1 x'x x&x Employee Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 10
+
+      - resourceName: US Co 1 x'x x&x Employee Four
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 10
+
+      - resourceName: US Co 1 x'x x&x Employee Five
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 10
+
+      - resourceName: US Co 2 x'x x&x Associate One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 2 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 10
+
+  - testStage: postScheduledWork
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 110000.00
+      - factName: RevenueForecast
+        period: July 2013
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 0.00
+        - measure: P1 Forecast
+          currency: USD
+          value: 98500.00
+      - factName: RevenueForecast
+        period: July 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 0.00
+        - measure: P1 Forecast
+          currency: USD
+          value: 9500.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 15/07/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 108000.00
+
+    resourceForecasts:
+
+# Defined Effort with variable End date
+      - resourceName: US Co 1 x'x x&x Associate One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 15/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 10
+# Defined Effort between two Dates
+      - resourceName: US Co 1 x'x x&x Associate Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 10
+# Defined Utilisation between two Dates
+      - resourceName: US Co 1 x'x x&x Associate Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 9.5
+# Defined Effort with variable End Date (Fixed Usage)
+      - resourceName: US Co 1 x'x x&x Associate Four
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 15/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 10
+# Defined Effort between two Dates (Fixed Usage)
+      - resourceName: US Co 1 x'x x&x Associate Five
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 10
+# Finish work asap. Manual maintain remaining Effort
+      - resourceName: US Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 9.5
+# Finish work asap, unless Resource Unavailable
+      - resourceName: US Co 1 x'x x&x Employee Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 15/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 10
+# Finish work asap, unless Resource replaced
+      - resourceName: US Co 1 x'x x&x Employee Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 15/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 10
+# Finish work asap, allow Profiling (110)
+      - resourceName: US Co 1 x'x x&x Employee Four
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 15/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 10
+# Defined Utilisation between two Dates, allow Profiling
+      - resourceName: US Co 1 x'x x&x Employee Five
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 9.5
+# Cover with Usage Preserved on Resource Change
+      - resourceName: US Co 2 x'x x&x Associate One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 2 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P2 Forecast
+            value: 9.5
+
+  - testStage: postFirstTimeBooking
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 110000.00
+      - factName: RevenueForecast
+        period: July 2013
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 45000.00
+        - measure: P1 Forecast
+          currency: USD
+          value: 95972.22
+      - factName: RevenueForecast
+        period: July 2013
+        businessUnitName: US Co 2 (Operating/Trading USD)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 4500.00
+        - measure: P1 Forecast
+          currency: USD
+          value: 9000.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 15/07/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 104972.22
+
+    resourceForecasts:
+
+# Defined Effort with variable End date
+      - resourceName: US Co 1 x'x x&x Associate One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 15/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 4.5
+          - measure: P2 Forecast
+            value: 9.75
+# Defined Effort between two Dates
+      - resourceName: US Co 1 x'x x&x Associate Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 4.5
+          - measure: P2 Forecast
+            value: 9.222
+# Defined Utilisation between two Dates
+      - resourceName: US Co 1 x'x x&x Associate Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 4.5
+          - measure: P2 Forecast
+            value: 9
+# Defined Effort with variable End Date (Fixed Usage)
+      - resourceName: US Co 1 x'x x&x Associate Four
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 15/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 4.5
+          - measure: P2 Forecast
+            value: 10
+# Defined Effort between two Dates (Fixed Usage)
+      - resourceName: US Co 1 x'x x&x Associate Five
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 4.5
+          - measure: P2 Forecast
+            value: 10
+# Finish work asap. Manual maintain remaining Effort
+      - resourceName: US Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 4.5
+          - measure: P2 Forecast
+            value: 9
+# Finish work asap, unless Resource Unavailable
+      - resourceName: US Co 1 x'x x&x Employee Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 15/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 4.5
+          - measure: P2 Forecast
+            value: 10
+# Finish work asap, unless Resource replaced
+      - resourceName: US Co 1 x'x x&x Employee Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 15/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 4.5
+          - measure: P2 Forecast
+            value: 10
+# Finish work asap, allow Profiling (110)
+      - resourceName: US Co 1 x'x x&x Employee Four
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 15/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 4.5
+          - measure: P2 Forecast
+            value: 10
+# Defined Utilisation between two Dates, allow Profiling
+      - resourceName: US Co 1 x'x x&x Employee Five
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 4.5
+          - measure: P2 Forecast
+            value: 9
+# Cover with Usage Preserved on Resource Change
+      - resourceName: US Co 2 x'x x&x Associate One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 2 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 4.5
+          - measure: P2 Forecast
+            value: 9
+
+  - testStage: postSecondTimeBooking
+# Disabled due to #3212 - nowhere for the balance of usage to be so sales opp totals are incorrect
+    # salesOpportunityForecasts:
+      # salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      # facts:
+      # - factName: BookingForecast
+        # businessUnitName: US Co 1 (Operating/Trading USD)
+        # deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        # period: <currentMonthFull> <currentYearFull>
+        # expectedValues: 
+        # - measure: Actual
+          # currency: USD
+          # value: 110000.00
+      # - factName: RevenueForecast
+        # period: July 2013
+        # businessUnitName: US Co 1 (Operating/Trading USD)
+        # deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        # expectedValues: 
+        # - measure: Actual
+          # currency: USD
+          # value: 45000.00
+        # - measure: P1 Forecast
+          # currency: USD
+          # value: 95972.22
+      # - factName: RevenueForecast
+        # period: July 2013
+        # businessUnitName: US Co 2 (Operating/Trading USD)
+        # deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        # expectedValues: 
+        # - measure: Actual
+          # currency: USD
+          # value: 4500.00
+        # - measure: P1 Forecast
+          # currency: USD
+          # value: 9000.00
+      # - factName: ReceivablesForecast
+        # deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        # receivableDate: 15/07/2013
+        # expectedValues: 
+        # - measure: ForecastRevenue
+          # currency: USD
+          # value: 104972.22
+
+    resourceForecasts:
+
+# Defined Effort with variable End date
+      - resourceName: US Co 1 x'x x&x Associate One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 15/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 9.5
+          - measure: P2 Forecast
+            value: 10.45
+# Defined Effort between two Dates
+      - resourceName: US Co 1 x'x x&x Associate Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 9.5
+          - measure: P2 Forecast
+            value: 9.5
+# Defined Utilisation between two Dates
+      - resourceName: US Co 1 x'x x&x Associate Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 9.5
+          - measure: P2 Forecast
+            value: 9.5
+# Defined Effort with variable End Date (Fixed Usage)
+      - resourceName: US Co 1 x'x x&x Associate Four
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 15/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 9.5
+          - measure: P2 Forecast
+            value: 10
+# Defined Effort between two Dates (Fixed Usage)
+# Disabled due to #3212 - nowhere for the balance of usage to be placed
+      # - resourceName: US Co 1 x'x x&x Associate Five
+        # facts:
+        # - factName: Assignments
+          # salesOpportunityName: ""
+          # deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          # deliveryElementName: T&M
+          # activityName: T&M
+          # expectedValues: 
+          # - measure: Start Date
+            # value: 01/07/2013
+          # - measure: Forecast P2 End Date
+            # value: 12/07/2013
+        # - factName: UsageForecast
+          # period: July 2013
+          # businessUnitName: US Co 1 (Operating/Trading USD)
+          # deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          # deliveryElementName: T&M
+          # activityName: T&M
+          # expectedValues: 
+          # - measure: Actual
+            # value: 9.5
+          # - measure: P2 Forecast
+            # value: 10
+# Finish work asap. Manual maintain remaining Effort
+      - resourceName: US Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 9.5
+          - measure: P2 Forecast
+            value: 9.5
+# Finish work asap, unless Resource Unavailable
+      - resourceName: US Co 1 x'x x&x Employee Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 15/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 9.5
+          - measure: P2 Forecast
+            value: 10
+# Finish work asap, unless Resource replaced
+      - resourceName: US Co 1 x'x x&x Employee Three
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 15/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 9.5
+          - measure: P2 Forecast
+            value: 10
+# Finish work asap, allow Profiling (110)
+      - resourceName: US Co 1 x'x x&x Employee Four
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 15/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 9.5
+          - measure: P2 Forecast
+            value: 10
+# Defined Utilisation between two Dates, allow Profiling
+      - resourceName: US Co 1 x'x x&x Employee Five
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 1 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 9.5
+          - measure: P2 Forecast
+            value: 9.5
+# Cover with Usage Preserved on Resource Change
+      - resourceName: US Co 2 x'x x&x Associate One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 12/07/2013
+        - factName: UsageForecast
+          period: July 2013
+          businessUnitName: US Co 2 (Operating/Trading USD)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 9.5
+          - measure: P2 Forecast
+            value: 9.5

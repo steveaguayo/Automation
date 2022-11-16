@@ -1,0 +1,387 @@
+---
+# Test overview
+# Two Delivery Engagements where T&M is lost and Fixed Price is Won when the sales oppoortunity is won
+# (As 106 but DGs are reversed)
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/01/2013
+        closeDate: 01/01/2013
+        forecastStatus: Probable (60%)
+        
+        bidTeamActivityAssignments:
+          - resourceName: UK Co 1 x'x x&x Employee One                     
+            costRate: 600
+            usageBehaviourRule: Defined Effort with variable End Date
+            startDate: 13/05/2013
+            remainingEffort: 5
+            utilisationPct: 100
+            costOnlyAssignment: true
+        
+        deliveryEngagements:
+          - name: T&M Delivery Engagement x'x x&x <testName> <dt>
+            productGroup: General Consulting (No Delivery Elements)
+            expectedStartDate: 03/06/2013
+            expectedEndDate: 28/06/2013
+            contractRevenue: 20000
+            deliveryStatus: Lost
+            lossReason: Other
+            lossNarrative: Client wants to roll this into the Fixed Price
+            
+            deliveryElements:
+              - name: T&M
+                product: T&M
+                
+                activityAssignments:
+                  - resourceName: UK Co 1 x'x x&x Employee One                     
+                    revenueRate: 1000
+                    costRate: 600
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 03/06/2013
+                    remainingEffort: 20
+                    utilisationPct: 100
+                    
+          - name: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+            productGroup: General Consulting (No Delivery Elements)
+            expectedStartDate: 01/07/2013
+            expectedEndDate: 01/07/2014
+            contractRevenue: 1000000
+            deliveryStatus: Won
+            
+            deliveryElements:
+              - name: Fixed Price
+                product: Fixed Price
+                
+                activityAssignments:
+                  - resourceName: UK Co 1 x'x x&x Employee One                     
+                    costRate: 600
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 01/07/2013
+                    remainingEffort: 200
+                    utilisationPct: 60
+                revenueMilestones:
+                  - name: First Month
+                    value: 200000
+                    date: 01/08/2013
+                  - name: Second Month
+                    value: 200000
+                    date: 01/09/2013
+    changeControls:
+      - name: Additional work x'x x&x <testName> <dt>
+
+        deliveryEngagements:
+          - name: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+
+            deliveryElements:
+              - name: Additional work x'x x&x <testName> <dt>
+                parentElementName: Fixed Price
+                product: Fixed Price
+                operatedWithPrimary: true
+                changeEffective: Create a new Change Order
+                changeOrderBehaviourRule: Approval of the Change Order
+                
+                activityAssignments:
+                  - resourceName: US Co 1 x'x x&x Associate Four
+                    scopedWith: Additional work x'x x&x <testName> <dt>
+                    costRate: 750
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 01/07/2013
+                    remainingEffort: 100
+                    utilisationPct: 40
+                revenueMilestones:
+                  - name: CR1 - First Month
+                    value: 500000
+                    date: 01/08/2013
+                  - name: CR1 - Second Month
+                    value: 500000
+                    date: 01/09/2013
+expectedResults:
+  - testStage: postInitialSetup
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 20000.00
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 1000000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 20000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 1000000.03              
+      - factName: ReceivablesForecast
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 28/06/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          value: 0
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 01/08/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          value: 0
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 01/09/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          value: 0
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 28/06/2013
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 22/10/2014
+          
+  - testStage: postSalesOppWin
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+      # was skipped for #2769 now active for retest in 1.19
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 400000.00
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P2 Forecast
+          value: 0
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 400000.03
+      # was skipped for #2829 now active for retest in 1.19
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 400000.03
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 119999.99  
+      - factName: ReceivablesForecast
+        ignoreReason: "ticket #2828 - receivables forecast not removed for lost delivery engagement"
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 28/06/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 0
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 01/08/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 200000.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 01/09/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 200000.00          
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P1 End Date
+            value: 22/10/2014
+        - factName: Assignments
+          ignoreReason: "ticket #2828 - assignment details not removed for lost delivery engagement"
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            # we expect not to find a row for this assignment as it is lost
+            value: "" 
+  - testStage: CR1
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+      # was skipped for #2769 now active for retest in 1.19
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 400000.00
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P2 Forecast
+          value: 0
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 400000.03
+#      - factName: RevenueForecast
+#        businessUnitName: UK Co 1 (Operating/Trading GBP)
+#        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+#        expectedValues: 
+#        - measure: P2 Forecast
+#          currency: GBP
+#          value: 933333.31
+#      - factName: RevenueForecast
+#        businessUnitName: US Co 1 (Operating/Trading USD)
+#        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+#        expectedValues: 
+#        - measure: P1 Forecast
+#          currency: GBP
+#          value: 0.00
+#      - factName: RevenueForecast
+#        businessUnitName: US Co 1 (Operating/Trading USD)
+#        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+#        expectedValues: 
+#        - measure: P2 Forecast
+#          currency: GBP
+#          value: 466666.65
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 119999.99  
+#      - factName: CostForecast
+#        businessUnitName: US Co 1 (Operating/Trading USD)
+#        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+#        expectedValues: 
+#        - measure: P1 Forecast
+#          value: 0.00
+      - factName: ReceivablesForecast
+        ignoreReason: "ticket #2828 - receivables forecast not removed for lost delivery engagement"
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 28/06/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 0
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 01/08/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 700000.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 01/09/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 700000.00
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Fixed Price
+          activityName: Fixed Price
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P1 End Date
+            value: 22/10/2014
+        - factName: Assignments
+          ignoreReason: "ticket #2828 - assignment details not removed for lost delivery engagement"
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            # we expect not to find a row for this assignment as it is lost
+            value: "" 
+      - resourceName: US Co 1 x'x x&x Associate Four
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: Fixed Price Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: Additional work x'x x&x <testName> <dt>
+          activityName: Additional work x'x x&x <testName> <dt>
+          expectedValues: 
+          - measure: Start Date
+            value: 01/07/2013
+          - measure: Forecast P2 End Date
+            value: 25/06/2014

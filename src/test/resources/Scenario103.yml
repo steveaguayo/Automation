@@ -1,0 +1,675 @@
+---
+# Test overview
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: US Co 1 (Operating/Trading USD)
+        step2BusinessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting - T&M
+        responseRequiredDate: 01/01/2013
+        closeDate: 01/01/2013
+        step2CloseDate: 01/02/2013
+        forecastStatus: Suspect (1%)
+
+        lostCloseDate: 01/02/2013
+        lostReason: No Budget
+        lostNarrative: No Budget
+        
+        bidTeamActivityAssignments:
+          - resourceName: UK Co 1 x'x x&x Employee One                     
+            costRate: 600
+            usageBehaviourRule: Defined Effort with variable End Date
+            startDate: 11/02/2013
+            remainingEffort: 10
+            utilisationPct: 100
+            costOnlyAssignment: true
+        
+        deliveryEngagements:
+          - name: General Consulting - T&M
+            expectedStartDate: 01/01/2013
+            expectedEndDate: 20/03/2013
+            contractRevenue: 100000
+            contractRevenueDisplay: "USD 34,960.00 (GBP 23,000.00)"
+            
+            deliveryElements:
+              - name: T&M
+                product: T&M
+                
+                activityAssignments:
+                  - resourceName: UK Co 1 x'x x&x Employee One                     
+                    revenueRate: 1000
+                    costRate: 600
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 28/02/2013
+                    remainingEffort: 23
+                    utilisationPct: 100
+
+timesheets:
+  - resourceName: UK Co 1 x'x x&x Employee One
+    trackingPeriodStartDate: 11/02/2013
+    timeEntries:
+    - startDate: 11/02/2013
+      endDate: 12/02/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Sales Opp x'x x&x <testName> <dt>
+      entryUnits: 7.5
+
+expenseClaims:
+  - resourceName: UK Co 1 x'x x&x Employee One
+    testStage: enterExpensesPostBidTeamAssignment
+    expenseEntries:
+    - name: Weekly Train Pass
+      incurredDate: 11/02/2013
+      activityName: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-Sales Opp x'x x&x <testName> <dt>
+      expenseDetails:
+      - category: Train
+        currency: GBP
+        amount: 50.34
+        notes: Weekly Train Pass
+                    
+expectedResults:
+  - testStage: PostUpdateToProbable
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: General Consulting - T&M
+        period: January 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 100000.00
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: General Consulting - T&M
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 100000.01
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: General Consulting - T&M
+        period: January 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 38888.89
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: General Consulting - T&M
+        period: February 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 35185.19
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: General Consulting - T&M
+        period: March 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 25925.93
+          
+  - testStage: PostCloseDateChange
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: General Consulting - T&M
+        period: February 2013
+        expectedValues: 
+        - measure: P3 Forecast
+          currency: USD
+          value: 100000.00
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: General Consulting - T&M
+        expectedValues: 
+        - measure: P3 Forecast
+          currency: USD
+          value: 100000.01
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: General Consulting - T&M
+        period: January 2013
+        expectedValues: 
+        - measure: P3 Forecast
+          currency: USD
+          value: 38888.89
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: General Consulting - T&M
+        period: February 2013
+        expectedValues: 
+        - measure: P3 Forecast
+          currency: USD
+          value: 35185.19
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: General Consulting - T&M
+        period: March 2013
+        expectedValues: 
+        - measure: P3 Forecast
+          currency: USD
+          value: 25925.93
+
+  - testStage: PostFirstBusinessUnitChange
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+        # was skipped for #2767 now active for retest in 1.19
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: February 2013
+        expectedValues: 
+        - measure: P3 Forecast
+          currency: USD
+          value: 100000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        expectedValues: 
+        - measure: P3 Forecast
+          currency: USD
+          value: 100000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: January 2013
+        expectedValues: 
+        - measure: P3 Forecast
+          currency: USD
+          value: 39285.71
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: February 2013
+        expectedValues: 
+        - measure: P3 Forecast
+          currency: USD
+          value: 35714.29
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: March 2013
+        expectedValues: 
+        - measure: P3 Forecast
+          currency: USD
+          value: 25000.00
+          
+          
+  - testStage: PostDetailedRevenueDefinition
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      # was skipped for #2769 now active for retest in 1.19
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: February 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 34960.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 34960.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: February 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 1520.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: March 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 30400.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: April 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 3040.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 13800.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: February 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 600.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: March 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 12000.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: April 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 1200.00        
+      - factName: ReceivablesForecast
+        deliveryEngagementName: General Consulting - T&M
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 34960.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: General Consulting - T&M
+        receivableDate: 28/02/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 1520.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: General Consulting - T&M
+        receivableDate: 31/03/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 30400.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: General Consulting - T&M
+        receivableDate: 03/04/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 3040.00
+
+  - testStage: PostSecondBusinessUnitChange
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+        # was skipped for #2767 now active for retest in 1.19
+      - factName: BookingForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: General Consulting - T&M
+        period: February 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 34960.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 34960.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: February 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 1520.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: March 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 30400.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: April 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 3040.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 13800.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: February 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 600.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: March 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 12000.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: April 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 1200.00        
+      - factName: ReceivablesForecast
+        deliveryEngagementName: General Consulting - T&M
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 34960.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: General Consulting - T&M
+        receivableDate: 28/02/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 1520.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: General Consulting - T&M
+        receivableDate: 31/03/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 30400.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: General Consulting - T&M
+        receivableDate: 03/04/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 3040.00
+
+  - testStage: PostBidTeamAssignment
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+       # was skipped for #2767 now active for retest in 1.19
+      - factName: BookingForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: General Consulting - T&M
+        period: February 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 34960.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 34960.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: February 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 1520.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: March 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 30400.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: April 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 3040.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        # blank deliveryEngagement to indicate a blank entry rather than not part of the 
+        # query (as if didn't specify test framework will exclude deliveryEngagementName from the criteria)
+        deliveryEngagementName: ""
+        period: February 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: USD
+          value: 6000.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 13800.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: February 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 600.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: March 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 12000.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: April 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 1200.00          
+      - factName: ReceivablesForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 34960.00
+      - factName: ReceivablesForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        receivableDate: 28/02/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 1520.00
+      - factName: ReceivablesForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        receivableDate: 31/03/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 30400.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: General Consulting - T&M
+        receivableDate: 03/04/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 3040.00
+          
+  - testStage: PostBidTeamTimeAndExpenseBooking
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      # was skipped for #2767 now active for retest in 1.19
+      - factName: BookingForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: General Consulting - T&M
+        period: February 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 34960.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 34960.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: February 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 1520.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: March 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 30400.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: April 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 3040.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        # blank deliveryEngagement to indicate a blank entry rather than not part of the 
+        # query (as if didn't specify test framework will exclude deliveryEngagementName from the criteria)
+        # blank entry indicates we are looking for the costs relating to the bidTeamAssignment
+        deliveryEngagementName: ""
+        period: February 2013
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 1276.52
+        - measure: P1 Forecast
+          currency: USD
+          value: 4276.52          
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 13800.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: February 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 600.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: March 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 12000.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: General Consulting - T&M
+        period: April 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: USD
+          value: 1200.00          
+      - factName: ReceivablesForecast
+        deliveryEngagementName: General Consulting - T&M
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 34960.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: General Consulting - T&M
+        receivableDate: 28/02/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 1520.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: General Consulting - T&M
+        receivableDate: 31/03/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 30400.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: General Consulting - T&M
+        receivableDate: 03/04/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 3040.00
+          
+  - testStage: PostLossOfSalesOpportunity
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        # blank deliveryEngagement to indicate a blank entry rather than not part of the 
+        # query (as if didn't specify test framework will exclude deliveryEngagementName from the criteria)
+        deliveryEngagementName: ""
+        period: February 2013
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 1276.52
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+          deliveryEngagementName: ""
+          deliveryElementName: ""
+          activityName: Sales Opp x'x x&x <testName> <dt>
+          expectedValues: 
+          - measure: Forecast P1 End Date
+            value: 22/02/2013

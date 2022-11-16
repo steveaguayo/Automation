@@ -1,0 +1,273 @@
+---
+# Resourced Project with Time Entries invoiced 
+# for an account without VAT and a product that requires POs (first invoice attempted without PO), 
+# invoice then credited and  revenue adjusted to remove one of the resources time, then reinvoiced
+accounts:
+  - name: ZeroRate US Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: US Co 1 (Operating/Trading USD)
+    invoicingCurrency: USD
+    taxCode: Zero Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: US Co 1 (Operating/Trading USD)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/01/2013
+        closeDate: 01/01/2013
+        forecastStatus: Probable (60%)
+
+        deliveryEngagements:
+          - name: Delivery Engagement x'x x&x <testName> <dt>
+            productGroup: General Consulting - T&M #General Consulting (No Delivery Elements)
+            expectedStartDate: 01/01/2013
+            expectedEndDate: 01/01/2014
+            contractRevenue: 100000            
+
+            deliveryElements:
+              - name: T&M
+                product: T&M
+                
+                activityAssignments:
+                  - resourceName: US Co 1 x'x x&x Employee Four                     
+                    revenueRate: 1000
+                    costRate: 600
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 01/01/2013
+                    remainingEffort: 5
+                    utilisationPct: 100
+                  - resourceName: US Co 1 x'x x&x Associate Four
+                    revenueRate: 1200
+                    costRate: 750
+                    usageBehaviourRule: Defined Effort between two Dates
+                    startDate: 01/01/2013
+                    endDate: 28/01/2013
+                    remainingEffort: 10
+    changeControls:
+      - name: Additional work x'x x&x <testName> <dt>
+
+        deliveryEngagements:
+          - name: Delivery Engagement x'x x&x <testName> <dt>
+
+            deliveryElements:
+              - name: Additional work x'x x&x <testName> <dt>
+                parentElementName: T&M
+                product: T&M
+                operatedWithPrimary: false
+                changeEffective: Immediately
+                
+                activityAssignments:
+                  - resourceName: US Co 1 x'x x&x Associate Four
+                    revenueRate: 1200
+                    costRate: 750
+                    usageBehaviourRule: Defined Effort between two Dates
+                    startDate: 02/01/2013
+                    endDate: 04/01/2013
+                    remainingEffort: 2
+timesheets:
+  - testStage: pre-CR1 enter time
+    resourceName: US Co 1 x'x x&x Employee Four 
+    trackingPeriodStartDate: 01/01/2013
+    timeEntries:
+    - startDate: 02/01/2013
+      endDate: 03/01/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 3.75
+    - startDate: 04/01/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M   
+      entryUnits: 7.5 
+  - testStage: pre-CR1 enter time
+    resourceName: US Co 1 x'x x&x Associate Four
+    trackingPeriodStartDate: 01/01/2013
+    timeEntries:
+    - startDate: 02/01/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M  
+      entryUnits: 3.75
+    - startDate: 04/01/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-T&M  
+      entryUnits: 3.75
+  - testStage: CR1 enter time
+    resourceName: US Co 1 x'x x&x Associate Four
+    trackingPeriodStartDate: 01/01/2013
+    timeEntries:
+    - startDate: 02/01/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-Additional work x'x x&x <testName> <dt>  
+      entryUnits: 3.75
+    - startDate: 04/01/2013
+      plannedActivity: ZeroRate US Co 1 Account x'x x&x <testName> <dt>-Additional work x'x x&x <testName> <dt>  
+      entryUnits: 3.75
+      
+invoices:
+# pre-CR1
+  - testStage: pre-CR1 attempt to generate an invoice without having a purchase order
+    deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+  - testStage: pre-CR1 generate invoice
+    deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+    expectedInvoiceValue: USD 3,200.00 (GBP 2,105.26)
+    purchaseOrders:
+    - reference: PO0101 <dt>
+      orderValue: 10000
+      orderDate: 11/03/2013      
+    creditNotes:
+    - stage: pre-CR1 credit the invoice
+      reasonCode: Error
+      reasonDescription: Disputed Time
+  - testStage: pre-CR1 credit the invoice
+    deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+  - testStage: pre-CR1 re-generate invoice
+    deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+    expectedInvoiceValue: USD 3,200.00 (GBP 2,105.26)
+# CR1
+  - testStage: CR1 generate invoice
+    deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+    expectedInvoiceValue: USD 1,200.00 (GBP 789.47)
+    purchaseOrders:
+    - reference: PO0201 <dt>
+      deliveryElement: Additional work x'x x&x <testName> <dt>
+      orderValue: 3000
+      orderDate: 12/03/2013      
+
+revenueItemAdjustments:
+  - deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+    reason: Error
+    description: Disputed Time
+    adjustmentItems:
+      items:
+      - path: T&M Services > US Co 1 x'x x&x Associate Four > 02/01/2013
+      - path: T&M Services > US Co 1 x'x x&x Associate Four > 04/01/2013
+#    adjustmentItems:
+#    - product: T&M
+#      resourceName: US Co 1 x'x x&x Associate Four
+#      date: 02/01/2013
+#    - product: T&M
+#      resourceName: US Co 1 x'x x&x Associate Four
+#      date: 04/01/2013
+
+expectedResults:
+  - testStage: pre-CR1
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      # was skipped for #2769 now active for retest in 1.19
+      - factName: BookingForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 17000.00
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 2000.00
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 1950.00
+      - factName: InvoicedAmounts
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 2000.00
+      - factName: ReceivablesForecast
+        ignoreReason: "ticket #2720 - Receivables forecast contains written off revenue"
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        receivableDate: 28/01/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 14105.26
+  - testStage: CR1
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 17000.00
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        deliveryElementName: T&M
+        period: January 2013
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 2000.00
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        deliveryElementName: T&M
+        period: January 2013
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 1950.00
+      - factName: InvoicedAmounts
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        deliveryElementName: T&M
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 2000.00
+      - factName: ReceivablesForecast
+        ignoreReason: "ticket #2720 - Receivables forecast contains written off revenue"
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        deliveryElementName: T&M
+        receivableDate: 28/01/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 14105.26
+      - factName: RevenueForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        deliveryElementName: Additional work x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 1200.00
+      - factName: CostForecast
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        deliveryElementName: Additional work x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 750.00
+      - factName: InvoicedAmounts
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        deliveryElementName: Additional work x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: USD
+          value: 1200.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Delivery Engagement x'x x&x <testName> <dt>
+        deliveryElementName: Additional work x'x x&x <testName> <dt>
+        receivableDate: 04/01/2013
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: USD
+          value: 1200.00

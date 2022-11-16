@@ -1,0 +1,72 @@
+---
+# Test overview
+#Mobile Automation
+#
+#
+userCredentials:
+  - operatingSystem: iOS
+accounts:
+  - name: Standard Rate UK Co 5 iPhone Account <testName> <dt>
+    operatingBusinessUnit:  UK Co 5 iPhone (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+       
+    salesOpportunities:
+      - name: Sales Opp iPhone <testName> <dt>
+        businessUnit:   UK Co 5 iPhone (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 31/08/2013
+        closeDate: 01/09/2013
+        forecastStatus: Probable (60%)
+               
+        deliveryEngagements:
+          - name: T&M Delivery Engagement iPhone <testName> <dt>
+            productGroup: General Consulting (No Delivery Elements)
+            expectedStartDate: 09/09/2013
+            expectedEndDate: 13/09/2013
+          
+            deliveryElements:
+              - name: 136
+                product: T&M 
+                activityAssignments:
+                  - resourceName: UK Co 5 iPhone x'x x&x Employee Eight         
+                    revenueRate: 700
+                    costRate: 575
+                    usageBehaviourRule: Defined Utilisation between two Dates
+                    startDate: 09/09/2013
+                    endDate: 16/09/2013
+                    utilisationPct: 100
+
+#Usage Unit = Day#
+          
+#mobile dates are US format            
+#  MOBILE ENTRY   
+# ACTUALISE TIME ENTRIES WITH BUTTON
+     
+timesheets:
+- testStage: timeBooking
+  resourceName: UK Co 5 iPhone x'x x&x Employee Eight 
+  trackingPeriodStartDate: 09/09/2013
+  mobileTrackingPeriodStartDate: 9/9/13
+  mobilePeriodDate: September 09
+  timeEntries:
+  - startDate: Monday, September 9, 2013
+    endDate: Monday, September 9, 2013
+    timeType: Business Day - Standard Time
+    entryUnits: 1.0
+    plannedActivity: Standard Rate UK Co 5 iPhone Account <testName> <dt>
+expenseClaims:
+- resourceName: UK Co 5 iPhone x'x x&x Employee Eight 
+  expenseEntries:
+  - name: Overnight Hotel
+    incurredDate: 9/9/2013
+    activityName: Standard Rate UK Co 5 iPhone Account <testName> <dt>-136
+    monthBeginning: 01 September 2013
+    incurredDay: 9
+    expenseDetails:
+    - category: Hotel
+      currency: EUR
+      amount: 150.00

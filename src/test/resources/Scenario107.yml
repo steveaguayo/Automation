@@ -1,0 +1,401 @@
+---
+# Test overview
+# A Group Assignment test: checking revenue at different states before and after group members are scheduled and time actualised
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/01/2013
+        closeDate: 01/01/2013
+        forecastStatus: Probable (60%)
+               
+        deliveryEngagements:
+          - name: T&M Delivery Engagement x'x x&x <testName> <dt>
+            productGroup: General Consulting (No Delivery Elements)
+            expectedStartDate: 03/06/2013
+            expectedEndDate: 28/06/2013
+            contractRevenue: 200000
+            
+            deliveryElements:
+              - name: T&M
+                product: T&M
+                
+                activityAssignments:
+                  - resourceName: UK DBAs                    
+                    groupAssignmentsEnabled: true             
+                    revenueRate: 1000
+                    costRate: 375
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 03/06/2013
+                    remainingEffort: 20
+                    utilisationPct: 100
+                
+                    scheduledActivity:
+                      - parentResourceName: UK DBAs
+                        resourceName: UK Co 1 x'x x&x Employee One
+                        scheduledDays:
+                          - date: 3/06/2013
+                            numberOfHours: 7.5
+                          - date: 4/06/2013
+                            numberOfHours: 7.5
+                      - parentResourceName: UK DBAs
+                        resourceName: UK Co 2 x'x x&x Employee Two
+                        scheduledDays:
+                          - date: 6/06/2013
+                            numberOfHours: 7.5
+                          - date: 7/06/2013
+                            numberOfHours: 7.5
+
+timesheets:
+  - resourceName: UK Co 1 x'x x&x Employee One 
+    trackingPeriodStartDate: 03/06/2013
+    timeEntries:
+    - actualiseForecastEntry: true
+      startDate: 03/06/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+  - resourceName: UK Co 2 x'x x&x Employee Two
+    trackingPeriodStartDate: 03/06/2013
+    timeEntries:
+    - actualiseForecastEntry: true
+      startDate: 07/06/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+
+invoices:
+  - deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+    expectedInvoiceValue: GBP 2,400.00
+    purchaseOrders:
+    - reference: PO0107 <dt>
+      orderValue: 100000
+      orderDate: 01/01/2013
+      expiryDate: 01/01/2023
+      
+expectedResults:
+  - testStage: postInitialSetup
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: January 2013
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 200000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P2 Forecast
+          currency: GBP
+          value: 200000.00
+    resourceForecasts:
+      - resourceName: UK DBAs
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P2 End Date
+            value: 28/06/2013
+  - testStage: postSalesOppWin
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 20000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 20000.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 7500.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 20000.00
+    resourceForecasts:
+      - resourceName: UK DBAs
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P1 End Date
+            value: 28/06/2013
+  - testStage: postScheduledWork
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 20000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 20000.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: P1 Forecast
+          currency: GBP
+          value: 7500.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 20000.00
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P1 End Date
+            value: 28/06/2013
+        - factName: UsageForecast
+          period: Jun / 2 / 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2   
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2
+      - resourceName: UK Co 2 x'x x&x Employee Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P1 End Date
+            value: 28/06/2013
+        - factName: UsageForecast
+          period: Jun / 2 / 2013
+          businessUnitName: UK Co 2 (Operating GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2   
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: UK Co 2 (Operating GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 0
+          - measure: P1 Forecast
+            value: 2
+  - testStage: postTimeBooking
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 20000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 1000.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 16000.00
+      - factName: RevenueForecast
+        businessUnitName: UK Co 2 (Operating GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 1000.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 1000.00
+      - factName: CostForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 650.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 6275.00
+      - factName: CostForecast
+        businessUnitName: UK Co 2 (Operating GBP)
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: June 2013
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 650.00
+        - measure: P1 Forecast
+          currency: GBP
+          value: 650.00
+      - factName: ReceivablesForecast
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        expectedValues: 
+        - measure: ForecastRevenue
+          currency: GBP
+          value: 17000.00
+    resourceForecasts:
+      - resourceName: UK Co 1 x'x x&x Employee One
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P1 End Date
+            value: 28/06/2013
+        - factName: UsageForecast
+          period: Jun / 2 / 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 1
+          - measure: P1 Forecast
+            value: 1   
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: UK Co 1 (Operating/Trading GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 1
+          - measure: P1 Forecast
+            value: 1   
+      - resourceName: UK Co 2 x'x x&x Employee Two
+        facts:
+        - factName: Assignments
+          salesOpportunityName: ""
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Start Date
+            value: 03/06/2013
+          - measure: Forecast P1 End Date
+            value: 28/06/2013
+        - factName: UsageForecast
+          period: Jun / 2 / 2013
+          businessUnitName: UK Co 2 (Operating GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 1
+          - measure: P1 Forecast
+            value: 1   
+        - factName: UsageForecast
+          period: June 2013
+          businessUnitName: UK Co 2 (Operating GBP)
+          deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+          deliveryElementName: T&M
+          activityName: T&M
+          expectedValues: 
+          - measure: Actual
+            value: 1
+          - measure: P1 Forecast
+            value: 1
+  - testStage: postInvoicing
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: InvoicedAmounts
+        deliveryEngagementName: T&M Delivery Engagement x'x x&x <testName> <dt>
+        period: <currentMonthFull> <currentYearFull>
+        expectedValues: 
+        - measure: Actual
+          currency: GBP
+          value: 2000.00

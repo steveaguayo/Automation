@@ -1,0 +1,709 @@
+---
+# Test overview
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: Build and Run - Fixed Price
+        responseRequiredDate: 01/01/2013
+        closeDate: 14/01/2013
+        winDate: 01/01/2013
+        forecastStatus: Probable (60%)
+
+        deliveryEngagements:
+          - name: Build and Run - Fixed Price
+            stage: config engagements elements
+
+            deliveryElements:
+              - name: Custom delivery element
+                stage: add custom delivery elements
+                product: T&M
+              - name: Fixed Price Build and Run
+                stage: config engagements elements
+                forecastMode: target
+                servicesRevenue: 10000
+                
+                productExtension: Small Team
+                targetMargin: 50
+                
+                configurableAssignmentLineItems:
+                  - resourceName: US Co 1 x'x x&x Employee One                    
+                    role: Business Analyst
+                    usagePercent: 60
+                    startDate: 07/01/2013
+                    endDate: 11/01/2013
+                    cost: 500
+                  - resourceName: US Co 1 x'x x&x Employee Two
+                    role: Industry Expert
+                    usagePercent: 40
+                    startDate: 07/01/2013
+                    endDate: 09/01/2013
+                    cost: 600
+                expenseLineItems:
+                  - description: Flight to Congo
+                    category: Air Ticket
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 1500
+                    units: 1
+                    remainingRevenue: 2000
+                  - description: Daily trip to client site
+                    category: Car Rental
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 40
+                    units: 20
+              - name: T&M Call Off
+                stage: config engagements elements
+                forecastMode: expected
+                servicesRevenue: 10000
+                 
+                expectedUsage: 10
+                
+                createableAssignmentLineItems:
+                  - resourceName: US Co 1 x'x x&x Employee One                    
+                    role: Business Analyst
+                    usagePercent: 60
+                    startDate: 07/01/2013
+                    utilisation: 100
+                    cost: 500
+                  - resourceName: US Co 1 x'x x&x Employee Two
+                    role: Industry Expert
+                    usagePercent: 40
+                    startDate: 07/01/2013
+                    utilisation: 100
+                    cost: 500
+                expenseLineItems:
+                  - description: Flight to Congo
+                    category: Air Ticket
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 1500
+                    units: 1
+                    remainingRevenue: 2000
+                  - description: Daily trip to client site
+                    category: Car Rental
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 40
+                    units: 20
+              - name: Risk Contingency
+                stage: config engagements elements
+                rateOverride: 0.20
+              - name: Other Costs
+                stage: config engagements elements
+                costMilestones:
+                  - name: pay dividence                    
+                    date: 07/01/2013
+                    value: 150
+                  - name: get out of jail  
+                    date: 09/01/2013
+                    value: 100
+              - name: Custom delivery element
+                stage: config engagements elements
+                forecastMode: usage
+                
+                createableAssignmentLineItems:
+                  - resourceName: UK Co 1 x'x x&x Employee One                    
+                    role: Business Analyst
+                    usageDays: 3
+                    startDate: 07/01/2013
+                    utilisation: 100
+                    cost: 400
+                    revenue: 1000
+                  - resourceName: US Co 1 x'x x&x Employee Two
+                    role: Industry Expert
+                    usageDays: 2
+                    startDate: 07/01/2013
+                    utilisation: 100
+                    cost: 400
+                    revenue: 1000
+                expenseLineItems:
+                  - description: Flight to Congo
+                    category: Air Ticket
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 1500
+                    units: 1
+                    remainingRevenue: 2000
+                  - description: Daily trip to client site
+                    category: Car Rental
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 40
+                    units: 10
+              - name: Custom delivery element
+                stage: delete delivery elements
+          - name: "Build and Run - Fixed Price"
+            stage: add all optional delivery elements
+        risks:
+          - stage: create 'note only' technical risk
+            reference: risk1
+            category: Technical
+            summary: something might happen
+            raisedDate: 01/01/2013
+            probability: Low
+            impact: Low
+          - stage: create 'low' technical risk
+            reference: risk2
+            category: Technical
+            summary: something awkward might happen
+            raisedDate: 01/01/2013
+            probability: Low
+            impact: Medium
+          - stage: create 'high' commercial risk
+            reference: risk3
+            category: Commercial
+            summary: something bad could happen
+            raisedDate: 01/01/2013
+            probability: Medium
+            impact: High
+          - stage: create 'critical' management risk
+            reference: risk4
+            category: Management
+            summary: something bad is going to happen
+            raisedDate: 01/01/2013
+            probability: High
+            impact: High
+          - stage: delete 'critical' management risk
+            reference: risk4
+          - stage: update commercial risk to 'critical' management risk
+            reference: risk3
+            category: Management
+            summary: something bad is going to happen
+            raisedDate: 01/01/2013
+            probability: High
+            impact: High
+          - stage: delete 'critical' management risk again
+            reference: risk3
+            
+expectedResults:
+  - testStage: "validate : create 'note only' technical risk"
+    risksSales:
+      - riskLevel: NoteOnly
+  - testStage: "validate dashboard : create 'note only' technical risk"
+    riskDashboards: 
+      - technicalRiskImpact: Low
+        technicalRiskProbability: Low
+        technicalRiskSeverity: NoteOnly
+        commercialRiskImpact: "-"
+        commercialRiskProbability: "-" 
+        commercialRiskSeverity: "-"
+        managementRiskImpact: "-"
+        managementRiskProbability: "-"
+        managementRiskSeverity: "-"
+        riskLevel: NoteOnly
+  - testStage: "validate : create 'low' technical risk"
+    riskDashboards: 
+      - technicalRiskImpact: Medium
+        technicalRiskProbability: Low
+        technicalRiskSeverity: Low
+        commercialRiskImpact: "-"
+        commercialRiskProbability: "-" 
+        commercialRiskSeverity: "-"
+        managementRiskImpact: "-"
+        managementRiskProbability: "-"
+        managementRiskSeverity: "-"
+        riskLevel: Low
+  - testStage: "validate : create 'high' commercial risk"
+    riskDashboards: 
+      - technicalRiskImpact: Medium
+        technicalRiskProbability: Low
+        technicalRiskSeverity: Low
+        commercialRiskImpact: High
+        commercialRiskProbability: Medium 
+        commercialRiskSeverity: High
+        managementRiskImpact: "-"
+        managementRiskProbability: "-"
+        managementRiskSeverity: "-"
+        riskLevel: High
+  - testStage: "validate : create 'critical' management risk"
+    riskDashboards: 
+      - technicalRiskImpact: Medium
+        technicalRiskProbability: Low
+        technicalRiskSeverity: Low
+        commercialRiskImpact: High
+        commercialRiskProbability: Medium 
+        commercialRiskSeverity: High
+        managementRiskImpact: High
+        managementRiskProbability: High
+        managementRiskSeverity: Critical
+        riskLevel: Critical
+  - testStage: "validate : delete 'critical' management risk"
+    risksSales:
+      - riskLevel: High
+  - testStage: validate sales opportunity parts before configuration
+    salesOpportunity: 
+        deliveryEngagements:
+          - name: "Build and Run - Fixed Price"
+            stage: validate sales opportunity parts before configuration
+    
+            deliveryElements:
+              - name: T&M Call Off
+                stage: validate sales opportunity parts before configuration
+              - name: Fixed Price Build and Run
+                stage: validate sales opportunity parts before configuration
+              - name: Risk Contingency
+                stage: validate sales opportunity parts before configuration
+              - name: Other Costs
+                stage: validate sales opportunity parts before configuration
+  - testStage: validate sales opportunity after configuration
+    salesOpportunity: 
+        name: Sales Opp x'x x&x <testName> <dt>
+        contractRevenue: 33000
+        contractCost: 19750
+        contractMargin: 40.15
+        deliveryEngagements:
+          - name: "Build and Run - Fixed Price"
+            stage: validate sales opportunity after configuration
+            startDate: 07/01/2013
+            endDate: 14/01/2013
+    
+            deliveryElements:
+              - name: Fixed Price Build and Run
+                stage: validate sales opportunity after configuration
+                forecastMode: target
+                
+                servicesRevenue: 10000
+                servicesCost: 5000.00
+                expensesRevenue: 2800
+                expensesCost: 2300
+                    
+                productExtension: Small Team
+                targetMargin: 50
+                expectedUsage: 9.26
+                    
+                configurableAssignmentLineItems:
+                  - resourceName: US Co 1 x'x x&x Employee One                    
+#                role: Business Analyst
+                    usagePercent: 60
+                    usageDays: 5.56
+                    startDate: 07/01/2013
+                    endDate: 11/01/2013
+                    utilisation: 111.2
+                    cost: 500
+                    revenue: 1000.00
+                    totalCost: 2780
+                    totalRevenue: 5560
+                  - resourceName: US Co 1 x'x x&x Employee Two
+#                role: Industry Expert
+                    usagePercent: 40
+                    usageDays: 3.7
+                    startDate: 07/01/2013
+                    endDate: 09/01/2013
+                    utilisation: 123.33
+                    cost: 600
+                    revenue: 1200.00
+                    totalCost: 2220
+                    totalRevenue: 4440
+                expenseLineItems:
+                  - description: Flight to Congo
+                    category: Air Ticket
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 1500
+                    units: 1
+                    remainingCost: 1500
+                    remainingRevenue: 2000
+                  - description: Daily trip to client site
+                    category: Car Rental
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 40
+                    units: 20
+                    remainingCost: 800
+                    remainingRevenue: 800
+              - name: T&M Call Off
+                stage: validate sales opportunity after configuration
+                forecastMode: expected
+                
+                servicesRevenue: 10000
+                servicesCost: 5000.00
+                expensesRevenue: 2800
+                expensesCost: 2300
+                    
+                targetMargin: 50
+                expectedUsage: 10
+                    
+                createableAssignmentLineItems:
+                  - resourceName: US Co 1 x'x x&x Employee One                    
+#                role: Business Analyst
+                    usagePercent: 60
+                    usageDays: 6
+                    startDate: 07/01/2013
+                    endDate: 14/01/2013
+                    utilisation: 100
+                    cost: 500
+                    revenue: 1000.00
+                    totalCost: 3000
+                    totalRevenue: 6000
+                  - resourceName: US Co 1 x'x x&x Employee Two
+#                role: Industry Experts
+                    usagePercent: 40
+                    usageDays: 4
+                    startDate: 07/01/2013
+                    endDate: 10/01/2013
+                    utilisation: 100
+                    cost: 500
+                    revenue: 1000
+                    totalCost: 2000
+                    totalRevenue: 4000
+                expenseLineItems:
+                  - description: Flight to Congo
+                    category: Air Ticket
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 1500
+                    units: 1
+                    remainingCost: 1500
+                    remainingRevenue: 2000
+                  - description: Daily trip to client site
+                    category: Car Rental
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 40
+                    units: 20
+                    remainingCost: 800
+                    remainingRevenue: 800
+              - name: Risk Contingency
+                stage: validate sales opportunity after configuration
+                servicesCost: 1000.00
+                servicesCostOverridden: 500.00
+                rateItemName: High
+                rateDefault: 0.10
+                rateOverride: 0.20
+                rateSourceValue: 5000.00
+              - name: Other Costs
+                stage: validate sales opportunity after configuration
+                servicesCost: 250
+                costMilestones:
+                  - name: pay dividence                    
+                    date: 07/01/2013
+                    value: 150
+                  - name: get out of jail  
+                    date: 09/01/2013
+                    value: 100
+              - name: Custom delivery element
+                stage: validate sales opportunity after configuration
+                forecastMode: usage
+                
+                servicesRevenue: 5000
+                servicesCost: 2000
+                expensesRevenue: 2400
+                expensesCost: 1900
+                    
+                targetMargin: 60
+                expectedUsage: 5
+                
+                createableAssignmentLineItems:
+                  - resourceName: UK Co 1 x'x x&x Employee One                    
+#                    role: Business Analyst
+                    usageDays: 3
+                    startDate: 07/01/2013
+                    endDate: 09/01/2013
+                    utilisation: 100
+                    cost: 400
+                    revenue: 1000
+                    totalCost: 1200
+                    totalRevenue: 3000
+                  - resourceName: US Co 1 x'x x&x Employee Two
+#                    role: Industry Expert
+                    usageDays: 2
+                    startDate: 07/01/2013
+                    endDate: 08/01/2013
+                    utilisation: 100
+                    cost: 400
+                    revenue: 1000
+                    totalCost: 800
+                    totalRevenue: 2000
+                expenseLineItems:
+                  - description: Flight to Congo
+                    category: Air Ticket
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 1500
+                    units: 1
+                    remainingCost: 1500
+                    remainingRevenue: 2000
+                  - description: Daily trip to client site
+                    category: Car Rental
+                    businessUnit: UK Co 1 (Operating/Trading GBP)
+                    netAmount: 40
+                    units: 10
+                    remainingCost: 400
+                    remainingRevenue: 400
+  - testStage: "validate : update commercial risk to 'critical' management risk"
+    risksSales:
+      - riskLevel: Critical
+  - testStage: "validate dashboard : update commercial risk to 'critical' management risk"
+    riskDashboards: 
+      - technicalRiskImpact: Medium
+        technicalRiskProbability: Low
+        technicalRiskSeverity: Low
+        commercialRiskImpact: "-"
+        commercialRiskProbability: "-" 
+        commercialRiskSeverity: "-"
+        managementRiskImpact: High
+        managementRiskProbability: High
+        managementRiskSeverity: Critical
+        riskLevel: Critical
+  - testStage: "validate : delete 'critical' management risk again"
+    risksSales:
+      - riskLevel: Low
+
+  - testStage: validate sales opportunity forecast before winning
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        period: January 2013
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP , value: 25600.00 }
+          
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        resourceName: US Co 1 x'x x&x Employee One
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 5560.00 }
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        resourceName: US Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 4440.00 }
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off
+        resourceName: US Co 1 x'x x&x Employee One
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 6000.00 }
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off
+        resourceName: US Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 4000.00 }
+      - factName: RevenueForecast
+        period: January 2013
+        domainClass: Expenses 
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 2800.00 }
+      - factName: RevenueForecast
+        period: January 2013
+        domainClass: Expenses 
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 2800.00 }
+          
+      - factName: CostForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        resourceName: US Co 1 x'x x&x Employee One
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 2780.00 }
+      - factName: CostForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        resourceName: US Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 2220.00 }
+      - factName: CostForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Other Costs 
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 250.00 }
+      - factName: CostForecast
+        period: January 2013
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off 
+        resourceName: US Co 1 x'x x&x Employee One
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 3000.00 }
+      - factName: CostForecast
+        period: January 2013
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off 
+        resourceName: US Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 2000.00 }
+      - factName: CostForecast
+        period: January 2013
+        domainClass: Expenses
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run 
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 2300.00 }
+      - factName: CostForecast
+        period: January 2013
+        domainClass: Expenses
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off  
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 2300.00 }
+
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run 
+        receivableDate: 14/01/2013
+        expectedValues: 
+        - { measure: ForecastRevenue, currency: GBP, value: 10000.00 } # this is not right - should account for expenses
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off
+        receivableDate: 14/01/2013
+        expectedValues: 
+        - { measure: ForecastRevenue, currency: GBP, value: 10000.00 } # this is not right - should account for expenses
+          
+  - testStage: validate sales opportunity forecast after winning and editing risks
+    salesOpportunityForecasts:
+      salesOpportunityName: Sales Opp x'x x&x <testName> <dt>
+      facts:
+      - factName: BookingForecast
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        period: January 2013
+        expectedValues: 
+        - { measure: Actual, currency: GBP, value: 25600.00 }
+          
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        resourceName: US Co 1 x'x x&x Employee One
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 5560.00 }
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        resourceName: US Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 4440.00 }
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off
+        resourceName: US Co 1 x'x x&x Employee One
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 6000.00 }
+      - factName: RevenueForecast
+        period: January 2013
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off
+        resourceName: US Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 4000.00 }
+      - factName: RevenueForecast
+        period: January 2013
+        domainClass: Expenses 
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 2800.00 }
+      - factName: RevenueForecast
+        period: January 2013
+        domainClass: Expenses 
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 2800.00 }
+          
+      - factName: CostForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        resourceName: US Co 1 x'x x&x Employee One
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 2780.00 }
+      - factName: CostForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run
+        resourceName: US Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 2220.00 }
+      - factName: CostForecast
+        period: January 2013
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Other Costs 
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 250.00 }
+      - factName: CostForecast
+        period: January 2013
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off 
+        resourceName: US Co 1 x'x x&x Employee One
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 3000.00 }
+      - factName: CostForecast
+        period: January 2013
+        businessUnitName: US Co 1 (Operating/Trading USD)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off 
+        resourceName: US Co 1 x'x x&x Employee Two
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 2000.00 }
+      - factName: CostForecast
+        period: January 2013
+        domainClass: Expenses
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run 
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 2300.00 }
+      - factName: CostForecast
+        period: January 2013
+        domainClass: Expenses
+        businessUnitName: UK Co 1 (Operating/Trading GBP)
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off  
+        expectedValues: 
+        - { measure: P2 Forecast, currency: GBP, value: 2300.00 }
+
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: Fixed Price Build and Run 
+        receivableDate: 14/01/2013
+        expectedValues: 
+        - { measure: ForecastRevenue, currency: GBP, value: 10000.00 } # this is not right - should account for expenses
+      - factName: ReceivablesForecast
+        deliveryEngagementName: Build and Run - Fixed Price
+        deliveryElementName: T&M Call Off
+        receivableDate: 14/01/2013
+        expectedValues: 
+        - { measure: ForecastRevenue, currency: GBP, value: 10000.00 } # this is not right - should account for expenses
+          
+            

@@ -1,0 +1,1 @@
+cmd.exe /C "taskkill /F /IM chromedriver.exe"

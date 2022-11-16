@@ -1,0 +1,18 @@
+---
+accounts:
+  - name: ZeroRate US Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: US Co 1 (Operating/Trading USD)
+    invoicingCurrency: USD
+    taxCode: Zero Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    opportunities:
+      - name: Opp x'x x&x <testName> <dt>
+        accountName: ZeroRate US Co 1 Account x'x x&x <testName> <dt>
+        closeDate: 01/01/2013
+        stage: Prospecting
+        
+        proposals:
+          - businessUnit: US Co 1 (Operating/Trading USD)
+            proposition: Build and Run - Fixed Price

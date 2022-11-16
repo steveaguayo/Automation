@@ -1,0 +1,407 @@
+accounts:
+- name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+  operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+  invoicingCurrency: GBP
+  taxCode: Standard Rate VAT
+  allowPartItemInvoicing: true
+  locale: en_GB
+  salesOpportunities:
+  - name: Initial Contract x'x x&x <testName> <dt>
+    businessUnit: UK Co 1 (Operating/Trading GBP)
+    source: Existing Customer
+    proposition: General Consulting
+    responseRequiredDate: 01/09/2013
+    closeDate: 28/09/2013
+    forecastStatus: Probable (60%)
+    deliveryEngagements:
+    - name: Initial Contract Engagement x'x x&x <testName> <dt>
+      productGroup: Licence Sale
+      expectedStartDate: 01/10/2013
+      expectedEndDate: 30/09/2014
+      deliveryElements:
+      - name: 75 x Fully Flexible Users at £75
+        purchaseOrderRule: Purchase Order not required
+        product: Annuity
+        annuities:
+        - name: 75 x Fully Flexible Users at £75
+          elementName: 75 x Fully Flexible Users at £75
+          startDate: 01/10/2013
+          numberOfPeriods: 12
+          revenue: 75.0
+          cost: 3.1
+          units: 75
+      - name: 105 x Consultant Users at £22
+        purchaseOrderRule: Purchase Order not required
+        product: Annuity
+        annuities:
+        - name: 105 x Consultant Users at £22
+          elementName: 105 x Consultant Users at £22
+          startDate: 01/10/2013
+          numberOfPeriods: 12
+          revenue: 22.0
+          cost: 0.75
+          units: 105
+  - name: Additional Users 1 x'x x&x <testName> <dt>
+    businessUnit: UK Co 1 (Operating/Trading GBP)
+    source: Existing Customer
+    proposition: General Consulting
+    responseRequiredDate: 01/12/2013
+    closeDate: 05/12/2013
+    forecastStatus: Probable (60%)
+    deliveryEngagements:
+    - name: Initial Contract Engagement x'x x&x <testName> <dt>
+      isExisting: true
+      deliveryElements:
+      - name: Additional Users 1 x'x x&x <testName> <dt>
+        purchaseOrderRule: Purchase Order not required
+        product: Annuity
+        annuities:
+        - name: 15 x Consultant Users at £22
+          elementName: Additional Users 1 x'x x&x <testName> <dt>
+          startDate: 10/12/2013
+          numberOfPeriods: 12
+          endDate: 30/09/2014
+          newEndDate: 07/12/2014
+          revenue: 22.0
+          cost: 0.75
+          units: 15
+          periodsToComplete: [1, 2, 3]
+          annuityResults:
+          - monthYear: October 2014
+            startDate: 01/10/2014
+            endDate: 07/10/2014
+            type: Revenue
+            value: GBP 5.13
+          - monthYear: October 2014
+            startDate: 08/10/2014
+            endDate: 31/10/2014 
+            type: Revenue
+            value: GBP 17.03
+          - monthYear: October 2014
+            startDate: 01/10/2014
+            endDate: 07/10/2014
+            type: Cost
+            value: GBP .18
+          - monthYear: October 2014
+            startDate: 08/10/2014
+            endDate: 31/10/2014
+            type: Cost
+            value: GBP .58
+          - monthYear: December 2014
+            startDate: 01/12/2014
+            endDate: 07/12/2014
+            type: Revenue
+            value: GBP 5.13
+          - monthYear: December 2014
+            startDate: 01/12/2014
+            endDate: 07/12/2014
+            type: Cost
+            value: GBP .18
+  - name: Additional Users 2 x'x x&x <testName> <dt>
+    businessUnit: UK Co 1 (Operating/Trading GBP)
+    source: Existing Customer
+    proposition: General Consulting
+    responseRequiredDate: 15/12/2013
+    closeDate: 31/12/2013
+    forecastStatus: Probable (60%)
+    deliveryEngagements:
+    - name: Initial Contract Engagement x'x x&x <testName> <dt>
+      stage: add 10 more flexible users
+      isExisting: true
+      deliveryElements:
+      - name: Additional Users 2 x'x x&x <testName> <dt>
+        purchaseOrderRule: Purchase Order not required
+        product: Annuity
+        annuities:
+        - name: 10 x Fully Flexible Users at £75
+          elementName: Additional Users 2 x'x x&x <testName> <dt>
+          startDate: 01/01/2014
+          numberOfPeriods: 9
+          revenue: 75.0
+          cost: 3.1
+          units: 10
+          newEndDate: 31/10/2014
+          newUnits: 10
+          newUnitsDate: 2014-10-1
+          periodsToComplete: [1, 2, 3]
+          annuityResults:
+          - monthYear: October 2014
+            startDate: 01/10/2014
+            endDate: 31/10/2014
+            type: Revenue
+            value: GBP 750.00
+          - monthYear: October 2014
+            startDate: 01/10/2014
+            endDate: 31/10/2014
+            type: Cost
+            value: GBP 31.00
+        - name: Sandbox x £500
+          elementName: Additional Users 2 x'x x&x <testName> <dt>
+          startDate: 01/01/2014
+          numberOfPeriods: 9
+          revenue: 500.0
+          cost: 100.0
+          units: 1
+    - name: Initial Contract Engagement x'x x&x <testName> <dt>
+      stage: complete annuity periods
+      deliveryElements:
+      - name: Additional Users 2 x'x x&x <testName> <dt>
+        annuities:
+        - name: Negative Annuity for Sandbox
+          elementName: Additional Users 2 x'x x&x <testName> <dt>
+          startDate: 01/01/2014
+          numberOfPeriods: 9
+          revenue: -500.0
+          cost: -100.0
+          units: 1
+        
+invoices:
+- deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+  testStage: create invoice for first quarter
+  expectedInvoiceNetValue: GBP 23,805.00
+  expectedInvoiceTaxValue: GBP 4,761.00
+  expectedInvoiceValue: GBP 28,566.00
+  subTotal: 23805
+  tax: 4761
+  grossTotal: 28566
+  deliveryElements:
+  - 105 x Consultant Users at £22
+  - 75 x Fully Flexible Users at £75
+  invoiceGroups:
+    75 x Fully Flexible Users at £75 Period Revenues:
+      items:
+      - path: 75 x Fully Flexible Users at £75 Period Revenues > October 2013
+      - path: 75 x Fully Flexible Users at £75 Period Revenues > November 2013
+      - path: 75 x Fully Flexible Users at £75 Period Revenues > December 2013
+    105 x Consultant Users at £22 Period Revenues:
+      items:
+      - path: 105 x Consultant Users at £22 Period Revenues > October 2013
+      - path: 105 x Consultant Users at £22 Period Revenues > November 2013
+      - path: 105 x Consultant Users at £22 Period Revenues > December 2013
+- deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+  testStage: create invoice for second quarter
+  expectedInvoiceNetValue: GBP 25,029.19
+  expectedInvoiceTaxValue: GBP 5,005.84
+  expectedInvoiceValue: GBP 30,035.03
+  subTotal: 25029.19
+  tax: 5005.84
+  grossTotal: 30035.03
+  deliveryElements:
+  - 105 x Consultant Users at £22
+  - 75 x Fully Flexible Users at £75
+  - Additional Users 1 x'x x&x <testName> <dt>
+  invoiceGroups:
+    75 x Fully Flexible Users at £75 Period Revenues:
+      items:
+      - path: 75 x Fully Flexible Users at £75 Period Revenues > January 2014
+      - path: 75 x Fully Flexible Users at £75 Period Revenues > February 2014
+      - path: 75 x Fully Flexible Users at £75 Period Revenues > March 2014
+    105 x Consultant Users at £22 Period Revenues:
+      items:
+      - path: 105 x Consultant Users at £22 Period Revenues > January 2014
+      - path: 105 x Consultant Users at £22 Period Revenues > February 2014
+      - path: 105 x Consultant Users at £22 Period Revenues > March 2014
+    Additional Users 1 x'x x&x <testName> <dt> Period Revenues:
+      items:
+      - path: Additional Users 1 x'x x&x <testName> <dt> Period Revenues > December 2013
+      - path: Additional Users 1 x'x x&x <testName> <dt> Period Revenues > January 2014
+      - path: Additional Users 1 x'x x&x <testName> <dt> Period Revenues > February 2014
+      - path: Additional Users 1 x'x x&x <testName> <dt> Period Revenues > March 2014
+- deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+  testStage: create invoice for third quarter
+  expectedInvoiceNetValue: GBP 3,750.00
+  expectedInvoiceTaxValue: GBP 750.00
+  expectedInvoiceValue: GBP 4,500.00
+  subTotal: 3750
+  tax: 750
+  grossTotal: 4500
+  deliveryElements:
+  - Additional Users 2 x'x x&x <testName> <dt>
+  invoiceGroups:
+    Additional Users 2 x'x x&x <testName> <dt> Period Revenues:
+      items:
+      - { path: Additional Users 2 x'x x&x <testName> <dt> Period Revenues > January 2014, value: GBP 750.00 }
+      - { path: Additional Users 2 x'x x&x <testName> <dt> Period Revenues > January 2014, value: GBP 500.00 }
+      - { path: Additional Users 2 x'x x&x <testName> <dt> Period Revenues > February 2014, value: GBP 750.00 }
+      - { path: Additional Users 2 x'x x&x <testName> <dt> Period Revenues > February 2014, value: GBP 500.00 }
+      - { path: Additional Users 2 x'x x&x <testName> <dt> Period Revenues > March 2014, value: GBP 750.00 }
+      - { path: Additional Users 2 x'x x&x <testName> <dt> Period Revenues > March 2014, value: GBP 500.00 }
+  creditNotes:
+  - reasonCode: Error
+    reasonDescription: Disputed Time
+- deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+  testStage: create invoice for fourth quarter
+  expectedInvoiceNetValue: GBP 0.00
+  expectedInvoiceTaxValue: null
+  expectedInvoiceValue: GBP 0.00
+  subTotal: 0
+  tax: 0
+  grossTotal: 0
+  deliveryElements:
+  - Additional Users 2 x'x x&x <testName> <dt>
+  invoiceGroups:
+    Additional Users 2 x'x x&x <testName> <dt> Period Revenues:
+      items:
+      - { path: Additional Users 2 x'x x&x <testName> <dt> Period Revenues > January 2014, value: GBP -500.00 }
+      - { path: Additional Users 2 x'x x&x <testName> <dt> Period Revenues > January 2014, value: GBP 500.00 }
+      - { path: Additional Users 2 x'x x&x <testName> <dt> Period Revenues > February 2014, value: GBP -500.00 }
+      - { path: Additional Users 2 x'x x&x <testName> <dt> Period Revenues > February 2014, value: GBP 500.00 }
+      - { path: Additional Users 2 x'x x&x <testName> <dt> Period Revenues > March 2014, value: GBP -500.00 }
+      - { path: Additional Users 2 x'x x&x <testName> <dt> Period Revenues > March 2014, value: GBP 500.00 }
+     
+revenueItemAdjustments:
+- deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+  deliveryElement: Additional Users 2 x'x x&x <testName> <dt>   
+  reason: Error # was 'Write-off Item (Not Invoiced)', but I don't have this configured
+  description: Customer amended order
+  adjustmentItems:
+    items:
+    - path: Additional Users 2 x'x x&x <testName> <dt> Period Revenues > January 2014
+    - path: Additional Users 2 x'x x&x <testName> <dt> Period Revenues > February 2014
+    - path: Additional Users 2 x'x x&x <testName> <dt> Period Revenues > March 2014
+      
+expectedResults:
+- testStage: postInitialSetup
+  salesOpportunityForecasts:
+    salesOpportunityName: Initial Contract x'x x&x <testName> <dt>
+    facts:
+    - factName: BookingForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+      period: <currentMonthFull> <currentYearFull>
+      expectedValues:
+      - measure: P1 Forecast
+        currency: GBP
+        value: 95220.00
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+      period: August 2014
+      expectedValues:
+      - measure: P1 Forecast
+        currency: GBP
+        value: 7935.00
+- testStage: postFirstInvoice
+  salesOpportunityForecasts:
+    salesOpportunityName: Initial Contract x'x x&x <testName> <dt>
+    facts:
+    - factName: InvoicedAmounts
+      period: <currentMonthFull> <currentYearFull>
+      deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+      expectedValues:
+      - measure: Actual
+        currency: GBP
+        value: 23805.00
+- testStage: postSecondOppSetup
+  salesOpportunityForecasts:
+    salesOpportunityName: Additional Users 1 x'x x&x <testName> <dt>
+    facts:
+    - factName: BookingForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+      period: <currentMonthFull> <currentYearFull>
+      expectedValues:
+      - measure: Actual
+        currency: GBP
+        value: 3204.19 # was 213.61, but 9 periods * £330 + £234.19(for December) = £3204.19
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+      period: December 2013
+      expectedValues:
+      - measure: P1 Forecast
+        currency: GBP
+        value: 234.19 # was 15.61, but £22 * 15 users * (22 days / 31 days) = £234.1935483870968
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+      period: February 2014
+      expectedValues:
+      - measure: P1 Forecast
+        currency: GBP
+        value: 330.00 # was 22.0 but 15 users * £22 = £330 
+- testStage: postSecondInvoice
+  salesOpportunityForecasts:
+    salesOpportunityName: Additional Users 1 x'x x&x <testName> <dt> 
+    facts:
+    - factName: InvoicedAmounts
+      period: <currentMonthFull> <currentYearFull>
+      deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+      expectedValues:
+      - measure: Actual
+        currency: GBP
+        value: 1224.19
+- testStage: postThirdOppSetup
+  salesOpportunityForecasts:
+    salesOpportunityName: Additional Users 2 x'x x&x <testName> <dt>
+    facts:
+    - factName: BookingForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+      period: <currentMonthFull> <currentYearFull>
+      expectedValues: 
+      - measure: Actual
+        currency: GBP
+        value: 11250.00
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+      period: May 2014
+      expectedValues: 
+      - measure: P1 Forecast # was Actual, but I don't see why
+        currency: GBP
+        value: 1250.00
+- testStage: postRevenueAdjustment
+  salesOpportunityForecasts:
+    salesOpportunityName: Additional Users 2 x'x x&x <testName> <dt> 
+    facts:
+    - factName: BookingForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+      deliveryElementName: Additional Users 2 x'x x&x <testName> <dt>
+      period: <currentMonthFull> <currentYearFull>
+      expectedValues: 
+      - measure: Actual
+        currency: GBP
+        value: 11250.00
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+      deliveryElementName: Additional Users 2 x'x x&x <testName> <dt>
+      period: January 2014
+      expectedValues: 
+      - measure: P1 Forecast
+        currency: GBP
+        value: 500.00 # was -750.00, but the £500 sandbox annuity is still there and the negative is only to cancel out the original positive, so I think £500 is right
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+      deliveryElementName: Additional Users 2 x'x x&x <testName> <dt>
+      period: February 2014
+      expectedValues: 
+      - measure: P1 Forecast
+        currency: GBP
+        value: 500.00 # was -750.00, but the £500 sandbox annuity is still there and the negative is only to cancel out the original positive, so I think £500 is right
+    - factName: RevenueForecast
+      businessUnitName: UK Co 1 (Operating/Trading GBP)
+      deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+      deliveryElementName: Additional Users 2 x'x x&x <testName> <dt>
+      period: March 2014
+      expectedValues: 
+      - measure: P1 Forecast
+        currency: GBP
+        value: 500.00 # was -750.00, but the £500 sandbox annuity is still there and the negative is only to cancel out the original positive, so I think £500 is right
+        
+- testStage: postNegativeAnnuity
+  salesOpportunityForecasts:
+    salesOpportunityName: Additional Users 2 x'x x&x <testName> <dt> 
+    facts:
+    - factName: ReceivablesForecast
+      deliveryEngagementName: Initial Contract Engagement x'x x&x <testName> <dt>
+      receivableDate: 01/04/2014
+      expectedValues: 
+      - measure: ForecastRevenue
+        currency: GBP
+        value: 2250.00
+                   
+        

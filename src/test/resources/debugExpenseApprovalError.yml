@@ -1,0 +1,118 @@
+---
+accounts:
+  - name: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>
+    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+    invoicingCurrency: GBP
+    taxCode: Standard Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x <testName> <dt>
+        businessUnit: UK Co 1 (Operating/Trading GBP)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/01/2013
+        closeDate: 01/01/2013
+        forecastStatus: Probable (60%)
+
+        deliveryEngagements:
+          - name: Delivery Engagement x'x x&x <testName> <dt>
+            productGroup: General Consulting (No Delivery Elements)
+            expectedStartDate: 01/01/2013
+            expectedEndDate: 01/01/2014
+            contractRevenue: 100000            
+            deliveryStatus: Won
+            
+            deliveryElements:
+              - name: T&M
+                step2Name: Fixed Price (was T&M)
+                product: T&M
+                step2Product: Fixed Price
+                
+                bulkEdits:
+                  - operation: Decrease by %
+                    value: 10
+                
+                activityAssignments:
+                  - resourceName: US Co 1 x'x x&x Associate Four                     
+                    revenueRate: 1000
+                    costRate: 600
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 28/02/2013
+                    remainingEffort: 23
+                    utilisationPct: 100                    
+                step2RevenueMilestones:
+                  - name: Work Done
+                    value: 100000
+                    date: 05/04/2013
+                    
+timesheets:
+  - resourceName: US Co 1 x'x x&x Associate Four 
+    testStage: enterTime
+    trackingPeriodStartDate: 28/02/2013
+    timeEntries:
+    - startDate: 28/02/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+  - resourceName: US Co 1 x'x x&x Associate Four 
+    testStage: enterTime
+    trackingPeriodStartDate: 01/03/2013
+    timeEntries:
+    - startDate: 01/02/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M   
+      entryUnits: 7.5 
+  - resourceName: US Co 1 x'x x&x Associate Four 
+    testStage: enterTime
+    trackingPeriodStartDate: 04/03/2013
+    timeEntries:
+    - startDate: 04/03/2013
+      endDate: 08/03/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+  - resourceName: US Co 1 x'x x&x Associate Four 
+    testStage: enterTime
+    trackingPeriodStartDate: 11/03/2013
+    timeEntries:
+    - startDate: 11/03/2013
+      endDate: 15/03/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+  - resourceName: US Co 1 x'x x&x Associate Four 
+    testStage: enterTime
+    trackingPeriodStartDate: 18/03/2013
+    timeEntries:
+    - startDate: 18/03/2013
+      endDate: 22/03/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5    
+  - resourceName: US Co 1 x'x x&x Associate Four 
+    testStage: enterTime
+    trackingPeriodStartDate: 25/03/2013
+    timeEntries:
+    - startDate: 25/03/2013
+      endDate: 28/03/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+  - resourceName: US Co 1 x'x x&x Associate Four 
+    testStage: enterTime
+    trackingPeriodStartDate: 01/04/2013
+    timeEntries:
+    - startDate: 02/04/2013
+      endDate: 03/04/2013
+      plannedActivity: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+      entryUnits: 7.5
+
+expenseClaims:
+  - resourceName: US Co 1 x'x x&x Associate Four 
+    testStage: enterExpenses
+    expenseEntries:
+    - name: Weekly Train Pass
+      incurredDate: 28/02/2013
+      activityName: Standard Rate UK Co 1 Account x'x x&x <testName> <dt>-T&M
+      expenseDetails:
+      - category: Train
+        currency: GBP
+        amount: 50.34
+        notes: Weekly Train Pass
+        

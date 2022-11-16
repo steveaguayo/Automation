@@ -1,0 +1,122 @@
+---
+# Test overview
+# Group Assignment - Other Activity
+timesheets:
+  - testStage: firstTimeBooking     
+    resourceName: UK Co 1 x'x x&x Employee One 
+    trackingPeriodStartDate: 2/4/13
+    timeEntries:
+    - actualiseForecastEntry: false 
+      startDate: 2/4/2013
+      endDate: 2/6/2013
+      timeType: Business Day - Standard Time
+      plannedActivity: Burlington Textiles Corp of America-T&M
+      entryUnits: 7.50
+#      plannedActivity: Burlington Textiles Corp of America-Tracked Plan
+#      entryUnits: 7.50
+#      task: Task 2
+#      draftRemaining: 7.5
+expenseClaims:
+- resourceName: UK Co 1 x'x x&x Employee One 
+  expenseEntries:
+#  - name: Car Mileage 6
+#    incurredDate: 2/4/2013
+#    monthBeginning: 01 February 2013
+#    activityName: Burlington Textiles Corp of America-T&M
+#    expenseDetails:
+#    - category: Mileage
+#      currency: CRC
+#      miles: 40
+#      startLocation: Work
+#      endLocation: Project X
+#      notes: Journey from work to Project X
+  - name: Client Entertainment 6
+    incurredDate: 2/4/2013
+    monthBeginning: 01 February 2013
+    activityName: Burlington Textiles Corp of America-T&M
+    expenseDetails:
+    - category: Client Entertainment
+      currency: CRC
+      amount: 876.52
+      attendees: santa
+      notes: big client entertainment..
+     
+accounts:
+  - name: ZeroRate US Co 1 Account x'x x&x tst_01 <dt>
+    operatingBusinessUnit: US Co 1 (Operating/Trading USD)
+    invoicingCurrency: USD
+    taxCode: Zero Rate VAT
+    allowPartItemInvoicing: true
+    locale: en_GB
+    
+    salesOpportunities:
+      - name: Sales Opp x'x x&x tst_01 <dt>
+        businessUnit: US Co 1 (Operating/Trading USD)
+        source: Direct Enquiry
+        proposition: General Consulting
+        responseRequiredDate: 01/01/2013
+        closeDate: 01/01/2013
+        forecastStatus: Probable (60%)
+
+        deliveryEngagements:
+          - name: Delivery Engagement x'x x&x tst_01 <dt>
+            productGroup: General Consulting - T&M #General Consulting (No Delivery Elements)
+            expectedStartDate: 01/01/2013
+            expectedEndDate: 01/01/2014
+            contractRevenue: 100000            
+
+            deliveryElements:
+              - name: T&M
+                product: T&M
+                
+                activityAssignments:
+                  - resourceName: US Co 1 x'x x&x Employee Four                     
+                    revenueRate: 1000
+                    costRate: 600
+                    usageBehaviourRule: Defined Effort with variable End Date
+                    startDate: 01/01/2013
+                    remainingEffort: 5
+                    utilisationPct: 100
+                  - resourceName: US Co 1 x'x x&x Associate Four
+                    revenueRate: 1200
+                    costRate: 750
+                    usageBehaviourRule: Defined Effort between two Dates
+                    startDate: 01/01/2013
+                    endDate: 28/01/2013
+                    remainingEffort: 10 
+#accounts:
+#  - name: Burlington Textiles Corp of America
+#    operatingBusinessUnit: UK Co 1 (Operating/Trading GBP)
+#    invoicingCurrency: GBP
+#    taxCode: Standard Rate VAT
+#    allowPartItemInvoicing: true
+#    locale: en_GB
+#    
+#    salesOpportunities:
+#      - name: SO Mob Test
+#        businessUnit: UK Co 1 (Operating/Trading GBP)
+#        source: Direct Enquiry
+#        proposition: General Consulting
+#        responseRequiredDate: 01/06/2013
+#        closeDate: 30/06/2013
+#        forecastStatus: Probable (60%)
+#               
+#        deliveryEngagements:
+#        - name: DE Mob Test
+#          productGroup: General Consulting (No Delivery Elements)
+#          expectedStartDate: 01/07/2013
+#          expectedEndDate: 31/07/2013
+#          contractRevenue: 70000
+#                       
+#          deliveryElements:
+#          - name: T&M
+#            product: T&M
+#              
+#            activityAssignments:
+#            - resourceName: US Co 1 x'x x&x Employee Four               
+#              revenueRate: 850.00
+#              costRate: 650.00
+#              usageBehaviourRule: Defined Effort with variable End Date
+#              startDate: 12/02/2018
+#              remainingEffort: 10
+#              endDate: 23/02/2018
